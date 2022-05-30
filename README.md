@@ -32,7 +32,7 @@ Renderiza un componente header, con el título de la página, y todos los enlace
 
 ### Footer
 
-Renderiza la dirección, teléfono y email de la galería y 3 Icon Button, pasando para cada uno la forma del icono de facebook, twitter y instagram, y la acción de abrir la página de cada
+Renderiza la dirección, teléfono y email de la galería y 3 Icon Button, pasando para cada uno la forma del icono de facebook, twitter y instagram, y la acción de abrir la página de cada.
 
 <br>
 
