@@ -1,3 +1,5 @@
+# DesTerra Gallery Web Application
+
 # Listado de Componentes
 
 <br>
@@ -170,6 +172,7 @@ Renderiza un componente Header, un filtro en forma de dropdown, una lista de un 
 Renderiza un componente Header, un componente ArtworkDetail pasando sus detalles a el, un footer, y dependiendo la condición, 2 líneas de texto (una con link para la Login Page y otra para la Register Page), o un componente button pasandole el texto ‘Buy or Rent’ y la acción de llevar a la página Arwork BuyPage
 
 <br>
+
 ### ArtworkBuy Page
 
 <br>
