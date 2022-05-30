@@ -3,7 +3,6 @@ import { createSlice, PayloadAction } from "@reduxjs/toolkit";
 interface ISliceState {
   id: string;
   firstName: string;
-  logged: boolean;
 }
 
 const initialState = {
