@@ -1,7 +1,7 @@
 import jwtDecode from "jwt-decode";
 import { useEffect } from "react";
 import { useAppDispatch } from "./components/hooks";
-import LoginForm from "./components/LoginForm";
+import LoginForm from "./components/LoginForm/LoginForm";
 import {
   loginActionCreator,
   logoutActionCreator,
