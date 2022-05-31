@@ -8,12 +8,14 @@ describe("Given a userSlice reducer with a loginActionCreator function", () => {
     test("Then it should return the same user with the property logged as 'true'", () => {
       const initialUser = {
         id: "1234",
+        email: "test@test.com",
         firstName: "Julio",
         logged: false,
       };
       const expectedUser = {
         id: "1234",
         firstName: "Julio",
+        email: "test@test.com",
         logged: true,
       };
 
@@ -28,6 +30,7 @@ describe("Given a userSlice reducer with a loginActionCreator function", () => {
       const loggedUser = {
         id: "1234",
         firstName: "Julio",
+        email: "test@test.com",
         logged: true,
       };
 

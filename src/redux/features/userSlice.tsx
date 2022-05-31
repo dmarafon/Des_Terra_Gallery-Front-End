@@ -1,25 +1,28 @@
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
 
-interface ISliceState {
+interface SliceState {
   id: string;
   firstName: string;
+  email: string;
+  logged: boolean;
 }
 
 const initialState = {
   id: "",
   firstName: "",
+  email: "",
   logged: false,
-} as ISliceState;
+} as SliceState;
 
 const userSlice = createSlice({
   name: "user",
   initialState,
   reducers: {
-    login: (user: ISliceState, action: PayloadAction<ISliceState>) => ({
+    login: (user: SliceState, action: PayloadAction<SliceState>) => ({
       ...action.payload,
       logged: true,
     }),
-    logout: () => ({ id: "", firstName: "", logged: false }),
+    logout: () => ({ id: "", firstName: "", email: "", logged: false }),
   },
 });
 
