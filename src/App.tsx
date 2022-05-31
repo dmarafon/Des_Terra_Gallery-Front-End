@@ -6,7 +6,7 @@ import {
   loginActionCreator,
   logoutActionCreator,
 } from "./redux/features/userSlice";
-import { userInformation } from "./types/userInterface";
+import { UserInformation } from "./types/userInterface";
 
 const App = (): JSX.Element => {
   const dispatch = useAppDispatch();
@@ -15,7 +15,7 @@ const App = (): JSX.Element => {
     const token = localStorage.getItem("token");
 
     if (token) {
-      const userInfo: userInformation = jwtDecode(token);
+      const userInfo: UserInformation = jwtDecode(token);
       dispatch(loginActionCreator(userInfo));
     } else {
       dispatch(logoutActionCreator());
