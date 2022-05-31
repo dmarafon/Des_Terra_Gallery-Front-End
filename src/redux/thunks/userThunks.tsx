@@ -1,5 +1,6 @@
 import axios from "axios";
 import jwtDecode from "jwt-decode";
+import { UserInformation } from "../../types/userInterface";
 
 import { loginActionCreator } from "../features/userSlice";
 import { AppDispatch } from "../store/store";
@@ -7,13 +8,6 @@ import { AppDispatch } from "../store/store";
 interface LoginInformation {
   email: string;
   password: string;
-}
-
-interface userInformation {
-  id: string;
-  firstName: string;
-  email: string;
-  logged: boolean;
 }
 
 export const loginUserThunk =
@@ -25,7 +19,7 @@ export const loginUserThunk =
 
     localStorage.setItem("token", token);
 
-    const userInfo: userInformation = jwtDecode(token);
+    const userInfo: UserInformation = jwtDecode(token);
 
     dispatch(loginActionCreator(userInfo));
   };
