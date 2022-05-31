@@ -70,12 +70,15 @@ const LoginForm = (): JSX.Element => {
             />
           </div>
           <div className="login__button--container">
-            <button className="login__button" type="submit">
+            <button
+              className="login__button"
+              type="submit"
+              disabled={formData.email === "" || formData.password === ""}
+            >
               SIGN IN
             </button>
           </div>
         </form>
-
         <p className="login__text--register">
           Don’t have an account?
           <span className="login__text--colored"> Join Now!</span>
