@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { SyntheticEvent, useState } from "react";
 import { loginUserThunk } from "../../redux/thunks/userThunks";
 import { useAppDispatch } from "../hooks";
 import LoginFormStyled from "./LoginFormStyled";
@@ -10,7 +10,7 @@ const LoginForm = (): JSX.Element => {
 
   const dispatch = useAppDispatch();
 
-  const loginSubmit = (event: { preventDefault: () => void }) => {
+  const loginSubmit = (event: SyntheticEvent) => {
     event.preventDefault();
     const dispatchedData = { ...formData };
     resetForm();
@@ -18,8 +18,13 @@ const LoginForm = (): JSX.Element => {
     dispatch(loginUserThunk(dispatchedData));
   };
 
-  const changeData = (event: { target: { id: any; value: any } }) => {
-    setFormData({ ...formData, [event.target.id]: event.target.value });
+  const changeData = (event: SyntheticEvent) => {
+    setFormData({
+      ...formData,
+      [(event.target as HTMLInputElement).id]: (
+        event.target as HTMLInputElement
+      ).value,
+    });
   };
 
   const resetForm = () => {
@@ -55,6 +60,7 @@ const LoginForm = (): JSX.Element => {
               id="email"
               value={formData.email}
               onChange={changeData}
+              required
               placeholder="EMAIL"
             />
             <label className="login__label" htmlFor="password">
@@ -66,6 +72,7 @@ const LoginForm = (): JSX.Element => {
               type="password"
               value={formData.password}
               onChange={changeData}
+              required
               placeholder="PASSWORD"
             />
           </div>

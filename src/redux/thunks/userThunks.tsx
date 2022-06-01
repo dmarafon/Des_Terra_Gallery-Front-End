@@ -24,24 +24,16 @@ export const loginUserThunk =
   };
 
 export const registerUserThunk =
-  (formData: FormData) => async (dispatch: AppDispatch) => {
+  (formData: any) => async (dispatch: AppDispatch) => {
+    console.log(formData);
     await axios.post(
       `${process.env.REACT_APP_API_URL}users/register`,
       formData
     );
 
     const newUser = {
-      firstname: formData.firstname,
-      surname: formData.surname,
       email: formData.email,
       password: formData.password,
-      webpage: formData.webpage,
-      address: formData.address,
-      apartmentdoorstair: formData.apartmentdoorstair,
-      city: formData.city,
-      phonenumber: formData.phonenumber,
-      artist: formData.artist,
-      pictureprofile: formData.image,
     };
 
     const route = `${process.env.REACT_APP_API_URL}users/login`;

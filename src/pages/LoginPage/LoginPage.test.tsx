@@ -12,7 +12,7 @@ jest.mock("react-redux", () => ({
   useDispatch: () => mockDispatch,
 }));
 
-describe("Given a Login form", () => {
+describe("Given a Login Page", () => {
   describe("When it's invoked", () => {
     test("Then it renders one label with the text 'EMAIL'", () => {
       render(
