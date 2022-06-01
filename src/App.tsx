@@ -1,7 +1,8 @@
-import jwtDecode from "jwt-decode";
+import LoginPage from "./pages/LoginPage/LoginPage";
+import { Navigate, Route, Routes } from "react-router-dom";
 import { useEffect } from "react";
 import { useAppDispatch } from "./components/hooks";
-import LoginForm from "./components/LoginForm/LoginForm";
+import jwtDecode from "jwt-decode";
 import {
   loginActionCreator,
   logoutActionCreator,
@@ -13,7 +14,6 @@ const App = (): JSX.Element => {
 
   useEffect(() => {
     const token = localStorage.getItem("token");
-
     if (token) {
       const userInfo: UserInformation = jwtDecode(token);
       dispatch(loginActionCreator(userInfo));
@@ -22,7 +22,12 @@ const App = (): JSX.Element => {
     }
   }, [dispatch]);
 
-  return <LoginForm />;
+  return (
+    <Routes>
+      <Route path="/" element={<Navigate to="/users/login" />} />
+      <Route path="/users/login" element={<LoginPage />} />
+    </Routes>
+  );
 };
 
 export default App;

@@ -1,8 +1,9 @@
 import { render, screen } from "@testing-library/react";
 import userEvent from "@testing-library/user-event";
 import { Provider } from "react-redux";
+import { BrowserRouter } from "react-router-dom";
 import store from "../../redux/store/store";
-import LoginForm from "./LoginForm";
+import LoginPage from "./LoginPage";
 
 const mockDispatch = jest.fn();
 
@@ -15,9 +16,11 @@ describe("Given a Login form", () => {
   describe("When it's invoked", () => {
     test("Then it renders one label with the text 'EMAIL'", () => {
       render(
-        <Provider store={store}>
-          <LoginForm />
-        </Provider>
+        <BrowserRouter>
+          <Provider store={store}>
+            <LoginPage />
+          </Provider>
+        </BrowserRouter>
       );
 
       expect(screen.getAllByText("EMAIL")).toHaveLength(1);
@@ -29,9 +32,11 @@ describe("Given a Login form", () => {
       const textInput = ["jose", "1234"];
 
       render(
-        <Provider store={store}>
-          <LoginForm />
-        </Provider>
+        <BrowserRouter>
+          <Provider store={store}>
+            <LoginPage />
+          </Provider>
+        </BrowserRouter>
       );
       const usernameField = screen.getByLabelText("EMAIL");
       const passwordField = screen.getByLabelText("PASSWORD");
@@ -50,9 +55,11 @@ describe("Given a Login form", () => {
       const textInput = ["jose", "1234"];
 
       render(
-        <Provider store={store}>
-          <LoginForm />
-        </Provider>
+        <BrowserRouter>
+          <Provider store={store}>
+            <LoginPage />
+          </Provider>
+        </BrowserRouter>
       );
 
       const usernameField = screen.getByLabelText("EMAIL");
