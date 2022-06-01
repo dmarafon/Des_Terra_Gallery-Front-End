@@ -2,32 +2,16 @@ import { render } from "@testing-library/react";
 import { Provider } from "react-redux";
 import { BrowserRouter } from "react-router-dom";
 import App from "./App";
+import { localStorageMock } from "./mocks/localStorageMock";
 import store from "./redux/store/store";
 
+const gettinUpLocalStorage = localStorageMock;
 const saveToStorage = (value: string) => {
   window.localStorage.setItem("token", value);
 };
 
-let localStorageMock = (() => {
-  let store: { [key: string]: any } = {};
-  return {
-    getItem(key: string) {
-      return store[key];
-    },
-    setItem(key: string, value: string) {
-      store[key] = value.toString();
-    },
-    clear() {
-      store = {};
-    },
-    removeItem(key: string) {
-      delete store[key];
-    },
-  };
-})();
-
 Object.defineProperty(window, "localStorage", {
-  value: localStorageMock,
+  value: gettinUpLocalStorage,
 });
 
 describe("Given an App component", () => {
