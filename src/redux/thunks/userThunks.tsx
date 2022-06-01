@@ -1,10 +1,6 @@
 import axios from "axios";
 import jwtDecode from "jwt-decode";
-import {
-  FormData,
-  LoginInformation,
-  UserInformation,
-} from "../../types/userInterface";
+import { LoginInformation, UserInformation } from "../../types/userInterface";
 
 import { loginActionCreator } from "../features/userSlice";
 import { AppDispatch } from "../store/store";
