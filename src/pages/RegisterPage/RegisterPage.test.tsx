@@ -95,7 +95,7 @@ describe("Given a RegisterForm component function", () => {
     });
   });
 
-  describe("When the user fills the name, username and password fields", () => {
+  describe("When the user fills all the required fields", () => {
     test("Then the register button should be enabled", () => {
       const textInput = [
         "Test",
