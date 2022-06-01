@@ -6,6 +6,7 @@ import { localStorageMock } from "./mocks/localStorageMock";
 import store from "./redux/store/store";
 
 const gettinUpLocalStorage = localStorageMock;
+
 const saveToStorage = (value: string) => {
   window.localStorage.setItem("token", value);
 };
