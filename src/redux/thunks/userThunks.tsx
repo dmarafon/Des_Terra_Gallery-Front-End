@@ -1,22 +1,34 @@
 import axios from "axios";
 import jwtDecode from "jwt-decode";
 import { LoginInformation, UserInformation } from "../../types/userInterface";
+import {
+  feedbackOnActionCreator,
+  finishedLoadingActionCreator,
+  loadingActionCreator,
+} from "../features/uiSlice";
 
 import { loginActionCreator } from "../features/userSlice";
 import { AppDispatch } from "../store/store";
 
 export const loginUserThunk =
   (loginInformation: LoginInformation) => async (dispatch: AppDispatch) => {
-    const route = `${process.env.REACT_APP_API_URL}users/login`;
-    const {
-      data: { token },
-    } = await axios.post(route, loginInformation);
+    try {
+      dispatch(loadingActionCreator());
+      const route = `${process.env.REACT_APP_API_URL}users/login`;
+      const {
+        data: { token },
+      } = await axios.post(route, loginInformation);
 
-    localStorage.setItem("token", token);
+      localStorage.setItem("token", token);
 
-    const userInfo: UserInformation = jwtDecode(token);
+      const userInfo = jwtDecode(token);
 
-    dispatch(loginActionCreator(userInfo));
+      dispatch(loginActionCreator(userInfo));
+      dispatch(finishedLoadingActionCreator());
+    } catch (error) {
+      dispatch(finishedLoadingActionCreator());
+      dispatch(feedbackOnActionCreator());
+    }
   };
 
 export const registerUserThunk =

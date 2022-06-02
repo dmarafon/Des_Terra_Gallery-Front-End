@@ -23,6 +23,10 @@ describe("Given an App component", () => {
 
     test("Then it should render with a token in its local storage and dispatch a login action that will decrypt the token with the user information and that data will be in the store", () => {
       const expectedTokenData = {
+        ui: {
+          feedback: false,
+          loading: false,
+        },
         user: {
           firstName: "test",
           email: "teste@teste",

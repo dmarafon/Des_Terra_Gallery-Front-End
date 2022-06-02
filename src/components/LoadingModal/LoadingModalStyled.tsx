@@ -11,10 +11,6 @@ const LoadingModalStyled = styled.header`
     box-sizing: border-box;
   }
   html,
-  body {
-    height: 100%;
-  }
-
   .loader {
     position: absolute;
     left: 50%;
