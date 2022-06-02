@@ -1,6 +1,6 @@
 import { createSlice } from "@reduxjs/toolkit";
 
-interface uiSliceState {
+interface UISliceState {
   loading: boolean;
   feedback: boolean;
 }
@@ -12,10 +12,10 @@ const uiSlice = createSlice({
     feedback: false,
   },
   reducers: {
-    loading: (ui: uiSliceState, action) => ({ ...ui, loading: true }),
-    finishedLoading: (ui: uiSliceState, action) => ({ ...ui, loading: false }),
-    feedbackOn: (ui: uiSliceState, action) => ({ ...ui, feedback: true }),
-    feedbackOff: (ui: uiSliceState, action) => ({ ...ui, feedback: false }),
+    loading: (ui: UISliceState, action) => ({ ...ui, loading: true }),
+    finishedLoading: (ui: UISliceState, action) => ({ ...ui, loading: false }),
+    feedbackOn: (ui: UISliceState, action) => ({ ...ui, feedback: true }),
+    feedbackOff: (ui: UISliceState, action) => ({ ...ui, feedback: false }),
   },
 });
 
