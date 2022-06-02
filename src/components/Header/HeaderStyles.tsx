@@ -1,6 +1,28 @@
 import styled from "styled-components";
 
 const StyledHeader = styled.header`
+  .menu__link--userprofile {
+    display: flex;
+  }
+
+  .menu__svg--userlogo {
+    margin-bottom: 20px;
+    width: 25px;
+    filter: invert(61%) sepia(72%) saturate(2597%) hue-rotate(336deg)
+      brightness(105%) contrast(96%);
+  }
+
+  .menu__text--firstname {
+    margin-top: 0;
+    text-align: center;
+  }
+  .menu__token > a {
+    color: #fa803b;
+    font-size: 15px;
+    text-transform: capitalize;
+    font-weight: normal;
+  }
+
   .top-nav {
     display: flex;
     flex-direction: row;
@@ -10,12 +32,18 @@ const StyledHeader = styled.header`
     padding: 1.2em;
     position: relative;
     z-index: 50;
+    margin-bottom: 50px;
   }
 
   .top-nav_img img {
     margin-top: 40px;
     width: 200px;
   }
+
+  .menu__text--color {
+    color: #fa803b;
+  }
+
   .menu {
     display: flex;
     flex-direction: row;

@@ -1,7 +1,13 @@
+import Header from "../../components/Header/Header";
 import RegisterForm from "../../components/RegisterForm/RegisterForm";
 
 const RegisterPage = (): JSX.Element => {
-  return <RegisterForm />;
+  return (
+    <>
+      <Header />
+      <RegisterForm />
+    </>
+  );
 };
 
 export default RegisterPage;
