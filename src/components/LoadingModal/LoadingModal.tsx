@@ -1,14 +1,7 @@
 import LoadingModalStyled from "./LoadingModalStyled";
-import { createGlobalStyle } from "styled-components";
 import { useRef } from "react";
 import ReactPortal from "../ReactPortalDom/ReactPortal";
-
-const GlobalStyle = createGlobalStyle<{ yellowColor: boolean }>`
-  body {
-    background-color: ${(props) => (props.yellowColor ? "#FAC43B" : "white")}
-    
-  }
-`;
+import GlobalStyle from "./GlobalStyleLoginModal";
 
 const LoadingModal = (): JSX.Element => {
   const nodeRef = useRef(null);
