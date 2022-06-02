@@ -19,8 +19,8 @@ const ReactPortal = ({
   children,
   wrapperId = "react-portal-wrapper",
 }: {
-  children: any;
-  wrapperId: string;
+  children?: any;
+  wrapperId?: string;
 }) => {
   const [wrapperElement, setWrapperElement] = useState<HTMLElement | null>(
     null
