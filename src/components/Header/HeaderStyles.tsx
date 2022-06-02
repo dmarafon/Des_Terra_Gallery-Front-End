@@ -16,7 +16,7 @@ const StyledHeader = styled.header`
     margin-top: 0;
     text-align: center;
   }
-  .menu__token > a {
+  .menu__logged > a {
     color: #fa803b;
     font-size: 15px;
     text-transform: capitalize;
