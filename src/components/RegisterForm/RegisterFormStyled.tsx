@@ -1,6 +1,6 @@
 import styled from "styled-components";
 
-const LoginFormStyled = styled.div`
+const RegisterFormStyled = styled.div`
   display: flex;
   text-decoration: none;
   display: flex;
@@ -12,38 +12,28 @@ const LoginFormStyled = styled.div`
     flex-direction: column;
   }
 
-  .login__image--container {
+  .register__text--container {
+    margin-bottom: 30px;
     display: flex;
     flex-direction: column;
-    @media (max-width: 920px) {
-      display: none;
-    }
-    margin-right: 10vw;
+    align-content: flex-start;
+    flex-wrap: wrap;
+    margin-left: 90px;
+    margin-right: 70px;
   }
 
-  .login__image--image_container {
+  .register__form--container-labels {
     display: flex;
-    justify-content: flex-end;
-  }
-  .login__image {
-    max-width: 30vw;
-  }
-  .login__image--text_container {
-    display: flex;
-    justify-content: flex-end;
+    flex-direction: row;
     @media (max-width: 920px) {
-      display: none;
+      flex-direction: column;
     }
   }
-  .login__image--subtitle {
-    font-size: 0.8vw;
-  }
-
-  .login__form--container {
+  .register__form--container {
     display: flex;
   }
 
-  .login__container {
+  .register__container {
     display: flex;
     text-align: center;
     font-family: "Karla", sans-serif;
@@ -55,86 +45,100 @@ const LoginFormStyled = styled.div`
     flex-direction: column;
   }
 
-  .login__text--intro {
+  .register__text--intro {
     color: #000000;
-    font-size: 150%;
+    font-size: 30%;
     font-weight: 700;
     text-align: center;
     margin-left: 0.006%;
     margin-bottom: 0;
+    margin-top: 20px;
   }
 
-  .login__text--intro_second {
+  .register__text--login {
     color: #000000;
-    font-size: 150%;
-    font-weight: 700;
-    text-align: center;
-    margin-left: 0.006%;
-    margin: 0;
-  }
-
-  .login__text--register {
-    color: #000000;
-    font-size: 110%;
+    font-size: 30%;
     font-weight: 400;
     text-align: center;
     margin-left: 0.006%;
-    margin-top: 100px;
+    margin-top: 60px;
     cursor: pointer;
   }
 
-  .login__text--colored {
+  .register__text--colored {
     color: #fa803b;
   }
 
-  .login__form {
+  .register__form {
+    flex-direction: row;
+    flex-wrap: nowrap;
     font-size: 500%;
     font-weight: 700;
     text-align: center;
-    margin-left: 0.006%;
     display: flex;
     padding: 30px;
     @media (min-width: 1218px) {
-      width: 500px;
+      width: 1000px;
     }
     @media (min-width: 1025px) and (max-width: 1280px) {
-      width: 450px;
+      width: 900px;
     }
 
     @media (min-width: 768px) and (max-width: 1024px) {
-      width: 400px;
+      width: 800px;
     }
 
     @media (min-width: 481px) and (max-width: 767px) {
-      width: 350px;
+      width: 700px;
     }
     @media (max-width: 480px) {
       width: 300px;
     }
 
     height: auto;
-    overflow: hidden;
     border-radius: 10px;
     justify-content: center;
     align-items: center;
     flex-wrap: wrap;
-    justify-content: flex-start;
+    justify-content: space-evenly;
   }
 
-  .login__label {
+  .register__form--first-labels {
+    display: flex;
+    flex-direction: column;
+    margin-right: 40px;
+    @media (max-width: 920px) {
+      margin-right: 0px;
+    }
+    flex-basis: 100%;
+  }
+
+  .register__form--second-labels {
+    display: flex;
+    flex-direction: column;
+    margin-left: 40px;
+    @media (max-width: 920px) {
+      margin-left: 0px;
+    }
+    flex-basis: 100%;
+  }
+
+  .register__label {
     text-align: left;
     font-size: 15px;
     color: #000000;
     cursor: pointer;
   }
 
-  .login__label,
-  .login__input {
-    float: left;
-    clear: both;
+  .register__label--checkbox {
+    text-align: left;
+    font-size: 18px;
+    color: #000000;
+    cursor: pointer;
+    margin-left: 1px;
   }
 
-  .login__input {
+  .register__input {
     font-size: 2.2vh;
     font-family: "Karla", sans-serif;
     margin: 15px 0;
@@ -154,19 +158,32 @@ const LoginFormStyled = styled.div`
     transition: 0.2s ease all;
   }
 
-  .login__input[type="text"]:focus,
-  .login__input[type="password"]:focus {
+  .register__input--checkbox_click {
+    width: 2vh;
+    height: 2vh;
+  }
+
+  .register__input[type="text"]:focus,
+  .register__input[type="password"]:focus {
     border-color: #000000;
   }
 
-  .login__button--container {
+  .register__input--checkbox {
     display: flex;
-    align-content: center;
-    flex-wrap: wrap;
-    flex-direction: column;
   }
 
-  .login__button {
+  .register__button--container {
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: column;
+    align-content: flex-end;
+    @media (max-width: 920px) {
+      align-content: center;
+    }
+    margin-top: 40px;
+  }
+
+  .register__button {
     cursor: pointer;
     justify-content: center;
     height: 50px;
@@ -191,13 +208,13 @@ const LoginFormStyled = styled.div`
     }
   }
 
-  .login__button:hover {
+  .register__button:hover {
     opacity: 0.8;
   }
 
-  .login__button:active {
+  .register__button:active {
     opacity: 0.4;
   }
 `;
 
-export default LoginFormStyled;
+export default RegisterFormStyled;
