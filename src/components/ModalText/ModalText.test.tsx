@@ -4,7 +4,13 @@ import ModalText from "./ModalText";
 describe("Given a Modal component", () => {
   describe("When its invoked", () => {
     test("Then it should render a button element", () => {
-      render(<ModalText children={"Test Modal"} handleClose={undefined} />);
+      render(
+        <ModalText
+          children={"Test Modal"}
+          handleClose={undefined}
+          isOpen={true}
+        />
+      );
 
       const testButton = screen.getByRole("button");
 
