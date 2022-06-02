@@ -8,6 +8,7 @@ import {
   logoutActionCreator,
 } from "./redux/features/userSlice";
 import { UserInformation } from "./types/userInterface";
+import RegisterPage from "./pages/RegisterPage/RegisterPage";
 
 const App = (): JSX.Element => {
   const dispatch = useAppDispatch();
@@ -26,6 +27,7 @@ const App = (): JSX.Element => {
     <Routes>
       <Route path="/" element={<Navigate to="/users/login" />} />
       <Route path="/users/login" element={<LoginPage />} />
+      <Route path="/users/register" element={<RegisterPage />} />
     </Routes>
   );
 };
