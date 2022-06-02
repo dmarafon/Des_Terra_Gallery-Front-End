@@ -17,7 +17,7 @@ describe("Given the loadingActionCreator", () => {
         feedback: false,
       };
 
-      const action = loadingActionCreator(initialState);
+      const action = loadingActionCreator();
       const loadedState = uiReducer(initialState, action);
 
       expect(loadedState).toEqual(expectedState);
@@ -37,7 +37,7 @@ describe("Given the finiushedLoadingActionCreator", () => {
         feedback: false,
       };
 
-      const action = finishedLoadingActionCreator(initialState);
+      const action = finishedLoadingActionCreator();
       const loadedState = uiReducer(initialState, action);
 
       expect(loadedState).toEqual(expectedState);
@@ -57,7 +57,7 @@ describe("Given the feedbackOnActionCreator", () => {
         feedback: true,
       };
 
-      const action = feedbackOnActionCreator(initialState);
+      const action = feedbackOnActionCreator();
       const loadedState = uiReducer(initialState, action);
 
       expect(loadedState).toEqual(expectedState);
@@ -77,7 +77,7 @@ describe("Given the feedbackOffActionCreator", () => {
         feedback: false,
       };
 
-      const action = feedbackOffActionCreator(initialState);
+      const action = feedbackOffActionCreator();
       const loadedState = uiReducer(initialState, action);
 
       expect(loadedState).toEqual(expectedState);

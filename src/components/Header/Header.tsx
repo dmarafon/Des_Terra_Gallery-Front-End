@@ -12,6 +12,8 @@ declare module "react" {
 
 const Header = (): JSX.Element => {
   const userData = useAppSelector((state) => state.user);
+  const loading = useAppSelector((state) => state.ui.loading);
+
   const dispatch = useAppDispatch();
 
   const submitLogOut = (event: SyntheticEvent) => {
@@ -27,7 +29,14 @@ const Header = (): JSX.Element => {
       <nav className="top-nav">
         <div className="top-nav_img">
           <NavLink to="/home">
-            <img src="/images/desterra_logo.png" alt="Desterra logo" />
+            {loading ? (
+              <img src="/images/desterra_logo_alt.png" alt="Desterra logo" />
+            ) : (
+              <img
+                src="/images/desterra_logo.png"
+                alt="Desterra logo in orange"
+              />
+            )}
           </NavLink>
         </div>
         <input id="menu-toggle" type="checkbox" htmlFor="menu-toggle" />

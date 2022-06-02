@@ -1,13 +1,15 @@
 import { SyntheticEvent, useState } from "react";
 import { NavLink } from "react-router-dom";
 import { loginUserThunk } from "../../redux/thunks/userThunks";
-import { useAppDispatch } from "../hooks";
+import { useAppDispatch, useAppSelector } from "../hooks";
+import LoadingModal from "../LoadingModal/LoadingModal";
 import LoginFormStyled from "./LoginFormStyled";
 
 const LoginForm = (): JSX.Element => {
   const formInitialState = { email: "", password: "" };
 
   const [formData, setFormData] = useState(formInitialState);
+  const loading = useAppSelector((state) => state.ui.loading);
 
   const dispatch = useAppDispatch();
 
@@ -33,68 +35,77 @@ const LoginForm = (): JSX.Element => {
   };
 
   return (
-    <LoginFormStyled>
-      <div className="login__image--container">
-        <div className="login__image--image_container">
-          <img
-            className="login__image"
-            src="https://i.ibb.co/R4cS7xP/leaving-the-bed.jpg"
-            alt="artist painting"
-          />
-        </div>
-        <div className="login__image--text_container">
-          <p className="login__image--subtitle">Nick Alm, "Leaving the Bed"</p>
-        </div>
-      </div>
-      <div className="login__container">
-        <p className="login__text--intro">
-          SIGN IN TO <span className="login__text--colored">EXPERIENCE </span>
-        </p>
-        <p className="login__text--intro_second">DES TERRA</p>
-        <form onSubmit={loginSubmit} noValidate autoComplete="off">
-          <div className="login__form">
-            <label className="login__label" htmlFor="email">
-              EMAIL
-            </label>
-            <input
-              className="login__input"
-              id="email"
-              value={formData.email}
-              onChange={changeData}
-              required
-              placeholder="EMAIL"
-            />
-            <label className="login__label" htmlFor="password">
-              PASSWORD
-            </label>
-            <input
-              className="login__input"
-              id="password"
-              type="password"
-              value={formData.password}
-              onChange={changeData}
-              required
-              placeholder="PASSWORD"
-            />
+    <>
+      {loading ? (
+        <LoadingModal />
+      ) : (
+        <LoginFormStyled>
+          <div className="login__image--container">
+            <div className="login__image--image_container">
+              <img
+                className="login__image"
+                src="https://i.ibb.co/R4cS7xP/leaving-the-bed.jpg"
+                alt="artist painting"
+              />
+            </div>
+            <div className="login__image--text_container">
+              <p className="login__image--subtitle">
+                Nick Alm, "Leaving the Bed"
+              </p>
+            </div>
           </div>
-          <div className="login__button--container">
-            <button
-              className="login__button"
-              type="submit"
-              disabled={formData.email === "" || formData.password === ""}
-            >
-              SIGN IN
-            </button>
+          <div className="login__container">
+            <p className="login__text--intro">
+              SIGN IN TO{" "}
+              <span className="login__text--colored">EXPERIENCE </span>
+            </p>
+            <p className="login__text--intro_second">DES TERRA</p>
+            <form onSubmit={loginSubmit} noValidate autoComplete="off">
+              <div className="login__form">
+                <label className="login__label" htmlFor="email">
+                  EMAIL
+                </label>
+                <input
+                  className="login__input"
+                  id="email"
+                  value={formData.email}
+                  onChange={changeData}
+                  required
+                  placeholder="EMAIL"
+                />
+                <label className="login__label" htmlFor="password">
+                  PASSWORD
+                </label>
+                <input
+                  className="login__input"
+                  id="password"
+                  type="password"
+                  value={formData.password}
+                  onChange={changeData}
+                  required
+                  placeholder="PASSWORD"
+                />
+              </div>
+              <div className="login__button--container">
+                <button
+                  className="login__button"
+                  type="submit"
+                  disabled={formData.email === "" || formData.password === ""}
+                >
+                  SIGN IN
+                </button>
+              </div>
+            </form>
+            <NavLink to="/users/register">
+              <p className="login__text--register">
+                Don’t have an account?
+                <span className="login__text--colored"> Join Now!</span>
+              </p>
+            </NavLink>
           </div>
-        </form>
-        <NavLink to="/users/register">
-          <p className="login__text--register">
-            Don’t have an account?
-            <span className="login__text--colored"> Join Now!</span>
-          </p>
-        </NavLink>
-      </div>
-    </LoginFormStyled>
+        </LoginFormStyled>
+      )}
+    </>
   );
 };
 

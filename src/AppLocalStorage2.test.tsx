@@ -33,6 +33,10 @@ describe("Given an App component", () => {
       );
 
       const expectedTokenData = {
+        ui: {
+          feedback: false,
+          loading: false,
+        },
         user: { id: "", firstName: "", email: "", logged: false },
       };
 
