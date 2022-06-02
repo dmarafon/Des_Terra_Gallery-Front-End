@@ -1,4 +1,5 @@
 import { SyntheticEvent, useState } from "react";
+import { NavLink } from "react-router-dom";
 import { loginUserThunk } from "../../redux/thunks/userThunks";
 import { useAppDispatch } from "../hooks";
 import LoginFormStyled from "./LoginFormStyled";
@@ -86,10 +87,12 @@ const LoginForm = (): JSX.Element => {
             </button>
           </div>
         </form>
-        <p className="login__text--register">
-          Don’t have an account?
-          <span className="login__text--colored"> Join Now!</span>
-        </p>
+        <NavLink to="/users/register">
+          <p className="login__text--register">
+            Don’t have an account?
+            <span className="login__text--colored"> Join Now!</span>
+          </p>
+        </NavLink>
       </div>
     </LoginFormStyled>
   );

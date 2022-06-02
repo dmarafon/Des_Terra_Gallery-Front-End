@@ -77,7 +77,7 @@ const RegisterFormStyled = styled.div`
     text-align: center;
     display: flex;
     padding: 30px;
-    @media (min-width: 1218px) {
+    @media (min-width: 1280px) {
       width: 1000px;
     }
     @media (min-width: 1025px) and (max-width: 1280px) {
