@@ -21,7 +21,6 @@ export const loginUserThunk =
 
 export const registerUserThunk =
   (formData: any) => async (dispatch: AppDispatch) => {
-    console.log(formData);
     await axios.post(
       `${process.env.REACT_APP_API_URL}users/register`,
       formData

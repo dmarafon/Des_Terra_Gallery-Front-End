@@ -95,51 +95,7 @@ describe("Given a RegisterForm component function", () => {
     });
   });
 
-  describe("When the user fills all the required fields", () => {
-    test("Then the register button should be enabled", () => {
-      const textInput = [
-        "Test",
-        "Test",
-        "test@test.com",
-        "1234",
-        "carrer de test, 101",
-        "Barcelona",
-        "111111111",
-      ];
-
-      render(
-        <BrowserRouter>
-          <Provider store={store}>
-            <RegisterPage />
-          </Provider>
-        </BrowserRouter>
-      );
-
-      const firstnameInput = screen.getByLabelText("FIRST NAME");
-      const surnameInput = screen.getByLabelText("SURNAME");
-      const emailInput = screen.getByLabelText("EMAIL");
-      const passwordInput = screen.getByLabelText("PASSWORD");
-
-      const addressInput = screen.getByLabelText("ADDRESS & NUMBER");
-
-      const cityInput = screen.getByLabelText("CITY");
-      const phoneInput = screen.getByLabelText("PHONE NUMBER");
-
-      const registerButton = screen.getByRole("button", { name: "REGISTER" });
-
-      userEvent.type(firstnameInput, textInput[0]);
-      userEvent.type(surnameInput, textInput[1]);
-      userEvent.type(emailInput, textInput[2]);
-      userEvent.type(passwordInput, textInput[3]);
-      userEvent.type(addressInput, textInput[4]);
-      userEvent.type(cityInput, textInput[5]);
-      userEvent.type(phoneInput, textInput[6]);
-
-      expect(registerButton).not.toBeDisabled();
-    });
-  });
-
-  describe("When the user fills all the required fields, clicks the checkbox and clicks on the submit button", () => {
+  describe("When the user fills all the required fields, clicks the checkbox, the submit button becames enabled and the user clicks in the mentioned button", () => {
     test("Then the dispatch should be invoked", () => {
       const textInput = [
         "Test",
@@ -162,19 +118,15 @@ describe("Given a RegisterForm component function", () => {
       const surnameInput = screen.getByLabelText("SURNAME");
       const emailInput = screen.getByLabelText("EMAIL");
       const passwordInput = screen.getByLabelText("PASSWORD");
-
       const addressInput = screen.getByLabelText("ADDRESS & NUMBER");
-
       const cityInput = screen.getByLabelText("CITY");
       const phoneInput = screen.getByLabelText("PHONE NUMBER");
-
       const checkboxInput = screen.getByRole("checkbox", {
         name: "I'm an Artist and I want to Sell My Work",
       });
+      const registerButton = screen.getByRole("button", { name: "REGISTER" });
 
       fireEvent.click(checkboxInput);
-
-      const registerButton = screen.getByRole("button", { name: "REGISTER" });
 
       userEvent.type(firstnameInput, textInput[0]);
       userEvent.type(surnameInput, textInput[1]);

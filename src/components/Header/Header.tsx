@@ -14,8 +14,6 @@ const Header = () => {
   const userData = useAppSelector((state) => state.user);
   const dispatch = useAppDispatch();
 
-  const token = localStorage.getItem("token");
-
   const submitLogOut = (event: SyntheticEvent) => {
     event.preventDefault();
 
@@ -37,7 +35,7 @@ const Header = () => {
           <div className="menu-button"></div>
         </label>
         <ul className="menu">
-          {token ? (
+          {userData.logged ? (
             <li>
               <NavLink to="/myart">
                 <span className="menu__text--color">My</span> Art
@@ -52,7 +50,7 @@ const Header = () => {
           <li>
             <NavLink to="/artwork">Artwork</NavLink>
           </li>
-          {token ? (
+          {userData.logged ? (
             <li onClick={submitLogOut}>
               <NavLink to="/home">Sign Out</NavLink>
             </li>
@@ -61,8 +59,8 @@ const Header = () => {
               <NavLink to="/users/register">Register</NavLink>
             </li>
           )}
-          {token ? (
-            <li className={token ? "menu__token" : ""}>
+          {userData.logged ? (
+            <li className="menu__logged">
               <NavLink to="/users/profile">
                 <div className="menu__link--userprofile">
                   <svg
