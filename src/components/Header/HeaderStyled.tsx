@@ -1,6 +1,6 @@
 import styled from "styled-components";
 
-const StyledHeader = styled.header`
+const HeaderStyled = styled.header`
   .menu__link--userprofile {
     display: flex;
   }
@@ -162,4 +162,4 @@ const StyledHeader = styled.header`
   }
 `;
 
-export default StyledHeader;
+export default HeaderStyled;
