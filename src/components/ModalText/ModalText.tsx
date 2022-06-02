@@ -5,9 +5,11 @@ import ModalTextStyled from "./ModalTextStyled";
 const ModalText = ({
   children,
   handleClose,
+  isOpen,
 }: {
   children: any;
   handleClose: any;
+  isOpen: boolean;
 }): JSX.Element => {
   const nodeRef = useRef(null);
 
@@ -16,10 +18,12 @@ const ModalText = ({
       <ModalTextStyled>
         <div className="modal" ref={nodeRef}>
           <div className="modal-content">
-            {children}
-            <button onClick={handleClose} className="modal-button--closed">
-              &times;
-            </button>
+            <div className="modal-button">
+              <button onClick={handleClose} className="modal-button--closed">
+                &times;
+              </button>
+              {children}
+            </div>
           </div>
         </div>
       </ModalTextStyled>

@@ -1,8 +1,10 @@
 import { SyntheticEvent, useState } from "react";
 import { NavLink } from "react-router-dom";
+import { feedbackOffActionCreator } from "../../redux/features/uiSlice";
 import { loginUserThunk } from "../../redux/thunks/userThunks";
 import { useAppDispatch, useAppSelector } from "../hooks";
 import LoadingModal from "../LoadingModal/LoadingModal";
+import ModalText from "../ModalText/ModalText";
 import LoginFormStyled from "./LoginFormStyled";
 
 const LoginForm = (): JSX.Element => {
@@ -10,6 +12,7 @@ const LoginForm = (): JSX.Element => {
 
   const [formData, setFormData] = useState(formInitialState);
   const loading = useAppSelector((state) => state.ui.loading);
+  const feedback = useAppSelector((state) => state.ui.feedback);
 
   const dispatch = useAppDispatch();
 
@@ -19,6 +22,10 @@ const LoginForm = (): JSX.Element => {
     resetForm();
 
     dispatch(loginUserThunk(dispatchedData));
+  };
+
+  const submitClosingModal = () => {
+    dispatch(feedbackOffActionCreator());
   };
 
   const changeData = (event: SyntheticEvent) => {
@@ -36,6 +43,15 @@ const LoginForm = (): JSX.Element => {
 
   return (
     <>
+      {feedback && (
+        <ModalText handleClose={submitClosingModal} isOpen={feedback}>
+          Wrong Email or Password{" "}
+          <p className="login__modal--break_text">
+            {" "}
+            Please, try again to Sign In
+          </p>
+        </ModalText>
+      )}
       {loading ? (
         <LoadingModal />
       ) : (
@@ -96,12 +112,12 @@ const LoginForm = (): JSX.Element => {
                 </button>
               </div>
             </form>
-            <NavLink to="/users/register">
-              <p className="login__text--register">
-                Don’t have an account?
-                <span className="login__text--colored"> Join Now!</span>
-              </p>
-            </NavLink>
+
+            <p className="login__text--register">
+              <NavLink to="/users/register" />
+              Don’t have an account?
+              <span className="login__text--colored"> Join Now!</span>
+            </p>
           </div>
         </LoginFormStyled>
       )}

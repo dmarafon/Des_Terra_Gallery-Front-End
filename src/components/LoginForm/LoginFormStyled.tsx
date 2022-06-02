@@ -198,6 +198,10 @@ const LoginFormStyled = styled.div`
   .login__button:active {
     opacity: 0.4;
   }
+
+  .login__modal--break_text {
+    padding-top: 0;
+  }
 `;
 
 export default LoginFormStyled;
