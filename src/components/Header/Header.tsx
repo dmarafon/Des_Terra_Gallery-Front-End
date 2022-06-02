@@ -10,7 +10,7 @@ declare module "react" {
   }
 }
 
-const Header = () => {
+const Header = (): JSX.Element => {
   const userData = useAppSelector((state) => state.user);
   const dispatch = useAppDispatch();
 
