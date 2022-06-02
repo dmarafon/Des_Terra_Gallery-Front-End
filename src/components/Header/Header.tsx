@@ -2,7 +2,7 @@ import { SyntheticEvent } from "react";
 import { NavLink } from "react-router-dom";
 import { logoutActionCreator } from "../../redux/features/userSlice";
 import { useAppDispatch, useAppSelector } from "../hooks";
-import StyledHeader from "./HeaderStyles";
+import HeaderStyled from "./HeaderStyled";
 
 declare module "react" {
   interface HTMLAttributes<T> extends AriaAttributes, DOMAttributes<T> {
@@ -23,7 +23,7 @@ const Header = () => {
   };
 
   return (
-    <StyledHeader>
+    <HeaderStyled>
       <nav className="top-nav">
         <div className="top-nav_img">
           <NavLink to="/home">
@@ -86,7 +86,7 @@ const Header = () => {
           )}
         </ul>
       </nav>
-    </StyledHeader>
+    </HeaderStyled>
   );
 };
 
