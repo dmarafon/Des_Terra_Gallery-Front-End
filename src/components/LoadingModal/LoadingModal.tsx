@@ -17,7 +17,7 @@ const LoadingModal = (): JSX.Element => {
     <ReactPortal wrapperId="react-portal-modal-container">
       <LoadingModalStyled>
         <GlobalStyle yellowColor />
-        <div className="container" ref={nodeRef}>
+        <div className="container" ref={nodeRef} data-testid="modal">
           <div className="overlay">
             <div className="loader">
               <div className="spinnerBlock">
