@@ -39,7 +39,7 @@ describe("Given a Header Component", () => {
   });
 
   describe("When its called to be rendered with a user logged in the local storage and the user clicks in the logout button", () => {
-    test("Then it should remove the token in the local storage", () => {
+    test("Then dispatch the logout action, changing the status of the user login payload to 'false' in the 'logged' property", () => {
       const expectedLoggedStatus = false;
 
       render(
@@ -59,6 +59,27 @@ describe("Given a Header Component", () => {
       const userStatusInStore = store.getState();
 
       expect(userStatusInStore.user.logged).toBe(expectedLoggedStatus);
+    });
+  });
+
+  describe("When its called to be rendered and its loading after a request to the api", () => {
+    const secondAction = {
+      type: "ui/loading",
+    };
+
+    store.dispatch(secondAction);
+    test("Then it should render a logo image with the name", () => {
+      const totalImages = 1;
+      render(
+        <BrowserRouter>
+          <Provider store={store}>
+            <Header />
+          </Provider>
+        </BrowserRouter>
+      );
+      const displayImage = screen.getAllByRole("img");
+
+      expect(displayImage).toHaveLength(totalImages);
     });
   });
 });
