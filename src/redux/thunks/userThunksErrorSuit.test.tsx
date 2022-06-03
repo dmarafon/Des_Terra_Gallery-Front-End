@@ -1,4 +1,4 @@
-import { loginUserThunk, registerUserThunk } from "./userThunks";
+import { loginUserThunk } from "./userThunks";
 import { server } from "../../mocks/server";
 import axios from "axios";
 
