@@ -1,5 +1,6 @@
 import { loginUserThunk, registerUserThunk } from "./userThunks";
 import { server } from "../../mocks/server";
+import axios from "axios";
 
 beforeEach(() => server.listen());
 afterEach(() => server.resetHandlers());
