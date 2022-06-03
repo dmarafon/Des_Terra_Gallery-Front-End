@@ -53,6 +53,7 @@ const RegisterFormStyled = styled.div`
     margin-left: 0.006%;
     margin-bottom: 0;
     margin-top: 20px;
+    font-weight: 800;
   }
 
   .register__text--login {
@@ -63,6 +64,7 @@ const RegisterFormStyled = styled.div`
     margin-left: 0.006%;
     margin-top: 60px;
     cursor: pointer;
+    font-weight: 700;
   }
 
   .register__text--colored {
@@ -77,24 +79,6 @@ const RegisterFormStyled = styled.div`
     text-align: center;
     display: flex;
     padding: 30px;
-    @media (min-width: 1280px) {
-      width: 1000px;
-    }
-    @media (min-width: 1025px) and (max-width: 1280px) {
-      width: 900px;
-    }
-
-    @media (min-width: 768px) and (max-width: 1024px) {
-      width: 800px;
-    }
-
-    @media (min-width: 481px) and (max-width: 767px) {
-      width: 700px;
-    }
-    @media (max-width: 480px) {
-      width: 300px;
-    }
-
     height: auto;
     border-radius: 10px;
     justify-content: center;

@@ -115,6 +115,7 @@ const LoginFormStyled = styled.div`
     text-align: center;
     margin-left: 0.006%;
     margin-bottom: 0;
+    font-weight: 800;
   }
 
   .login__text--intro_second {
@@ -124,12 +125,13 @@ const LoginFormStyled = styled.div`
     text-align: center;
     margin-left: 0.006%;
     margin: 0;
+    font-weight: 800;
   }
 
   .login__text--register {
     color: #000000;
     font-size: 110%;
-    font-weight: 400;
+    font-weight: 700;
     text-align: center;
     margin-left: 0.006%;
     margin-top: 100px;
