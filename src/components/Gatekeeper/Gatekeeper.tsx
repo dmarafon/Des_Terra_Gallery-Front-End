@@ -8,7 +8,7 @@ const Gatekeeper = ({ children }: { children: JSX.Element }) => {
   const navigate = useNavigate();
 
   useEffect(() => {
-    if (!logged) navigate("/login");
+    if (!logged) navigate("/");
   }, [logged, navigate]);
 
   if (logged) {
