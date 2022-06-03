@@ -28,7 +28,7 @@ const Header = (): JSX.Element => {
     <HeaderStyled>
       <nav className="top-nav">
         <div className="top-nav_img">
-          <NavLink to="/home">
+          <NavLink to={loading ? "/" : "/home"}>
             {loading ? (
               <img src="/images/desterra_logo_alt.png" alt="Desterra logo" />
             ) : (
@@ -46,7 +46,7 @@ const Header = (): JSX.Element => {
         <ul className="menu">
           {userData.logged ? (
             <li>
-              <NavLink to="/myart">
+              <NavLink to={loading ? "/" : "/myart"}>
                 <span className="menu__text--color">My</span> Art
               </NavLink>
             </li>
@@ -54,23 +54,23 @@ const Header = (): JSX.Element => {
             ""
           )}
           <li>
-            <NavLink to="/about">Why Desterra?</NavLink>
+            <NavLink to={loading ? "/" : "/about"}>Why Desterra?</NavLink>
           </li>
           <li>
             <NavLink to="/artwork">Artwork</NavLink>
           </li>
           {userData.logged ? (
             <li onClick={submitLogOut}>
-              <NavLink to="/home">Sign Out</NavLink>
+              <NavLink to={loading ? "/" : "/home"}>Sign Out</NavLink>
             </li>
           ) : (
             <li>
-              <NavLink to="/users/register">Register</NavLink>
+              <NavLink to={loading ? "/" : "/users/register"}>Register</NavLink>
             </li>
           )}
           {userData.logged ? (
             <li className="menu__logged">
-              <NavLink to="/users/profile">
+              <NavLink to={loading ? "/" : "/users/profile"}>
                 <div className="menu__link--userprofile">
                   <svg
                     xmlns="http://www.w3.org/2000/svg"
@@ -90,7 +90,7 @@ const Header = (): JSX.Element => {
             </li>
           ) : (
             <li>
-              <NavLink to="/users/login">Sign In</NavLink>
+              <NavLink to={loading ? "/" : "/users/login"}>Sign In</NavLink>
             </li>
           )}
         </ul>
