@@ -16,6 +16,8 @@ import { AppDispatch } from "../store/store";
 
 export const loginUserThunk =
   (loginInformation: LoginInformation) => async (dispatch: AppDispatch) => {
+    debugger;
+
     try {
       dispatch(loadingActionCreator());
       const route = `${process.env.REACT_APP_API_URL}users/login`;
@@ -30,7 +32,6 @@ export const loginUserThunk =
       dispatch(loginActionCreator(userInfo));
       dispatch(finishedLoadingActionCreator());
     } catch (error) {
-      debugger;
       const errorResponse = errorLoginValidation(error);
       dispatch(finishedLoadingActionCreator());
       dispatch(apiResponseActionCreator(errorResponse));
