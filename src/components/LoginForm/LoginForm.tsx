@@ -47,7 +47,11 @@ const LoginForm = (): JSX.Element => {
   return (
     <>
       {feedback && (
-        <ModalText handleClose={submitClosingModal} isOpen={feedback}>
+        <ModalText
+          handleClose={submitClosingModal}
+          isOpen={feedback}
+          customFunction={""}
+        >
           Wrong Email or Password{" "}
           <p className="login__modal--break_text">
             {" "}

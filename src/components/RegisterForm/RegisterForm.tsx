@@ -4,7 +4,10 @@ import {
   apiResponseActionCreator,
   cleanApiResponseActionCreator,
 } from "../../redux/features/uiSlice";
-import { registerUserThunk } from "../../redux/thunks/userThunks";
+import {
+  loginUserThunk,
+  registerUserThunk,
+} from "../../redux/thunks/userThunks";
 import { useAppDispatch, useAppSelector } from "../hooks";
 import LoadingModal from "../LoadingModal/LoadingModal";
 import ModalText from "../ModalText/ModalText";
@@ -63,6 +66,8 @@ const RegisterForm = (): JSX.Element => {
       dispatch(apiResponseActionCreator("Blank"));
       return;
     }
+    sessionStorage.setItem("email", formData.email);
+    sessionStorage.setItem("password", formData.password);
     const newUser = new FormData();
     newUser.append("firstname", formData.firstname);
     newUser.append("surname", formData.surname);
@@ -84,19 +89,39 @@ const RegisterForm = (): JSX.Element => {
   const submitClosingModalResponse = () => {
     dispatch(cleanApiResponseActionCreator());
   };
-  console.log(apiMessage);
+
+  const newUser = {
+    email: sessionStorage.getItem("email"),
+    password: sessionStorage.getItem("password"),
+  };
 
   return (
     <>
-      {apiMessage && (
-        <ModalText handleClose={submitClosingModalResponse} isOpen={feedback}>
-          {apiMessage === "Blank"
-            ? "Please, you left one or more mandatory fields in blank"
-            : apiMessage === "new"
-            ? "Your user was Created Succesfully!"
-            : apiMessage === "Conflict"
-            ? " This email is already in use, please, choose another email"
-            : ""}
+      {apiMessage === "Blank" && (
+        <ModalText
+          handleClose={submitClosingModalResponse}
+          isOpen={feedback}
+          customFunction={""}
+        >
+          Please, you left one or more mandatory fields in blank
+        </ModalText>
+      )}
+      {apiMessage === "new" && (
+        <ModalText
+          handleClose={submitClosingModalResponse}
+          isOpen={feedback}
+          customFunction={loginUserThunk(newUser)}
+        >
+          Your user was Created Succesfully! Close this window to login
+        </ModalText>
+      )}
+      {apiMessage === "Conflict" && (
+        <ModalText
+          handleClose={submitClosingModalResponse}
+          isOpen={feedback}
+          customFunction={loginUserThunk(newUser)}
+        >
+          This email is already in use, please, choose another email
         </ModalText>
       )}
       {loading ? (
