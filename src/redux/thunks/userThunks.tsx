@@ -30,7 +30,6 @@ export const loginUserThunk =
       dispatch(loginActionCreator(userInfo));
       dispatch(finishedLoadingActionCreator());
     } catch (error) {
-      debugger;
       const errorResponse = errorLoginValidation(error);
       dispatch(finishedLoadingActionCreator());
       dispatch(apiResponseActionCreator(errorResponse));

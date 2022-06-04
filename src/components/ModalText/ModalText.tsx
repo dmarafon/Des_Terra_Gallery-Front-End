@@ -20,9 +20,9 @@ const ModalText = ({
   const navigate = useNavigate();
   const apiMessage = useAppSelector((state) => state.ui.apiResponse);
 
-  const buttonOnClick = () => {
+  const buttonOnClick = async () => {
     if (customFunction && apiMessage !== "Blank") {
-      dispatch(customFunction);
+      await dispatch(customFunction);
       navigate("/home");
     }
     sessionStorage.clear();

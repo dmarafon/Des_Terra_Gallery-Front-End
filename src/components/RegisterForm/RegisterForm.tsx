@@ -112,7 +112,7 @@ const RegisterForm = (): JSX.Element => {
           isOpen={feedback}
           customFunction={loginUserThunk(loginUser)}
         >
-          Your user was Created Succesfully! Close this window to login
+          Your user was Created Succesfully! Close this window to Login
         </ModalText>
       )}
       {apiMessage === "Conflict" && (
