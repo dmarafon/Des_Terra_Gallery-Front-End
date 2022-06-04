@@ -1,4 +1,5 @@
 import { useRef } from "react";
+import { useNavigate } from "react-router-dom";
 import { useAppDispatch, useAppSelector } from "../hooks";
 import ReactPortal from "../ReactPortalDom/ReactPortal";
 import ModalTextStyled from "./ModalTextStyled";
@@ -16,13 +17,15 @@ const ModalText = ({
 }): JSX.Element => {
   const nodeRef = useRef(null);
   const dispatch = useAppDispatch();
+  const navigate = useNavigate();
   const apiMessage = useAppSelector((state) => state.ui.apiResponse);
 
   const buttonOnClick = () => {
     if (customFunction && apiMessage !== "Blank") {
       dispatch(customFunction);
-      sessionStorage.clear();
+      navigate("/home");
     }
+    sessionStorage.clear();
     handleClose();
   };
 

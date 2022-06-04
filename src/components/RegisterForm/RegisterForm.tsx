@@ -90,7 +90,7 @@ const RegisterForm = (): JSX.Element => {
     dispatch(cleanApiResponseActionCreator());
   };
 
-  const newUser = {
+  const loginUser = {
     email: sessionStorage.getItem("email"),
     password: sessionStorage.getItem("password"),
   };
@@ -110,7 +110,7 @@ const RegisterForm = (): JSX.Element => {
         <ModalText
           handleClose={submitClosingModalResponse}
           isOpen={feedback}
-          customFunction={loginUserThunk(newUser)}
+          customFunction={loginUserThunk(loginUser)}
         >
           Your user was Created Succesfully! Close this window to login
         </ModalText>
@@ -119,7 +119,7 @@ const RegisterForm = (): JSX.Element => {
         <ModalText
           handleClose={submitClosingModalResponse}
           isOpen={feedback}
-          customFunction={loginUserThunk(newUser)}
+          customFunction={""}
         >
           This email is already in use, please, choose another email
         </ModalText>

@@ -1,6 +1,14 @@
 import styled from "styled-components";
 
 const HeaderStyled = styled.header`
+  @media (max-width: 700px) {
+    position: sticky;
+    z-index: 999;
+    top: 0;
+  }
+  background-color: white;
+  padding-bottom: 30px;
+
   .menu__link--userprofile {
     display: flex;
   }

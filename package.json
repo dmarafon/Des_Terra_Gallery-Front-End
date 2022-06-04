@@ -63,6 +63,7 @@
     ]
   },
   "devDependencies": {
-    "@types/react-test-renderer": "^18.0.0"
+    "@types/react-test-renderer": "^18.0.0",
+    "jest-fetch-mock": "^3.0.3"
   }
 }

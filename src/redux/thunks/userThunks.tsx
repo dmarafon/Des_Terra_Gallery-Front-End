@@ -1,9 +1,12 @@
 import axios from "axios";
 import jwtDecode from "jwt-decode";
+import {
+  errorLoginValidation,
+  errorRegistrationValidation,
+} from "../../components/utils/errorValidation";
 import { LoginInformation } from "../../types/userInterface";
 import {
   apiResponseActionCreator,
-  feedbackOnActionCreator,
   finishedLoadingActionCreator,
   loadingActionCreator,
 } from "../features/uiSlice";
@@ -27,8 +30,10 @@ export const loginUserThunk =
       dispatch(loginActionCreator(userInfo));
       dispatch(finishedLoadingActionCreator());
     } catch (error) {
+      debugger;
+      const errorResponse = errorLoginValidation(error);
       dispatch(finishedLoadingActionCreator());
-      dispatch(feedbackOnActionCreator());
+      dispatch(apiResponseActionCreator(errorResponse));
     }
   };
 
@@ -46,7 +51,8 @@ export const registerUserThunk =
 
       dispatch(finishedLoadingActionCreator());
     } catch (error) {
-      const errorResponse = error.response.data.message.substring(0, 8);
+      const errorResponse = errorRegistrationValidation(error);
+
       dispatch(apiResponseActionCreator(errorResponse));
       dispatch(finishedLoadingActionCreator());
     }

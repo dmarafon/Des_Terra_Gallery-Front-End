@@ -22,14 +22,7 @@ const uiSlice = createSlice({
       ...ui,
       loading: false,
     }),
-    feedbackOn: (ui: UISliceState, action: PayloadAction<void>) => ({
-      ...ui,
-      feedback: true,
-    }),
-    feedbackOff: (ui: UISliceState, action: PayloadAction<void>) => ({
-      ...ui,
-      feedback: false,
-    }),
+
     apiResponse: (ui: UISliceState, action: PayloadAction<any>) => ({
       ...ui,
       feedback: true,
@@ -46,8 +39,6 @@ const uiSlice = createSlice({
 export const {
   loading: loadingActionCreator,
   finishedLoading: finishedLoadingActionCreator,
-  feedbackOn: feedbackOnActionCreator,
-  feedbackOff: feedbackOffActionCreator,
   apiResponse: apiResponseActionCreator,
   cleanApiResponse: cleanApiResponseActionCreator,
 } = uiSlice.actions;
