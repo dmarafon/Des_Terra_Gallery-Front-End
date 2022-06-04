@@ -3,6 +3,7 @@ import { createSlice, PayloadAction } from "@reduxjs/toolkit";
 interface UISliceState {
   loading: boolean;
   feedback: boolean;
+  apiResponse: string;
 }
 
 const uiSlice = createSlice({
@@ -10,6 +11,7 @@ const uiSlice = createSlice({
   initialState: {
     loading: false,
     feedback: false,
+    apiResponse: "",
   },
   reducers: {
     loading: (ui: UISliceState, action: PayloadAction<void>) => ({
@@ -28,6 +30,16 @@ const uiSlice = createSlice({
       ...ui,
       feedback: false,
     }),
+    apiResponse: (ui: UISliceState, action: PayloadAction<any>) => ({
+      ...ui,
+      feedback: true,
+      apiResponse: action.payload,
+    }),
+    cleanApiResponse: (ui: UISliceState, action: PayloadAction<void>) => ({
+      ...ui,
+      feedback: false,
+      apiResponse: "",
+    }),
   },
 });
 
@@ -36,5 +48,7 @@ export const {
   finishedLoading: finishedLoadingActionCreator,
   feedbackOn: feedbackOnActionCreator,
   feedbackOff: feedbackOffActionCreator,
+  apiResponse: apiResponseActionCreator,
+  cleanApiResponse: cleanApiResponseActionCreator,
 } = uiSlice.actions;
 export default uiSlice.reducer;

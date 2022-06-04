@@ -130,11 +130,17 @@ const LoginFormStyled = styled.div`
 
   .login__text--register {
     color: #000000;
-    font-size: 110%;
+    font-size: 150%;
     font-weight: 700;
     text-align: center;
     margin-left: 0.006%;
     margin-top: 100px;
+    cursor: pointer;
+  }
+
+  .login__register--navigation {
+    text-decoration: none;
+    color: black;
     cursor: pointer;
   }
 

@@ -1,7 +1,8 @@
 import axios from "axios";
 import jwtDecode from "jwt-decode";
-import { LoginInformation, UserInformation } from "../../types/userInterface";
+import { LoginInformation } from "../../types/userInterface";
 import {
+  apiResponseActionCreator,
   feedbackOnActionCreator,
   finishedLoadingActionCreator,
   loadingActionCreator,
@@ -33,22 +34,20 @@ export const loginUserThunk =
 
 export const registerUserThunk =
   (formData: any) => async (dispatch: AppDispatch) => {
-    await axios.post(
-      `${process.env.REACT_APP_API_URL}users/register`,
-      formData
-    );
+    try {
+      dispatch(loadingActionCreator());
+      await axios
+        .post(`${process.env.REACT_APP_API_URL}users/register`, formData)
+        .then((response) => {
+          const apiResponse = response.request.response.substring(2, 5);
 
-    const newUser = {
-      email: formData.email,
-      password: formData.password,
-    };
+          dispatch(apiResponseActionCreator(apiResponse.toString()));
+        });
 
-    const route = `${process.env.REACT_APP_API_URL}users/login`;
-    const {
-      data: { token },
-    } = await axios.post(route, newUser);
-    localStorage.setItem("token", token);
-    const userInfo: UserInformation = jwtDecode(token);
-
-    dispatch(loginActionCreator(userInfo));
+      dispatch(finishedLoadingActionCreator());
+    } catch (error) {
+      const errorResponse = error.response.data.message.substring(0, 8);
+      dispatch(apiResponseActionCreator(errorResponse));
+      dispatch(finishedLoadingActionCreator());
+    }
   };

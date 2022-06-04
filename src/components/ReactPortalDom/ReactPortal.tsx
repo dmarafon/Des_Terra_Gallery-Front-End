@@ -30,10 +30,9 @@ const ReactPortal = ({
     let element = document.getElementById(wrapperId) as HTMLElement;
     let systemCreated = false;
 
-    if (!element) {
-      systemCreated = true;
-      element = createWrapperAndAppendToBody(wrapperId);
-    }
+    systemCreated = true;
+    element = createWrapperAndAppendToBody(wrapperId);
+
     setWrapperElement(element);
 
     return () => {
