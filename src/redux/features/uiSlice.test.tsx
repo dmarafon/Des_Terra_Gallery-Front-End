@@ -11,10 +11,12 @@ describe("Given the loadingActionCreator", () => {
       const initialState = {
         loading: false,
         feedback: false,
+        apiResponse: "",
       };
       const expectedState = {
         loading: true,
         feedback: false,
+        apiResponse: "",
       };
 
       const action = loadingActionCreator();
@@ -31,10 +33,12 @@ describe("Given the finiushedLoadingActionCreator", () => {
       const initialState = {
         loading: true,
         feedback: false,
+        apiResponse: "",
       };
       const expectedState = {
         loading: false,
         feedback: false,
+        apiResponse: "",
       };
 
       const action = finishedLoadingActionCreator();
@@ -51,10 +55,12 @@ describe("Given the feedbackOnActionCreator", () => {
       const initialState = {
         loading: false,
         feedback: false,
+        apiResponse: "",
       };
       const expectedState = {
         loading: false,
         feedback: true,
+        apiResponse: "",
       };
 
       const action = feedbackOnActionCreator();
@@ -71,10 +77,12 @@ describe("Given the feedbackOffActionCreator", () => {
       const initialState = {
         loading: false,
         feedback: true,
+        apiResponse: "",
       };
       const expectedState = {
         loading: false,
         feedback: false,
+        apiResponse: "",
       };
 
       const action = feedbackOffActionCreator();

@@ -14,6 +14,7 @@ describe("Given a Footer component", () => {
       const elementIconButton1 = screen.getByTestId("icon1");
       const elementIconButton2 = screen.getByTestId("icon2");
       const elementIconButton3 = screen.getByTestId("icon3");
+
       expect(elementIconButton1).toBeTruthy();
       expect(elementIconButton2).toBeTruthy();
       expect(elementIconButton3).toBeTruthy();

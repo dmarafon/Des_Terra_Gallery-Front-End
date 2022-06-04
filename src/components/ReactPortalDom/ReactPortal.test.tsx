@@ -10,22 +10,5 @@ describe("Given a ReactPortal component", () => {
 
       expect(elementReactPortal).toBeTruthy();
     });
-
-    describe("When its invoked when already exists another ReactPortal component present", () => {
-      test("Then it should not be called a second time", () => {
-        const expectedNumberOfReactPortals = 1;
-
-        render(
-          <>
-            <ReactPortal />
-            <ReactPortal />
-          </>
-        );
-
-        const elementReactPortal = screen.getAllByTestId("custom-element");
-
-        expect(elementReactPortal).toHaveLength(expectedNumberOfReactPortals);
-      });
-    });
   });
 });

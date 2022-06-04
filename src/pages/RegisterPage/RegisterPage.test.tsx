@@ -79,22 +79,6 @@ describe("Given a RegisterForm component function", () => {
     });
   });
 
-  describe("When the user doesn't fill all required fields", () => {
-    test("Then the register button should be disabled", () => {
-      render(
-        <BrowserRouter>
-          <Provider store={store}>
-            <RegisterPage />
-          </Provider>
-        </BrowserRouter>
-      );
-
-      const registerButton = screen.getByRole("button", { name: "REGISTER" });
-
-      expect(registerButton).toBeDisabled();
-    });
-  });
-
   describe("When the user fills all the required fields, clicks the checkbox, the submit button becames enabled and the user clicks in the mentioned button", () => {
     test("Then the dispatch should be invoked", () => {
       const textInput = [

@@ -48,12 +48,16 @@ const RegisterFormStyled = styled.div`
   .register__text--intro {
     color: #000000;
     font-size: 30%;
-    font-weight: 700;
     text-align: center;
     margin-left: 0.006%;
     margin-bottom: 0;
     margin-top: 20px;
     font-weight: 800;
+  }
+  .register__text--navigation {
+    text-decoration: none;
+    color: black;
+    cursor: pointer;
   }
 
   .register__text--login {

@@ -18,6 +18,9 @@ const LoginForm = (): JSX.Element => {
 
   const loginSubmit = (event: SyntheticEvent) => {
     event.preventDefault();
+    if (formData.email === "" || formData.password === "") {
+      return;
+    }
     const dispatchedData = { ...formData };
     resetForm();
 
@@ -106,18 +109,23 @@ const LoginForm = (): JSX.Element => {
                 <button
                   className="login__button"
                   type="submit"
-                  disabled={formData.email === "" || formData.password === ""}
+                  disabled={false}
                 >
                   SIGN IN
                 </button>
               </div>
             </form>
-
-            <p className="login__text--register">
-              <NavLink to="/users/register" />
-              Don’t have an account?
-              <span className="login__text--colored"> Join Now!</span>
-            </p>
+            <div className="login__text--register">
+              <div>
+                <NavLink
+                  to="/users/register"
+                  className="login__register--navigation"
+                >
+                  Don’t have an account?
+                  <span className="login__text--colored"> Join Now!</span>
+                </NavLink>
+              </div>
+            </div>
           </div>
         </LoginFormStyled>
       )}

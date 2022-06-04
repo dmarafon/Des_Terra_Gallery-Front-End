@@ -31,7 +31,7 @@ const ModalTextStyled = styled.div`
     @media (max-width: 387px) {
       font-size: 2.5vh;
     }
-    border-radius: 5%;
+    border-radius: 10px;
   }
   .modal-button {
     display: flex;

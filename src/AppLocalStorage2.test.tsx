@@ -36,6 +36,7 @@ describe("Given an App component", () => {
         ui: {
           feedback: false,
           loading: false,
+          apiResponse: "",
         },
         user: { id: "", firstName: "", email: "", logged: false },
       };
