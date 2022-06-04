@@ -6,8 +6,8 @@ export interface UserInformation {
 }
 
 export interface LoginInformation {
-  email: string;
-  password: string;
+  email: string | null;
+  password: string | null;
 }
 
 export interface FormData {
