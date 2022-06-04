@@ -33,8 +33,6 @@ describe("Given a Modal component", () => {
 
     const mockedAxios = axios as jest.Mocked<typeof axios>;
 
-    const mockedUsedNavigate = jest.fn();
-
     const uIaction = {
       type: "ui/apiResponse",
       payload: "Blank",
@@ -69,8 +67,6 @@ describe("Given a Modal component", () => {
       const testButton = screen.getByRole("button");
 
       userEvent.click(testButton);
-
-      console.log(store.getState());
 
       await waitFor(() => {
         expect(navigate).not.toHaveBeenCalled();

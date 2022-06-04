@@ -21,7 +21,6 @@ const ModalText = ({
   const apiMessage = useAppSelector((state) => state.ui.apiResponse);
 
   const buttonOnClick = async () => {
-    debugger;
     if (customFunction && apiMessage !== "Blank") {
       await dispatch(customFunction);
       navigate("/home");
