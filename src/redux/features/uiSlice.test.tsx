@@ -1,8 +1,6 @@
 import uiReducer, {
   loadingActionCreator,
   finishedLoadingActionCreator,
-  feedbackOffActionCreator,
-  feedbackOnActionCreator,
   apiResponseActionCreator,
   cleanApiResponseActionCreator,
 } from "./uiSlice";
@@ -44,50 +42,6 @@ describe("Given the finiushedLoadingActionCreator", () => {
       };
 
       const action = finishedLoadingActionCreator();
-      const loadedState = uiReducer(initialState, action);
-
-      expect(loadedState).toEqual(expectedState);
-    });
-  });
-});
-
-describe("Given the feedbackOnActionCreator", () => {
-  describe("When invoked", () => {
-    test("Then the feedback ui state should change to true", () => {
-      const initialState = {
-        loading: false,
-        feedback: false,
-        apiResponse: "",
-      };
-      const expectedState = {
-        loading: false,
-        feedback: true,
-        apiResponse: "",
-      };
-
-      const action = feedbackOnActionCreator();
-      const loadedState = uiReducer(initialState, action);
-
-      expect(loadedState).toEqual(expectedState);
-    });
-  });
-});
-
-describe("Given the feedbackOffActionCreator", () => {
-  describe("When invoked", () => {
-    test("Then the feedback ui state should change to true", () => {
-      const initialState = {
-        loading: false,
-        feedback: true,
-        apiResponse: "",
-      };
-      const expectedState = {
-        loading: false,
-        feedback: false,
-        apiResponse: "",
-      };
-
-      const action = feedbackOffActionCreator();
       const loadedState = uiReducer(initialState, action);
 
       expect(loadedState).toEqual(expectedState);

@@ -1,6 +1,9 @@
 import { SyntheticEvent, useState } from "react";
 import { NavLink } from "react-router-dom";
-import { feedbackOffActionCreator } from "../../redux/features/uiSlice";
+import {
+  apiResponseActionCreator,
+  cleanApiResponseActionCreator,
+} from "../../redux/features/uiSlice";
 import { loginUserThunk } from "../../redux/thunks/userThunks";
 import { useAppDispatch, useAppSelector } from "../hooks";
 import LoadingModal from "../LoadingModal/LoadingModal";
@@ -13,12 +16,14 @@ const LoginForm = (): JSX.Element => {
   const [formData, setFormData] = useState(formInitialState);
   const loading = useAppSelector((state) => state.ui.loading);
   const feedback = useAppSelector((state) => state.ui.feedback);
+  const apiMessage = useAppSelector((state) => state.ui.apiResponse);
 
   const dispatch = useAppDispatch();
 
   const loginSubmit = (event: SyntheticEvent) => {
     event.preventDefault();
     if (formData.email === "" || formData.password === "") {
+      dispatch(apiResponseActionCreator("Blank"));
       return;
     }
     const dispatchedData = { ...formData };
@@ -27,8 +32,8 @@ const LoginForm = (): JSX.Element => {
     dispatch(loginUserThunk(dispatchedData));
   };
 
-  const submitClosingModal = () => {
-    dispatch(feedbackOffActionCreator());
+  const submitClosingModalResponse = () => {
+    dispatch(cleanApiResponseActionCreator());
   };
 
   const changeData = (event: SyntheticEvent) => {
@@ -46,13 +51,23 @@ const LoginForm = (): JSX.Element => {
 
   return (
     <>
-      {feedback && (
+      {apiMessage === "Blank" && (
         <ModalText
-          handleClose={submitClosingModal}
+          handleClose={submitClosingModalResponse}
           isOpen={feedback}
           customFunction={""}
         >
-          Wrong Email or Password{" "}
+          You left the Email or
+          <p className="login__modal--break_text">Password field in blank</p>
+        </ModalText>
+      )}
+      {apiMessage === "Bad Request" && (
+        <ModalText
+          handleClose={submitClosingModalResponse}
+          isOpen={feedback}
+          customFunction={""}
+        >
+          Wrong Email or Password
           <p className="login__modal--break_text">
             {" "}
             Please, try again to Sign In

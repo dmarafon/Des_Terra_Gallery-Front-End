@@ -1,4 +1,4 @@
-import { loginUserThunk } from "./userThunks";
+import { loginUserThunk, registerUserThunk } from "./userThunks";
 import { server } from "../../mocks/server";
 import axios from "axios";
 
@@ -16,6 +16,26 @@ jest.mock("jwt-decode", () =>
 
 describe("Given the loginUserThunk", () => {
   describe("When invoked and a error thrown", () => {
+    const userTest = {
+      password: "1234",
+      email: "test@test.com",
+    };
+    test("Then the dispatch function will be called", async () => {
+      jest.spyOn(axios, "post").mockImplementation(() => {
+        throw new Error();
+      });
+      const dispatch = jest.fn();
+
+      const thunk = loginUserThunk(userTest);
+      await thunk(dispatch);
+
+      expect(dispatch).toHaveBeenCalled();
+    });
+  });
+});
+
+describe("Given the registerThunk", () => {
+  describe("When invoked and a error thrown", () => {
     jest.spyOn(axios, "post").mockImplementation(() => {
       throw new Error();
     });
@@ -27,7 +47,7 @@ describe("Given the loginUserThunk", () => {
     test("Then the dispatch function will be called", async () => {
       const dispatch = jest.fn();
 
-      const thunk = loginUserThunk(userTest);
+      const thunk = registerUserThunk(userTest);
       await thunk(dispatch);
 
       expect(dispatch).toHaveBeenCalled();
