@@ -3,6 +3,8 @@ import uiReducer, {
   finishedLoadingActionCreator,
   feedbackOffActionCreator,
   feedbackOnActionCreator,
+  apiResponseActionCreator,
+  cleanApiResponseActionCreator,
 } from "./uiSlice";
 
 describe("Given the loadingActionCreator", () => {
@@ -86,6 +88,50 @@ describe("Given the feedbackOffActionCreator", () => {
       };
 
       const action = feedbackOffActionCreator();
+      const loadedState = uiReducer(initialState, action);
+
+      expect(loadedState).toEqual(expectedState);
+    });
+  });
+});
+
+describe("Given the apiResponse", () => {
+  describe("When invoked", () => {
+    test("Then the feedback ui state should change to true and the given message should be added", () => {
+      const initialState = {
+        loading: false,
+        feedback: false,
+        apiResponse: "",
+      };
+      const expectedState = {
+        loading: false,
+        feedback: true,
+        apiResponse: "Message",
+      };
+
+      const action = apiResponseActionCreator("Message");
+      const loadedState = uiReducer(initialState, action);
+
+      expect(loadedState).toEqual(expectedState);
+    });
+  });
+});
+
+describe("Given the cleanApiResponse", () => {
+  describe("When invoked", () => {
+    test("Then the feedback ui state should change to true", () => {
+      const initialState = {
+        loading: false,
+        feedback: true,
+        apiResponse: "Message",
+      };
+      const expectedState = {
+        loading: false,
+        feedback: false,
+        apiResponse: "",
+      };
+
+      const action = cleanApiResponseActionCreator();
       const loadedState = uiReducer(initialState, action);
 
       expect(loadedState).toEqual(expectedState);
