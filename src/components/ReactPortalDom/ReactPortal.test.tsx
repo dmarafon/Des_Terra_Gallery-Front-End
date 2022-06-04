@@ -8,6 +8,8 @@ describe("Given a ReactPortal component", () => {
 
       const elementReactPortal = screen.getByTestId("custom-element");
 
+      elementReactPortal.remove();
+
       expect(elementReactPortal).toBeTruthy();
     });
   });
