@@ -9,5 +9,5 @@ export interface IArtworks {
   image: string;
   purchaseprice: string;
   monthlyrateprice: string;
-  author: object;
+  author: Array<{ firstname: string; surname: string }>;
 }

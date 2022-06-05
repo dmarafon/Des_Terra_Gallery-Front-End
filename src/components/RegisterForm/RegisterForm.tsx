@@ -69,14 +69,17 @@ const RegisterForm = (): JSX.Element => {
     sessionStorage.setItem("email", formData.email);
     sessionStorage.setItem("password", formData.password);
     const newUser = new FormData();
-    newUser.append("firstname", formData.firstname);
-    newUser.append("surname", formData.surname);
-    newUser.append("email", formData.email);
+    newUser.append("firstname", formData.firstname.toLowerCase());
+    newUser.append("surname", formData.surname.toLowerCase());
+    newUser.append("email", formData.email.toLowerCase());
     newUser.append("password", formData.password);
-    newUser.append("webpage", formData.webpage);
-    newUser.append("address", formData.address);
-    newUser.append("apartmentdoorstair", formData.apartmentdoorstair);
-    newUser.append("city", formData.city);
+    newUser.append("webpage", formData.webpage.toLowerCase());
+    newUser.append("address", formData.address.toLowerCase());
+    newUser.append(
+      "apartmentdoorstair",
+      formData.apartmentdoorstair.toLowerCase()
+    );
+    newUser.append("city", formData.city.toLowerCase());
     newUser.append("phonenumber", formData.phonenumber);
     newUser.append("artist", formData.artist);
     newUser.append("image", formData.image);

@@ -11,6 +11,7 @@ const ArtworksPage = (): JSX.Element => {
   useEffect(() => {
     dispatch(loadArtworksThunk());
   }, [dispatch]);
+
   return (
     <>
       <Header />
