@@ -61,8 +61,8 @@ const HeaderStyled = styled.header`
   }
 
   .top-nav_img img {
-    margin-top: 40px;
-    width: 200px;
+    margin-top: 50px;
+    width: 250px;
   }
 
   .menu__text--color {
