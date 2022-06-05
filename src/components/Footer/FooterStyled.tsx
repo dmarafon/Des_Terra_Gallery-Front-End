@@ -6,7 +6,6 @@ const FooterStyled = styled.footer`
   margin-bottom: 5vh;
   @media (max-width: 920px) {
     font-size: 20px;
-    margin-bottom: 10vh;
     display: flex;
   }
 

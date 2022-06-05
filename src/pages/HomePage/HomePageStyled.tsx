@@ -22,7 +22,7 @@ const HomePageStyled = styled.div`
     position: absolute;
     text-align: left;
     left: 150px;
-    @media (max-width: 1900px) {
+    @media (max-width: 1699px) {
       left: 15px;
     }
     z-index: 1;
@@ -35,7 +35,7 @@ const HomePageStyled = styled.div`
     color: white;
     position: absolute;
     left: 145px;
-    @media (max-width: 1900px) {
+    @media (max-width: 1699px) {
       left: 15px;
     }
 
@@ -49,7 +49,7 @@ const HomePageStyled = styled.div`
     color: white;
     position: absolute;
     left: 145px;
-    @media (max-width: 1900px) {
+    @media (max-width: 1699px) {
       left: 15px;
     }
 
