@@ -29,7 +29,7 @@ export const loginUserThunk =
 
       dispatch(loginActionCreator(userInfo));
       dispatch(finishedLoadingActionCreator());
-    } catch (error) {
+    } catch (error: any) {
       const errorResponse = errorLoginValidation(error);
       dispatch(finishedLoadingActionCreator());
       dispatch(apiResponseActionCreator(errorResponse));
@@ -49,7 +49,7 @@ export const registerUserThunk =
         });
 
       dispatch(finishedLoadingActionCreator());
-    } catch (error) {
+    } catch (error: any) {
       const errorResponse = errorRegistrationValidation(error);
 
       dispatch(apiResponseActionCreator(errorResponse));
