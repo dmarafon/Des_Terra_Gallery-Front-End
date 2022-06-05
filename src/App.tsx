@@ -9,6 +9,7 @@ import {
 } from "./redux/features/userSlice";
 import { UserInformation } from "./types/userInterface";
 import RegisterPage from "./pages/RegisterPage/RegisterPage";
+import HomePage from "./pages/HomePage/HomePage";
 
 const App = (): JSX.Element => {
   const dispatch = useAppDispatch();
@@ -25,7 +26,8 @@ const App = (): JSX.Element => {
 
   return (
     <Routes>
-      <Route path="/" element={<Navigate to="/users/login" />} />
+      <Route path="/" element={<Navigate to="/home" />} />
+      <Route path="/home" element={<HomePage />} />
       <Route path="/users/login" element={<LoginPage />} />
       <Route path="/users/register" element={<RegisterPage />} />
     </Routes>

@@ -1,5 +1,5 @@
-import { SyntheticEvent, useState } from "react";
-import { NavLink } from "react-router-dom";
+import { SyntheticEvent, useEffect, useState } from "react";
+import { NavLink, useNavigate } from "react-router-dom";
 import {
   apiResponseActionCreator,
   cleanApiResponseActionCreator,
@@ -14,11 +14,19 @@ const LoginForm = (): JSX.Element => {
   const formInitialState = { email: "", password: "" };
 
   const [formData, setFormData] = useState(formInitialState);
+  const navigate = useNavigate();
   const loading = useAppSelector((state) => state.ui.loading);
   const feedback = useAppSelector((state) => state.ui.feedback);
   const apiMessage = useAppSelector((state) => state.ui.apiResponse);
+  const logged = useAppSelector((state) => state.user.logged);
 
   const dispatch = useAppDispatch();
+
+  useEffect(() => {
+    if (logged) {
+      navigate("/home");
+    }
+  }, [logged, navigate]);
 
   const loginSubmit = (event: SyntheticEvent) => {
     event.preventDefault();
