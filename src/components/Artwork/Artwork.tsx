@@ -1,4 +1,5 @@
 import { IArtworks } from "../../types/artworksInterface";
+import ArtworkStyled from "./ArtworkStyled";
 
 const Artwork = ({
   artwork: { title, image, purchaseprice, monthlyrateprice, author },
@@ -18,21 +19,22 @@ const Artwork = ({
     .join(" ");
 
   return (
-    <>
-      <div>
-        <img
-          src={image}
-          alt={`painting by ${firstnameUpperCase} ${surnameUpperCase}`}
-        />
-      </div>
-      <div>
-        <div>
-          <h2>{`${firstnameUpperCase} ${surnameUpperCase}`}</h2>
-          <h3>{titleUpperCase}</h3>
-          <p>{`${monthlyrateprice}€ /month | ${purchaseprice} Purchase`}</p>
+    <ArtworkStyled>
+      <li className="artwork__list">
+        <div className="artwork__container">
+          <img
+            className="artwork__image"
+            src={image}
+            alt={`painting by ${firstnameUpperCase} ${surnameUpperCase}`}
+          />
+          <div>
+            <h2>{`${firstnameUpperCase} ${surnameUpperCase}`}</h2>
+            <h3>{titleUpperCase}</h3>
+            <p>{`${monthlyrateprice}€ /month | ${purchaseprice} Purchase`}</p>
+          </div>
         </div>
-      </div>
-    </>
+      </li>
+    </ArtworkStyled>
   );
 };
 

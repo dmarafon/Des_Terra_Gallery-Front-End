@@ -1,6 +1,7 @@
 import Artwork from "../Artwork/Artwork";
 import { useAppSelector } from "../hooks";
 import LoadingModal from "../LoadingModal/LoadingModal";
+import ArtworkListStyled from "./ArtworkListStyled";
 
 const ArtworksList = () => {
   const artworks = useAppSelector((state) => state.artworks);
@@ -11,11 +12,13 @@ const ArtworksList = () => {
       {loading ? (
         <LoadingModal />
       ) : (
-        <ul>
-          {artworks.map((artwork) => {
-            return <Artwork key={artwork.id} artwork={artwork} />;
-          })}
-        </ul>
+        <ArtworkListStyled>
+          <ul className="artworks__list">
+            {artworks.map((artwork) => {
+              return <Artwork key={artwork.id} artwork={artwork} />;
+            })}
+          </ul>
+        </ArtworkListStyled>
       )}
     </>
   );
