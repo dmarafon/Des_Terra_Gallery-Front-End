@@ -38,6 +38,12 @@ Renderiza la dirección, teléfono y email de la galería y 3 Icon Button, pasan
 
 <br>
 
+### ArtworkList
+
+Renderiza una lista obra de arte, pasandoles las imagenes y todos los datos recibidos
+
+<br>
+
 ### Artwork
 
 Renderiza una obra de arte, con una imagen recibida, un autor recibido, título recibido, precio mensual recibido y precio de compra

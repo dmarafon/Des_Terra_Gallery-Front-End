@@ -11,6 +11,7 @@ import { UserInformation } from "./types/userInterface";
 import RegisterPage from "./pages/RegisterPage/RegisterPage";
 import HomePage from "./pages/HomePage/HomePage";
 import AboutPage from "./pages/AboutPage/AboutPage";
+import ArtworksPage from "./pages/ArtworksPage/ArtworksPage";
 
 const App = (): JSX.Element => {
   const dispatch = useAppDispatch();
@@ -30,6 +31,7 @@ const App = (): JSX.Element => {
       <Route path="/" element={<Navigate to="/home" />} />
       <Route path="/home" element={<HomePage />} />
       <Route path="/about" element={<AboutPage />} />
+      <Route path="/artwork" element={<ArtworksPage />} />
       <Route path="/users/login" element={<LoginPage />} />
       <Route path="/users/register" element={<RegisterPage />} />
     </Routes>
