@@ -6,20 +6,26 @@ import store from "../../redux/store/store";
 import Header from "./Header";
 
 describe("Given a Header Component", () => {
-  const action = {
-    type: "user/login",
-    payload: {
-      firstName: "test",
-      email: "jesusperea@gmail.com",
-      id: "6295020ad1504446d0c04ce8",
-      iat: 1654177043,
-    },
-  };
-
-  store.dispatch(action);
-
   describe("When its called to be rendered with a user logged in", () => {
     test("Then it should create a Header Component with 5 list components and an image", () => {
+      const action = {
+        type: "user/login",
+        payload: {
+          firstName: "test",
+          email: "test@gmail.com",
+          id: "test",
+          iat: 1111111,
+        },
+      };
+
+      store.dispatch(action);
+
+      const finishedLoadingaction = {
+        type: "ui/finishedLoading",
+      };
+
+      store.dispatch(finishedLoadingaction);
+
       const totalListComponents = 5;
 
       const totalImages = 1;
