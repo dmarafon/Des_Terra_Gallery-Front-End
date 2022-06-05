@@ -30,7 +30,10 @@ const ModalText = ({
   };
 
   return (
-    <ReactPortal wrapperId="react-portal-modal-container">
+    <ReactPortal
+      wrapperId="react-portal-modal-container"
+      data-testid="modal-test"
+    >
       <ModalTextStyled>
         <div className="modal" ref={nodeRef}>
           <div className="modal-content">
