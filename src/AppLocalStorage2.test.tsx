@@ -39,6 +39,7 @@ describe("Given an App component", () => {
           apiResponse: "",
         },
         user: { id: "", firstName: "", email: "", logged: false },
+        artworks: [],
       };
 
       expect(getStoreActionState).toStrictEqual(expectedTokenData);

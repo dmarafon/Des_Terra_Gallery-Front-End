@@ -35,6 +35,7 @@ describe("Given an App component", () => {
           iat: 1654018896,
           logged: true,
         },
+        artworks: [],
       };
 
       render(
