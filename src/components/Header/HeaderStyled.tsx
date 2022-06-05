@@ -6,8 +6,25 @@ const HeaderStyled = styled.header`
     z-index: 999;
     top: 0;
   }
-  background-color: white;
-  padding-bottom: 30px;
+  .navigation__container--yellow {
+    background-color: #fac43b;
+    padding-bottom: 30px;
+  }
+
+  .navigation__container--white {
+    background-color: white;
+    padding-bottom: 30px;
+  }
+
+  .navigation__container--white {
+    @media (max-width: 700px) {
+      position: sticky;
+      z-index: 999;
+      top: 0;
+    }
+    background-color: white;
+    padding-bottom: 30px;
+  }
 
   .menu__link--userprofile {
     display: flex;

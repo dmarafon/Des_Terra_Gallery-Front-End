@@ -1,4 +1,4 @@
-import { fireEvent, render, screen } from "@testing-library/react";
+import { fireEvent, render, screen, waitFor } from "@testing-library/react";
 import userEvent from "@testing-library/user-event";
 import { Provider } from "react-redux";
 import { BrowserRouter } from "react-router-dom";
@@ -79,8 +79,8 @@ describe("Given a RegisterForm component function", () => {
     });
   });
 
-  describe("When the user fills all the required fields, clicks the checkbox, the submit button becames enabled and the user clicks in the mentioned button", () => {
-    test("Then the dispatch should be invoked", () => {
+  describe("When the user fills all the required fields, clicks the checkbox, the submit button becames enabled and the user clicks in the mentioned button, opening a modal. When the modal is closed it will close the modal as well", () => {
+    test("Then the dispatch should be invoked in both instances", async () => {
       const textInput = [
         "Test",
         "Test",
@@ -122,7 +122,35 @@ describe("Given a RegisterForm component function", () => {
 
       userEvent.click(registerButton);
 
+      await waitFor(() => {
+        const uIaction = {
+          type: "ui/apiResponse",
+          payload: "new",
+        };
+
+        store.dispatch(uIaction);
+      });
+
       expect(mockDispatch).toHaveBeenCalled();
+
+      const closeModal = screen.getByRole("button", {
+        name: /×/i,
+      });
+
+      userEvent.click(closeModal);
+
+      const element = screen.getByTestId("custom-element");
+
+      await waitFor(() => {
+        const uIaction = {
+          type: "ui/cleanApiResponse",
+          payload: "new",
+        };
+
+        store.dispatch(uIaction);
+      });
+
+      expect(element).not.toBeInTheDocument();
     });
   });
 });

@@ -51,7 +51,7 @@ describe("Given a Modal component", () => {
 
       const newUSer = { email: "jesusperea@gmail.com", password: "1234" };
 
-      await render(
+      render(
         <BrowserRouter>
           <Provider store={store}>
             <ModalText
