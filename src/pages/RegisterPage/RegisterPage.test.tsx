@@ -139,15 +139,6 @@ describe("Given a RegisterForm component function", () => {
 
       userEvent.click(closeModal);
 
-      await waitFor(() => {
-        const uIaction = {
-          type: "ui/apiResponse",
-          payload: "new",
-        };
-
-        store.dispatch(uIaction);
-      });
-
       const element = screen.getByTestId("custom-element");
 
       await waitFor(() => {
