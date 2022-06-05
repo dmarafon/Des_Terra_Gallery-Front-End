@@ -16,7 +16,6 @@ const Footer = (): JSX.Element => {
             <li className="footer__text--listitem">+34 663531568</li>
             <li className="footer__text--listitem">INFO@DESTERRAGALLERY.COM</li>
           </ol>
-
           <div className="footer__social-media">
             <a href="https://facebook.com" target="_blank" rel="noreferrer">
               <svg
