@@ -88,4 +88,26 @@ describe("Given a Header Component", () => {
       expect(displayImage).toHaveLength(totalImages);
     });
   });
+
+  describe("When its called to be rendered without a user logged in", () => {
+    test("Then it should create a Header Component with 1 one image", () => {
+      const finishedLoadingaction = {
+        type: "ui/loading",
+      };
+
+      store.dispatch(finishedLoadingaction);
+
+      const totalImages = 1;
+      render(
+        <BrowserRouter>
+          <Provider store={store}>
+            <Header />
+          </Provider>
+        </BrowserRouter>
+      );
+      const displayImage = screen.getAllByRole("img");
+
+      expect(displayImage).toHaveLength(totalImages);
+    });
+  });
 });
