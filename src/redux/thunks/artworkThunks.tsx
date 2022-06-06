@@ -1,5 +1,8 @@
 import axios from "axios";
-import { errorLoginValidation } from "../../components/utils/errorValidation";
+import {
+  checkStatusCode,
+  errorLoginValidation,
+} from "../../components/utils/errorValidation";
 import {
   deleteArtworkActionCreator,
   loadartworksActionCreator,
@@ -33,7 +36,7 @@ export const loadArtworksThunk = () => async (dispatch: AppDispatch) => {
   }
 };
 
-export const deleteRecordThunk =
+export const deleteArtworkThunk =
   (artworkId: string) => async (dispatch: AppDispatch) => {
     try {
       dispatch(loadingActionCreator());
@@ -46,9 +49,7 @@ export const deleteRecordThunk =
       );
       dispatch(finishedLoadingActionCreator());
 
-      if (status === 200) {
-        dispatch(deleteArtworkActionCreator(artworkId));
-      }
+      checkStatusCode(status, artworkId);
     } catch (error: any) {
       const errorResponse = errorLoginValidation(error);
       dispatch(finishedLoadingActionCreator());
