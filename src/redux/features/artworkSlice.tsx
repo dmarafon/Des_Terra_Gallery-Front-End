@@ -1,4 +1,4 @@
-import { createSlice } from "@reduxjs/toolkit";
+import { createSlice, PayloadAction } from "@reduxjs/toolkit";
 import { IArtworks } from "../../types/artworksInterface";
 
 const initialState: IArtworks[] = [];
@@ -8,10 +8,14 @@ const artworksSlice = createSlice({
   initialState,
   reducers: {
     loadArtworks: (artworks, action) => [...action.payload],
+    deleteArtwork: (artworks, action: PayloadAction<string>) =>
+      artworks.filter((artwork) => artwork.id !== action.payload),
   },
 });
 
-export const { loadArtworks: loadartworksActionCreator } =
-  artworksSlice.actions;
+export const {
+  loadArtworks: loadartworksActionCreator,
+  deleteArtwork: deleteArtworkActionCreator,
+} = artworksSlice.actions;
 
 export default artworksSlice.reducer;
