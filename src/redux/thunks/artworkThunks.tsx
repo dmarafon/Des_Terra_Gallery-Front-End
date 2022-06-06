@@ -35,13 +35,29 @@ export const loadArtworksThunk = () => async (dispatch: AppDispatch) => {
 
 export const loadUserArtworks =
   (userId: string) => async (dispatch: AppDispatch) => {
-    const {
-      data: { artworkauthor },
-    } = await axios.get(`${process.env.REACT_APP_API_URL}artworks/${userId}`, {
-      headers: { Authorization: `Bearer ${localStorage.token}` },
-    });
+    try {
+      dispatch(loadingActionCreator());
 
-    dispatch(loadartworksActionCreator(artworkauthor));
+      const {
+        data: { artworkauthor },
+      } = await axios.get(
+        `${process.env.REACT_APP_API_URL}artworks/${userId}`,
+        {
+          headers: { Authorization: `Bearer ${localStorage.token}` },
+        }
+      );
+
+      if (artworkauthor.length > 0) {
+        dispatch(loadartworksActionCreator(artworkauthor));
+      } else {
+        dispatch(finishedLoadingActionCreator());
+        throw new Error("No Artworks");
+      }
+    } catch (error: any) {
+      const errorResponse = errorLoginValidation(error);
+      dispatch(finishedLoadingActionCreator());
+      dispatch(apiResponseActionCreator(errorResponse));
+    }
   };
 
 export const deleteArtworkThunk =
