@@ -2,7 +2,6 @@ import axios from "axios";
 import { artworkMock } from "../../mocks/artworkMock";
 import { server } from "../../mocks/server";
 import { loadartworksActionCreator } from "../features/artworkSlice";
-import store from "../store/store";
 import { deleteArtworkThunk, loadArtworksThunk } from "./artworkThunks";
 
 beforeEach(() => server.listen());
