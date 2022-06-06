@@ -19,4 +19,42 @@ export const artworkMock = [
     image: "https://ibb.co/mht27wM",
     id: "6294aa4bc78dbede94290071",
   },
+  {
+    title: "boleto",
+    medium: "saboya",
+    height: "20 inches",
+    width: "17.5 inches",
+    style: "painting",
+    description: "",
+    author: [
+      {
+        surname: "marcos",
+        firstname: "paiva",
+        id: "6295020ad1504446d0c04ce7",
+      },
+    ],
+    purchaseprice: "11",
+    monthlyrateprice: "12",
+    image: "",
+    id: "6294aa4bc78dbede94290073",
+  },
+  {
+    title: "maria",
+    medium: "toledo",
+    height: "11 inches",
+    width: "3.5 inches",
+    style: "painting",
+    description: "",
+    author: [
+      {
+        surname: "lorena",
+        firstname: "matias",
+        id: "6295020ad1504446d0c04ce5",
+      },
+    ],
+    purchaseprice: "11",
+    monthlyrateprice: "12",
+    image: "",
+    id: "6294aa4bc78dbede94290077",
+  },
 ];
