@@ -22,9 +22,9 @@ describe("Given a LoginPage", () => {
       const elementIconButton2 = screen.getByTestId("icon2");
       const elementIconButton3 = screen.getByTestId("icon3");
 
-      expect(elementIconButton1).toBeTruthy();
-      expect(elementIconButton2).toBeTruthy();
-      expect(elementIconButton3).toBeTruthy();
+      expect(elementIconButton1).toBeInTheDocument();
+      expect(elementIconButton2).toBeInTheDocument();
+      expect(elementIconButton3).toBeInTheDocument();
       expect(displayImage).toHaveLength(totalImages);
 
       expect(screen.getAllByText("EMAIL")).toHaveLength(1);

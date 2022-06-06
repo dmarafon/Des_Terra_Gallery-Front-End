@@ -22,9 +22,9 @@ describe("Given a AboutPage", () => {
       const elementIconButton2 = screen.getByTestId("icon2");
       const elementIconButton3 = screen.getByTestId("icon3");
 
-      expect(elementIconButton1).toBeTruthy();
-      expect(elementIconButton2).toBeTruthy();
-      expect(elementIconButton3).toBeTruthy();
+      expect(elementIconButton1).toBeInTheDocument();
+      expect(elementIconButton2).toBeInTheDocument();
+      expect(elementIconButton3).toBeInTheDocument();
       expect(displayImage).toHaveLength(totalImages);
     });
 
@@ -45,8 +45,8 @@ describe("Given a AboutPage", () => {
         /we foment the exchange, purchase and consumption of the art of diverse artists, aiming to help and foment arists that had to leave their families and home countries due to conflicts, political persecussion or ethical\./i
       );
 
-      expect(displayText).toBeTruthy();
-      expect(displaySecondText).toBeTruthy();
+      expect(displayText).toBeInTheDocument();
+      expect(displaySecondText).toBeInTheDocument();
     });
   });
 });

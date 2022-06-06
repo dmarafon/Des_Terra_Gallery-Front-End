@@ -15,11 +15,12 @@ export const loadArtworksThunk = () => async (dispatch: AppDispatch) => {
     const {
       data: { artworks },
     } = await axios.get(url);
-    debugger;
     dispatch(finishedLoadingActionCreator());
+
     if (artworks) {
       dispatch(loadartworksActionCreator(artworks));
     } else {
+      dispatch(finishedLoadingActionCreator());
       throw new Error("No Artworks");
     }
   } catch (error: any) {
