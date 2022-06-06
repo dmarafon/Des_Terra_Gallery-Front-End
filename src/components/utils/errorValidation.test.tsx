@@ -1,4 +1,5 @@
 import {
+  checkStatusCode,
   errorLoginValidation,
   errorRegistrationValidation,
 } from "./errorValidation";
@@ -29,6 +30,36 @@ describe("Given a errorRegistrationValidation function", () => {
       const errorValidation = errorRegistrationValidation(expectedErrorSent);
 
       expect(errorValidation).toBe(expectedErrorString);
+    });
+  });
+});
+
+describe("Given a checkStatusCode function", () => {
+  describe("When its invoked passing an api response status 200 and a string containing the id number '1234'", () => {
+    test("Then it should dispatch an action to delete an artwork", async () => {
+      const dispatch = jest.fn();
+      const artworkId = "1234";
+      const status = 200;
+
+      const checkStatus = checkStatusCode(status, artworkId);
+
+      await checkStatus(dispatch);
+
+      expect(dispatch).toHaveBeenCalled();
+    });
+  });
+
+  describe("When its invoked passing an api response status 400 and a string containing the id number '1234'", () => {
+    test("Then it should dispatch an action to send the error message", async () => {
+      const dispatch = jest.fn();
+      const artworkId = "1234";
+      const status = 400;
+
+      const checkStatus = checkStatusCode(status, artworkId);
+
+      await checkStatus(dispatch);
+
+      expect(dispatch).toHaveBeenCalled();
     });
   });
 });
