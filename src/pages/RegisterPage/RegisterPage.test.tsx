@@ -32,9 +32,9 @@ describe("Given a LoginPage", () => {
       expect(emailInput).toBeInTheDocument();
       expect(passwordInput).toBeInTheDocument();
 
-      expect(elementIconButton1).toBeTruthy();
-      expect(elementIconButton2).toBeTruthy();
-      expect(elementIconButton3).toBeTruthy();
+      expect(elementIconButton1).toBeInTheDocument();
+      expect(elementIconButton2).toBeInTheDocument();
+      expect(elementIconButton3).toBeInTheDocument();
       expect(displayImage).toHaveLength(totalImages);
     });
   });
