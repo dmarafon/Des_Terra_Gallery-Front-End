@@ -9,6 +9,8 @@ import {
   finishedLoadingActionCreator,
   loadingActionCreator,
 } from "../features/uiSlice";
+import { loadUserartworksActionCreator } from "../features/userArtworkSlice";
+
 import { AppDispatch } from "../store/store";
 
 export const loadArtworksThunk = () => async (dispatch: AppDispatch) => {
@@ -41,14 +43,15 @@ export const loadUserArtworks =
       const {
         data: { artworkauthor },
       } = await axios.get(
-        `${process.env.REACT_APP_API_URL}artworks/${userId}`,
+        `${process.env.REACT_APP_API_URL}artworks/myart/${userId}`,
         {
           headers: { Authorization: `Bearer ${localStorage.token}` },
         }
       );
 
       if (artworkauthor.length > 0) {
-        dispatch(loadartworksActionCreator(artworkauthor));
+        dispatch(loadUserartworksActionCreator(artworkauthor));
+        dispatch(finishedLoadingActionCreator());
       } else {
         dispatch(finishedLoadingActionCreator());
         throw new Error("No Artworks");

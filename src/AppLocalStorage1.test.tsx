@@ -36,6 +36,7 @@ describe("Given an App component", () => {
           logged: true,
         },
         artworks: [],
+        userArtworks: [],
       };
 
       render(
