@@ -1,6 +1,9 @@
 import axios from "axios";
 import { errorLoginValidation } from "../../components/utils/errorValidation";
-import { loadartworksActionCreator } from "../features/artworkSlice";
+import {
+  deleteArtworkActionCreator,
+  loadartworksActionCreator,
+} from "../features/artworkSlice";
 import {
   apiResponseActionCreator,
   finishedLoadingActionCreator,
@@ -29,3 +32,26 @@ export const loadArtworksThunk = () => async (dispatch: AppDispatch) => {
     dispatch(apiResponseActionCreator(errorResponse));
   }
 };
+
+export const deleteRecordThunk =
+  (artworkId: string) => async (dispatch: AppDispatch) => {
+    try {
+      dispatch(loadingActionCreator());
+
+      const { status } = await axios.delete(
+        `${process.env.REACT_APP_API_URL}/artworks//${artworkId}`,
+        {
+          headers: { Authorization: `Bearer ${localStorage.token}` },
+        }
+      );
+      dispatch(finishedLoadingActionCreator());
+
+      if (status === 200) {
+        dispatch(deleteArtworkActionCreator(artworkId));
+      }
+    } catch (error: any) {
+      const errorResponse = errorLoginValidation(error);
+      dispatch(finishedLoadingActionCreator());
+      dispatch(apiResponseActionCreator(errorResponse));
+    }
+  };
