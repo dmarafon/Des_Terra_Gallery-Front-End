@@ -33,6 +33,17 @@ export const loadArtworksThunk = () => async (dispatch: AppDispatch) => {
   }
 };
 
+export const loadUserArtworks =
+  (userId: string) => async (dispatch: AppDispatch) => {
+    const {
+      data: { artworkauthor },
+    } = await axios.get(`${process.env.REACT_APP_API_URL}artworks/${userId}`, {
+      headers: { Authorization: `Bearer ${localStorage.token}` },
+    });
+
+    dispatch(loadartworksActionCreator(artworkauthor));
+  };
+
 export const deleteArtworkThunk =
   (artworkId: string) => async (dispatch: AppDispatch) => {
     try {
