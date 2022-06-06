@@ -3,10 +3,7 @@ import {
   checkStatusCode,
   errorLoginValidation,
 } from "../../components/utils/errorValidation";
-import {
-  deleteArtworkActionCreator,
-  loadartworksActionCreator,
-} from "../features/artworkSlice";
+import { loadartworksActionCreator } from "../features/artworkSlice";
 import {
   apiResponseActionCreator,
   finishedLoadingActionCreator,
