@@ -1,5 +1,5 @@
 import { useEffect } from "react";
-import ArtworksList from "../../components/ArtworkList/ArtworkList";
+import ArtworksList from "../../components/ArtworksList/ArtworksList";
 import Footer from "../../components/Footer/Footer";
 import Header from "../../components/Header/Header";
 import { useAppDispatch } from "../../components/hooks";

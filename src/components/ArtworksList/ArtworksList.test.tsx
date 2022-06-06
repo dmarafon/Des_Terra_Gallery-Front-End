@@ -2,7 +2,7 @@ import { render, screen, waitFor } from "@testing-library/react";
 import { Provider } from "react-redux";
 import { BrowserRouter } from "react-router-dom";
 import store from "../../redux/store/store";
-import ArtworkList from "./ArtworkList";
+import ArtworksList from "./ArtworksList";
 
 describe("Given a ArtworkList component", () => {
   describe("When it's invoked", () => {
@@ -10,7 +10,7 @@ describe("Given a ArtworkList component", () => {
       render(
         <BrowserRouter>
           <Provider store={store}>
-            <ArtworkList />
+            <ArtworksList />
           </Provider>
         </BrowserRouter>
       );
@@ -78,7 +78,7 @@ describe("Given a ArtworkList component", () => {
       render(
         <BrowserRouter>
           <Provider store={store}>
-            <ArtworkList />
+            <ArtworksList />
           </Provider>
         </BrowserRouter>
       );
@@ -100,7 +100,7 @@ describe("Given a ArtworkList component", () => {
       render(
         <BrowserRouter>
           <Provider store={store}>
-            <ArtworkList />
+            <ArtworksList />
           </Provider>
         </BrowserRouter>
       );

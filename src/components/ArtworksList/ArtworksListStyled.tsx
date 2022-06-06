@@ -1,6 +1,6 @@
 import styled from "styled-components";
 
-const ArtworkListStyled = styled.div`
+const ArtworksListStyled = styled.div`
   .artworks__list {
     list-style: none;
     margin: 0;
@@ -11,4 +11,4 @@ const ArtworkListStyled = styled.div`
     padding-inline-start: 0;
   }
 `;
-export default ArtworkListStyled;
+export default ArtworksListStyled;
