@@ -1,7 +1,7 @@
 import { render, screen } from "@testing-library/react";
 import Artwork from "./Artwork";
 
-describe("Given a ArtworkList component", () => {
+describe("Given a Artwork component", () => {
   describe("When it's invoked and given 1 artwork to render", () => {
     const artwork = {
       medium: "mixed media in paper",

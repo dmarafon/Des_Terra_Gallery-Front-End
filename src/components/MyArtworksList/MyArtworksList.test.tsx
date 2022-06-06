@@ -4,7 +4,7 @@ import { BrowserRouter } from "react-router-dom";
 import store from "../../redux/store/store";
 import MyArtworksList from "./MyArtworksList";
 
-describe("Given a ArtworkList component", () => {
+describe("Given a MyArtworkList component", () => {
   describe("When it's invoked", () => {
     test("Then it should create an unordered list element", () => {
       render(
