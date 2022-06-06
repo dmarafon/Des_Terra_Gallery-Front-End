@@ -20,6 +20,7 @@ export const loadArtworksThunk = () => async (dispatch: AppDispatch) => {
     if (artworks) {
       dispatch(loadartworksActionCreator(artworks));
     } else {
+      dispatch(finishedLoadingActionCreator());
       throw new Error("No Artworks");
     }
   } catch (error: any) {

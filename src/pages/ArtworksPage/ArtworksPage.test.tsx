@@ -2,26 +2,10 @@ import { render, screen, waitFor } from "@testing-library/react";
 import { Provider } from "react-redux";
 import { BrowserRouter } from "react-router-dom";
 import store from "../../redux/store/store";
-import ArtworkList from "./ArtworkList";
+import ArtworksPage from "./ArtworksPage";
 
-describe("Given a ArtworkList component", () => {
-  describe("When it's invoked", () => {
-    test("Then it should create an unordered list element", () => {
-      render(
-        <BrowserRouter>
-          <Provider store={store}>
-            <ArtworkList />
-          </Provider>
-        </BrowserRouter>
-      );
-
-      const artworkListElement = screen.getByRole("list");
-
-      expect(artworkListElement).toBeInTheDocument();
-    });
-  });
-
-  describe("When it's invoked with a list of artworks in the store", () => {
+describe("Given a HomePage", () => {
+  describe("When it's invoked with 1 art item in the store", () => {
     const action = {
       type: "artworks/loadArtworks",
       payload: [
@@ -70,46 +54,25 @@ describe("Given a ArtworkList component", () => {
       ],
     };
 
-    test("Then it should create the same number of lists equal to the artworks in the store", () => {
-      store.dispatch(action);
-
-      const totalNumberOfLists = 2;
-
+    test("Then it will render 3 social media svg icons and 1 image and a loading modal", async () => {
+      const totalImages = 1;
       render(
         <BrowserRouter>
           <Provider store={store}>
-            <ArtworkList />
-          </Provider>
-        </BrowserRouter>
-      );
-
-      const artworkListElement = screen.getAllByRole("listitem");
-
-      expect(artworkListElement).toHaveLength(totalNumberOfLists);
-    });
-  });
-
-  describe("When it's invoked and the loading modal action is in the sore", () => {
-    const loadingAction = {
-      type: "ui/loading",
-    };
-
-    test("Then it should render a loading modal with a react portal dom", async () => {
-      store.dispatch(loadingAction);
-
-      render(
-        <BrowserRouter>
-          <Provider store={store}>
-            <ArtworkList />
+            <ArtworksPage />
           </Provider>
         </BrowserRouter>
       );
 
       const elementReactPortal = screen.getByTestId("custom-element");
 
-      await waitFor(() => {
-        expect(elementReactPortal).toBeInTheDocument();
-      });
+      const displayImage = screen.getAllByRole("img");
+
+      expect(displayImage).toHaveLength(totalImages);
+
+      expect(elementReactPortal).toBeTruthy();
+
+      elementReactPortal.remove();
     });
   });
 });
