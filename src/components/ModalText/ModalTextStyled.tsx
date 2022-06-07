@@ -13,6 +13,13 @@ const ModalTextStyled = styled.div`
     overflow: hidden;
     z-index: 999;
   }
+  .artwork_button--delete {
+    color: black;
+    text-align: center;
+    font-weight: bolder;
+    cursor: pointer;
+    margin-top: 10px;
+  }
 
   .modal-content {
     height: 30vh;
@@ -37,6 +44,7 @@ const ModalTextStyled = styled.div`
     display: flex;
     flex-direction: column;
     margin-bottom: 40px;
+    margin-top: 30px;
   }
 
   .modal-button--closed {
