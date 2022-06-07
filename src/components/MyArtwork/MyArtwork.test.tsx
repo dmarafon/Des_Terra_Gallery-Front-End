@@ -1,7 +1,11 @@
 import { render, screen } from "@testing-library/react";
-import Artwork from "./Artwork";
+import userEvent from "@testing-library/user-event";
+import { Provider } from "react-redux";
+import store from "../../redux/store/store";
+import { loadUserArtworks } from "../../redux/thunks/artworkThunks";
+import MyArtwork from "./MyArtwork";
 
-describe("Given a Artwork component", () => {
+describe("Given a MyArtwork component", () => {
   describe("When it's invoked and given 1 artwork to render", () => {
     const artwork = {
       medium: "mixed media in paper",
@@ -28,11 +32,43 @@ describe("Given a Artwork component", () => {
     test("Then it should create 1 list item", () => {
       const totalNumberOfLists = 1;
 
-      render(<Artwork artwork={artwork} />);
+      render(
+        <Provider store={store}>
+          <MyArtwork artwork={artwork} />
+        </Provider>
+      );
 
       const artworkListElement = screen.getAllByRole("listitem");
 
       expect(artworkListElement).toHaveLength(totalNumberOfLists);
+    });
+
+    describe("When it's invoked with a user logged in and the user clicks in the delete button", () => {
+      test("Then it will dispatch the action to delete and to load again the users artworks", async () => {
+        const userId = "1234";
+
+        render(
+          <Provider store={store}>
+            <MyArtwork artwork={artwork} />
+          </Provider>
+        );
+
+        const deleteButton = screen.getByTestId("myartwork-test2");
+
+        userEvent.click(deleteButton);
+
+        const dispatch = jest.fn();
+
+        const deleteActionDispatch = loadUserArtworks(userId);
+
+        const loadActionDispatch = loadUserArtworks(userId);
+
+        await loadActionDispatch(dispatch);
+
+        await deleteActionDispatch(dispatch);
+
+        expect(dispatch).toHaveBeenCalled();
+      });
     });
   });
 });

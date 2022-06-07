@@ -2,7 +2,7 @@ import { IArtworks } from "../../types/artworksInterface";
 import ArtworkStyled from "./ArtworkStyled";
 
 const Artwork = ({
-  artwork: { title, image, purchaseprice, monthlyrateprice, author },
+  artwork: { id, title, image, purchaseprice, monthlyrateprice, author },
 }: {
   artwork: IArtworks;
 }) => {
@@ -12,7 +12,7 @@ const Artwork = ({
   const titleUpperCase = title.toUpperCase();
 
   return (
-    <li className="artwork__list">
+    <li className="artwork__list" key={id}>
       <ArtworkStyled>
         <div className="artwork__container">
           <img

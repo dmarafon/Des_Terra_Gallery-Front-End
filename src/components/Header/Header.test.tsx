@@ -74,6 +74,7 @@ describe("Given a Header Component", () => {
     };
 
     store.dispatch(secondAction);
+
     test("Then it should render a logo image with the name", () => {
       const totalImages = 1;
       render(

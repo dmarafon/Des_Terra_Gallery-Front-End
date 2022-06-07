@@ -29,7 +29,7 @@ const Header = (): JSX.Element => {
       <div className={`navigation__container--${loading ? "yellow" : "white"}`}>
         <nav className="top-nav">
           <div className="top-nav_img">
-            <NavLink to={"/home"}>
+            <NavLink to={loading ? "/" : "/home"}>
               {loading ? (
                 <img src="/images/desterra_logo_alt.png" alt="Desterra logo" />
               ) : (

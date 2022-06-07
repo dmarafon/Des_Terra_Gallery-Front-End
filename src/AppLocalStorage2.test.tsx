@@ -40,6 +40,7 @@ describe("Given an App component", () => {
         },
         user: { id: "", firstName: "", email: "", logged: false },
         artworks: [],
+        userArtworks: [],
       };
 
       expect(getStoreActionState).toStrictEqual(expectedTokenData);

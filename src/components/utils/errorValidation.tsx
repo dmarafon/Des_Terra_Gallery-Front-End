@@ -1,5 +1,5 @@
-import { deleteArtworkActionCreator } from "../../redux/features/artworkSlice";
 import { apiResponseActionCreator } from "../../redux/features/uiSlice";
+import { deleteArtworkActionCreator } from "../../redux/features/userArtworkSlice";
 import { AppDispatch } from "../../redux/store/store";
 
 export const errorLoginValidation = (error: {
