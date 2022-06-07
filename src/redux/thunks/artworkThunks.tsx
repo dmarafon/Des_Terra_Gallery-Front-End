@@ -51,7 +51,7 @@ export const loadUserArtworks =
 
       if (artworkauthor.length > 0) {
         dispatch(loadUserartworksActionCreator(artworkauthor));
-        dispatch(finishedLoadingActionCreator());
+        return dispatch(finishedLoadingActionCreator());
       } else {
         dispatch(finishedLoadingActionCreator());
         throw new Error("No Artworks");
@@ -69,7 +69,7 @@ export const deleteArtworkThunk =
       dispatch(loadingActionCreator());
 
       const { status } = await axios.delete(
-        `${process.env.REACT_APP_API_URL}/artworks//${artworkId}`,
+        `${process.env.REACT_APP_API_URL}artworks/${artworkId}`,
         {
           headers: { Authorization: `Bearer ${localStorage.token}` },
         }

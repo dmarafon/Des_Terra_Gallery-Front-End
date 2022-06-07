@@ -16,6 +16,7 @@ const MyArtworkStyled = styled.div`
   .artwork__image {
     width: 417.44px;
     height: 465px;
+    object-fit: cover;
 
     @media (min-width: 451px) and (max-width: 531px) {
       width: 367.44px;
@@ -67,6 +68,28 @@ const MyArtworkStyled = styled.div`
   .artwork__text--price {
     margin-top: -10px;
     font-size: 120%;
+  }
+
+  .artwork__icons--container {
+    display: flex;
+    position: absolute;
+    justify-content: space-around;
+    width: 421.44px;
+    top: 6%;
+    text-align: center;
+  }
+
+  .artwork__icons--first {
+    width: 50px;
+    overflow: visible;
+    box-sizing: content-box;
+    margin-right: 150px;
+  }
+
+  .artwork__icons--second {
+    width: 50px;
+    overflow: visible;
+    box-sizing: content-box;
   }
 `;
 export default MyArtworkStyled;

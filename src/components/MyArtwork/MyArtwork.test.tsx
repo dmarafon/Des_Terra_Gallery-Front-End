@@ -1,7 +1,9 @@
 import { render, screen } from "@testing-library/react";
+import { Provider } from "react-redux";
+import store from "../../redux/store/store";
 import MyArtwork from "./MyArtwork";
 
-describe("Given a ArtworkList component", () => {
+describe("Given a MyArtwork component", () => {
   describe("When it's invoked and given 1 artwork to render", () => {
     const artwork = {
       medium: "mixed media in paper",
@@ -28,7 +30,11 @@ describe("Given a ArtworkList component", () => {
     test("Then it should create 1 list item", () => {
       const totalNumberOfLists = 1;
 
-      render(<MyArtwork artwork={artwork} />);
+      render(
+        <Provider store={store}>
+          <MyArtwork artwork={artwork} />
+        </Provider>
+      );
 
       const artworkListElement = screen.getAllByRole("listitem");
 

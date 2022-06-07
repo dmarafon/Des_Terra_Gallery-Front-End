@@ -5,7 +5,7 @@ import store from "../../redux/store/store";
 import ArtworksPage from "./ArtworksPage";
 
 describe("Given a ArtworkPage", () => {
-  describe("When it's invoked with 1 art item in the store", () => {
+  describe("When it's invoked", () => {
     test("Then it will render 3 social media svg icons and 1 image and a loading modal", async () => {
       const totalImages = 1;
       render(

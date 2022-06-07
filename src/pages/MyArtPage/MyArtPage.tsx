@@ -10,7 +10,9 @@ const MyArtPage = (): JSX.Element => {
   const userId = useAppSelector((state) => state.user.id);
 
   useEffect(() => {
-    dispatch(loadUserArtworks(userId));
+    if (userId) {
+      dispatch(loadUserArtworks(userId));
+    }
   }, [dispatch, userId]);
 
   return (
