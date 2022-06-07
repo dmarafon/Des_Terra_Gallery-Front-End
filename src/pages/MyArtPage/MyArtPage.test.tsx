@@ -2,7 +2,6 @@ import { render, screen } from "@testing-library/react";
 import { Provider } from "react-redux";
 import { BrowserRouter } from "react-router-dom";
 import { artworkMock } from "../../mocks/artworkMock";
-import { loadUserartworksActionCreator } from "../../redux/features/userArtworkSlice";
 import store from "../../redux/store/store";
 import { loadUserArtworks } from "../../redux/thunks/artworkThunks";
 import MyArtPage from "./MyArtPage";
