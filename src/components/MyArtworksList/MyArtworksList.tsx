@@ -1,3 +1,5 @@
+import { NavLink } from "react-router-dom";
+import Button from "../Button/Button";
 import { useAppSelector } from "../hooks";
 import LoadingModal from "../LoadingModal/LoadingModal";
 import MyArtwork from "../MyArtwork/MyArtwork";
@@ -24,6 +26,14 @@ const MyArtworksList = () => {
                 YOUR ART
               </p>
             </div>
+
+            <Button
+              className={"general__button--orange"}
+              text={"ADD MORE ART +"}
+            >
+              <NavLink to={"/myart"} />
+            </Button>
+
             <ul className="artworks__list">
               {userArtworks?.map((userArtwork) => {
                 return <MyArtwork key={userArtwork.id} artwork={userArtwork} />;
