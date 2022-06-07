@@ -19,7 +19,7 @@ Object.defineProperty(window, "localStorage", {
 });
 
 describe("Given a LoggedChecked function", () => {
-  describe("When it's invoked there is no user logged with a token", () => {
+  describe("When it's invoked there is a user logged with a token", () => {
     saveToStorage(
       "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJmaXJzdE5hbWUiOiJ0ZXN0IiwiZW1haWwiOiJ0ZXN0ZUB0ZXN0ZSIsImlkIjoiMTIzNCIsImlhdCI6MTY1NDAxODg5Nn0.tYg1N6xwNhOSXGJdOHbHhyJcaU6uSTwYUKElRrh-Tbs"
     );
