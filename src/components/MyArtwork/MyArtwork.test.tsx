@@ -1,6 +1,7 @@
 import { render, screen } from "@testing-library/react";
 import userEvent from "@testing-library/user-event";
 import { Provider } from "react-redux";
+import { BrowserRouter } from "react-router-dom";
 import store from "../../redux/store/store";
 import { loadUserArtworks } from "../../redux/thunks/artworkThunks";
 import MyArtwork from "./MyArtwork";
@@ -33,9 +34,11 @@ describe("Given a MyArtwork component", () => {
       const totalNumberOfLists = 1;
 
       render(
-        <Provider store={store}>
-          <MyArtwork artwork={artwork} />
-        </Provider>
+        <BrowserRouter>
+          <Provider store={store}>
+            <MyArtwork artwork={artwork} />
+          </Provider>
+        </BrowserRouter>
       );
 
       const artworkListElement = screen.getAllByRole("listitem");
@@ -43,19 +46,59 @@ describe("Given a MyArtwork component", () => {
       expect(artworkListElement).toHaveLength(totalNumberOfLists);
     });
 
-    describe("When it's invoked with a user logged in and the user clicks in the delete button", () => {
+    describe("When it's invoked with a user logged in and the user clicks in the delete button, and confirms the deletion", () => {
       test("Then it will dispatch the action to delete and to load again the users artworks", async () => {
         const userId = "1234";
 
         render(
-          <Provider store={store}>
-            <MyArtwork artwork={artwork} />
-          </Provider>
+          <BrowserRouter>
+            <Provider store={store}>
+              <MyArtwork artwork={artwork} />
+            </Provider>
+          </BrowserRouter>
         );
 
         const deleteButton = screen.getByTestId("myartwork-test2");
 
-        userEvent.click(deleteButton);
+        await userEvent.click(deleteButton);
+
+        const confirmDelete = screen.getByTestId("delete-button");
+
+        userEvent.click(confirmDelete);
+
+        const dispatch = jest.fn();
+
+        const deleteActionDispatch = loadUserArtworks(userId);
+
+        const loadActionDispatch = loadUserArtworks(userId);
+
+        await loadActionDispatch(dispatch);
+
+        await deleteActionDispatch(dispatch);
+
+        expect(dispatch).toHaveBeenCalled();
+      });
+    });
+
+    describe("When it's invoked with a user logged in and the user clicks in the delete button, but closes the modal", () => {
+      test("Then it will dispatch the action to close the modal", async () => {
+        const userId = "1234";
+
+        render(
+          <BrowserRouter>
+            <Provider store={store}>
+              <MyArtwork artwork={artwork} />
+            </Provider>
+          </BrowserRouter>
+        );
+
+        const deleteButton = screen.getByTestId("myartwork-test2");
+
+        await userEvent.click(deleteButton);
+
+        const checkOutDelete = screen.getByRole("button");
+
+        userEvent.click(checkOutDelete);
 
         const dispatch = jest.fn();
 
