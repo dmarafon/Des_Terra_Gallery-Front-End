@@ -84,12 +84,22 @@ const MyArtworkStyled = styled.div`
     overflow: visible;
     box-sizing: content-box;
     margin-right: 150px;
+    cursor: pointer;
   }
 
   .artwork__icons--second {
     width: 50px;
     overflow: visible;
     box-sizing: content-box;
+    cursor: pointer;
+  }
+
+  .artwork__icons--first:hover {
+    transform: scale(1.2);
+  }
+
+  .artwork__icons--second:hover {
+    transform: scale(1.2);
   }
 `;
 export default MyArtworkStyled;

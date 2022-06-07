@@ -38,7 +38,7 @@ const MyArtwork = ({
           <div className="artwork__icons--container">
             <div className="artwork__icons--first">
               <svg
-                data-testid="myartwork-test"
+                data-testid="myartwork-test1"
                 xmlns="http://www.w3.org/2000/svg"
                 viewBox="0 0 512 512"
               >
@@ -47,7 +47,7 @@ const MyArtwork = ({
             </div>
             <div className="artwork__icons--second">
               <svg
-                data-testid="myartwork-test"
+                data-testid="myartwork-test2"
                 onClick={deleteArt}
                 xmlns="http://www.w3.org/2000/svg"
                 viewBox="0 0 512 512"

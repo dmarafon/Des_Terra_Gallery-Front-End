@@ -18,7 +18,9 @@ describe("Given a MyArtPage", () => {
       store.dispatch(loadUserArtworks);
       const totalSocialMediaImages = 4;
 
-      const totalIconButtons = 6;
+      const totalDeleteButtons = 3;
+
+      const totalEditButtons = 3;
 
       render(
         <BrowserRouter>
@@ -28,13 +30,17 @@ describe("Given a MyArtPage", () => {
         </BrowserRouter>
       );
 
-      const elementReactPortal = screen.getAllByTestId("myartwork-test");
+      const editButtons = screen.getAllByTestId("myartwork-test1");
+
+      const deleteButtons = screen.getAllByTestId("myartwork-test2");
 
       const displayImage = screen.getAllByRole("img");
 
       expect(displayImage).toHaveLength(totalSocialMediaImages);
 
-      expect(elementReactPortal).toHaveLength(totalIconButtons);
+      expect(deleteButtons).toHaveLength(totalDeleteButtons);
+
+      expect(editButtons).toHaveLength(totalEditButtons);
     });
   });
 
