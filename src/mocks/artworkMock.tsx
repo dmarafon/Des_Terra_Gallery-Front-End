@@ -20,7 +20,7 @@ export const artworkMock = [
     id: "6294aa4bc78dbede94290071",
   },
   {
-    title: "boleto",
+    title: "bolet",
     medium: "saboya",
     height: "20 inches",
     width: "17.5 inches",
