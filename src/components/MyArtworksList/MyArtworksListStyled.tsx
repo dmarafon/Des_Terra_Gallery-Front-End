@@ -64,6 +64,63 @@ const MyArtworksListStyled = styled.div`
     }
   }
 
+  .general__button--orange {
+    margin-left: 79vw;
+    margin-top: 45px;
+
+    @media (min-width: 1712px) and (max-width: 1860px) {
+      margin-left: 81vw;
+    }
+    @media (min-width: 1651px) and (max-width: 1711px) {
+      margin-left: 82vw;
+    }
+
+    @media (min-width: 1555px) and (max-width: 1650px) {
+      margin-left: 84vw;
+    }
+
+    @media (min-width: 1493px) and (max-width: 1554px) {
+      margin-left: 85vw;
+    }
+
+    @media (min-width: 1392px) and (max-width: 1492px) {
+      margin-left: 70vw;
+    }
+
+    @media (min-width: 1354px) and (max-width: 1393px) {
+      margin-left: 71vw;
+    }
+
+    @media (min-width: 1289px) and (max-width: 1353px) {
+      margin-left: 72vw;
+    }
+
+    @media (min-width: 1210px) and (max-width: 1289px) {
+      margin-left: 73vw;
+    }
+
+    @media (min-width: 1150px) and (max-width: 1209px) {
+      margin-left: 74vw;
+    }
+
+    @media (min-width: 1110px) and (max-width: 1149px) {
+      margin-left: 75vw;
+    }
+
+    @media (min-width: 1055px) and (max-width: 1109px) {
+      margin-left: 76vw;
+    }
+
+    @media (min-width: 1023px) and (max-width: 1054px) {
+      margin-left: 77vw;
+    }
+
+    @media (max-width: 1022px) {
+      margin: auto;
+      display: block;
+    }
+  }
+
   .artwork__text--intro {
     color: #000000;
     font-size: 100%;
