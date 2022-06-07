@@ -77,6 +77,26 @@ const MyArtworkStyled = styled.div`
     width: 421.44px;
     top: 6%;
     text-align: center;
+
+    @media (min-width: 451px) and (max-width: 531px) {
+      width: 367.44px;
+    }
+
+    @media (min-width: 400px) and (max-width: 450px) {
+      width: 317.44px;
+    }
+
+    @media (min-width: 376px) and (max-width: 399px) {
+      width: 292.44px;
+    }
+
+    @media (min-width: 201px) and (max-width: 375px) {
+      width: 252.44px;
+    }
+
+    @media (max-width: 200px) {
+      width: 212.44px;
+    }
   }
 
   .artwork__icons--first {
@@ -85,6 +105,17 @@ const MyArtworkStyled = styled.div`
     box-sizing: content-box;
     margin-right: 150px;
     cursor: pointer;
+    @media (min-width: 451px) and (max-width: 531px) {
+      width: 48px;
+    }
+
+    @media (max-width: 376px) and (max-width: 450px) {
+      width: 45px;
+    }
+
+    @media (max-width: 375px) {
+      width: 42px;
+    }
   }
 
   .artwork__icons--second {
@@ -92,6 +123,20 @@ const MyArtworkStyled = styled.div`
     overflow: visible;
     box-sizing: content-box;
     cursor: pointer;
+    @media (min-width: 451px) and (max-width: 531px) {
+      width: 48px;
+    }
+
+    @media (max-width: 376px) and (max-width: 450px) {
+      width: 45px;
+    }
+
+    @media (min-width: 201px) and (max-width: 375px) {
+      width: 42px;
+    }
+    @media (max-width: 200px) {
+      width: 39px;
+    }
   }
 
   .artwork__icons--first:hover {

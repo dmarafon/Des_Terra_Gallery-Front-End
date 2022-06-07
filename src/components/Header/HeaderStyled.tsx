@@ -1,7 +1,7 @@
 import styled from "styled-components";
 
 const HeaderStyled = styled.header`
-  @media (max-width: 700px) {
+  @media (max-width: 755px) {
     position: sticky;
     z-index: 999;
     top: 0;
@@ -17,7 +17,7 @@ const HeaderStyled = styled.header`
   }
 
   .navigation__container--white {
-    @media (max-width: 700px) {
+    @media (max-width: 755px) {
       position: sticky;
       z-index: 999;
       top: 0;
@@ -140,7 +140,7 @@ const HeaderStyled = styled.header`
     transform: rotate(-405deg);
   }
 
-  @media (max-width: 700px) {
+  @media (max-width: 755px) {
     .menu-button-container {
       display: flex;
     }
