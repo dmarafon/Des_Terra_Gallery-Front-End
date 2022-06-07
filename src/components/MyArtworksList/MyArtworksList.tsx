@@ -7,7 +7,6 @@ const MyArtworksList = () => {
   const userArtworks = useAppSelector((state) => state.userArtworks);
   const loading = useAppSelector((state) => state.ui.loading);
 
-  console.log(userArtworks);
   return (
     <>
       {loading ? (

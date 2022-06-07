@@ -1,4 +1,7 @@
-import { deleteArtworkThunk } from "../../redux/thunks/artworkThunks";
+import {
+  deleteArtworkThunk,
+  loadUserArtworks,
+} from "../../redux/thunks/artworkThunks";
 import { IArtworks } from "../../types/artworksInterface";
 import { useAppDispatch, useAppSelector } from "../hooks";
 import MyArtworkStyled from "./MyArtworkStyled";
@@ -8,12 +11,13 @@ const MyArtwork = ({
 }: {
   artwork: IArtworks;
 }) => {
-  const logged = useAppSelector((state) => state.user.logged);
+  const userId = useAppSelector((state) => state.user.id);
 
   const dispatch = useAppDispatch();
 
-  const deleteArt = () => {
-    dispatch(deleteArtworkThunk(id));
+  const deleteArt = async () => {
+    await dispatch(deleteArtworkThunk(id));
+    dispatch(loadUserArtworks(userId));
   };
 
   const titleUpperCase = title.toUpperCase();
