@@ -60,7 +60,7 @@ describe("Given a MyArtwork component", () => {
 
         const deleteButton = screen.getByTestId("myartwork-test2");
 
-        await userEvent.click(deleteButton);
+        userEvent.click(deleteButton);
 
         const confirmDelete = screen.getByTestId("delete-button");
 
@@ -94,7 +94,7 @@ describe("Given a MyArtwork component", () => {
 
         const deleteButton = screen.getByTestId("myartwork-test2");
 
-        await userEvent.click(deleteButton);
+        userEvent.click(deleteButton);
 
         const checkOutDelete = screen.getByRole("button");
 
