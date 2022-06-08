@@ -25,7 +25,7 @@ const RegisterForm = (): JSX.Element => {
     city: "",
     phonenumber: "",
     artist: "false",
-    image: "",
+    artimages: "",
   };
 
   const [formData, setFormData] = useState(formInitialState);
@@ -82,7 +82,7 @@ const RegisterForm = (): JSX.Element => {
     newUser.append("city", formData.city.toLowerCase());
     newUser.append("phonenumber", formData.phonenumber);
     newUser.append("artist", formData.artist);
-    newUser.append("image", formData.image);
+    newUser.append("artimages", formData.artimages);
 
     dispatch(registerUserThunk(newUser));
     setFormData(formInitialState);

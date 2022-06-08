@@ -1,4 +1,4 @@
-import { render, screen } from "@testing-library/react";
+import { act, render, screen } from "@testing-library/react";
 import userEvent from "@testing-library/user-event";
 import { Provider } from "react-redux";
 import { BrowserRouter } from "react-router-dom";
@@ -72,9 +72,9 @@ describe("Given a MyArtwork component", () => {
 
         const loadActionDispatch = loadUserArtworks(userId);
 
-        await loadActionDispatch(dispatch);
+        loadActionDispatch(dispatch);
 
-        await deleteActionDispatch(dispatch);
+        deleteActionDispatch(dispatch);
 
         expect(dispatch).toHaveBeenCalled();
       });
@@ -101,14 +101,13 @@ describe("Given a MyArtwork component", () => {
         userEvent.click(checkOutDelete);
 
         const dispatch = jest.fn();
-
         const deleteActionDispatch = loadUserArtworks(userId);
 
         const loadActionDispatch = loadUserArtworks(userId);
 
-        await loadActionDispatch(dispatch);
+        loadActionDispatch(dispatch);
 
-        await deleteActionDispatch(dispatch);
+        deleteActionDispatch(dispatch);
 
         expect(dispatch).toHaveBeenCalled();
       });
