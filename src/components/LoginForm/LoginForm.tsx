@@ -90,7 +90,7 @@ const LoginForm = (): JSX.Element => {
             <div className="login__image--image_container">
               <img
                 className="login__image"
-                src="https://i.ibb.co/R4cS7xP/leaving-the-bed.jpg"
+                src="https://firebasestorage.googleapis.com/v0/b/desterra-181ac.appspot.com/o/leaving_the_bed.jpg?alt=media&token=1e89bee0-4d40-412c-863b-fc48a7be959a"
                 alt="artist painting"
               />
             </div>

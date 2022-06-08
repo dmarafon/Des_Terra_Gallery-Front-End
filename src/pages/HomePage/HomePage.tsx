@@ -17,7 +17,7 @@ const HomePage = (): JSX.Element => {
             <div className="home__image--container">
               <img
                 className="home__image--first"
-                src="https://firebasestorage.googleapis.com/v0/b/desterra.appspot.com/o/summer_painting-part-2-high.jpg?alt=media&token=7c83cb57-1963-404a-b5b3-6b275ac4ccdf"
+                src="https://firebasestorage.googleapis.com/v0/b/desterra-181ac.appspot.com/o/summer_painting-part-2-high.jpeg?alt=media&token=85032b5c-9380-4e35-ad7d-8ce078cb4f8c"
                 alt="painting of a boy's head out of the water in the summer"
               />
             </div>
