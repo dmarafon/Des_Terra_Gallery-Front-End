@@ -21,9 +21,13 @@ const ModalText = ({
   const apiMessage = useAppSelector((state) => state.ui.apiResponse);
 
   const buttonOnClick = async () => {
-    if (customFunction && apiMessage !== "Blank") {
+    if (customFunction && apiMessage === "new") {
       await dispatch(customFunction);
       navigate("/home");
+    }
+
+    if (!customFunction && apiMessage === "new") {
+      navigate("/myart");
     }
     sessionStorage.clear();
     handleClose();

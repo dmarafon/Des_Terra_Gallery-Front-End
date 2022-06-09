@@ -1,4 +1,10 @@
-import { fireEvent, render, screen, waitFor } from "@testing-library/react";
+import {
+  act,
+  fireEvent,
+  render,
+  screen,
+  waitFor,
+} from "@testing-library/react";
 import userEvent from "@testing-library/user-event";
 import { Provider } from "react-redux";
 import { BrowserRouter } from "react-router-dom";
@@ -81,6 +87,8 @@ describe("Given a RegisterForm component function", () => {
 
   describe("When the user fills all the required fields, clicks the checkbox, the submit button becames enabled and the user clicks in the mentioned button, opening a modal. When the modal is closed it will close the modal as well", () => {
     test("Then the dispatch should be invoked in both instances", async () => {
+      const fakeFile = new File(["test"], "test.png", { type: "image/png" });
+
       const textInput = [
         "Test",
         "Test",
@@ -108,10 +116,14 @@ describe("Given a RegisterForm component function", () => {
       const checkboxInput = screen.getByRole("checkbox", {
         name: "I'm an Artist and I want to Sell My Work",
       });
+
       const registerButton = screen.getByRole("button", { name: "REGISTER" });
 
-      fireEvent.click(checkboxInput);
+      const inputFile = screen.getByLabelText(/picture profile \(optional\)/i);
 
+      userEvent.upload(inputFile, fakeFile);
+
+      fireEvent.click(checkboxInput);
       userEvent.type(firstnameInput, textInput[0]);
       userEvent.type(surnameInput, textInput[1]);
       userEvent.type(emailInput, textInput[2]);
@@ -149,6 +161,240 @@ describe("Given a RegisterForm component function", () => {
 
         store.dispatch(uIaction);
       });
+
+      expect(element).not.toBeInTheDocument();
+    });
+  });
+
+  describe("When the user fills all the required fields, clicks the checkbox, the submit button becames enabled and the user clicks in the button with an user already present in the database, opening a modal warning. When the modal is closed it will close the modal as well", () => {
+    test("Then the dispatch should be invoked in both instances", async () => {
+      const fakeFile = new File(["test"], "test.png", { type: "image/png" });
+
+      const textInput = [
+        "Test",
+        "Test",
+        "test@test.com",
+        "1234",
+        "carrer de test, 101",
+        "Barcelona",
+        "111111111",
+      ];
+      render(
+        <BrowserRouter>
+          <Provider store={store}>
+            <RegisterForm />
+          </Provider>
+        </BrowserRouter>
+      );
+
+      const firstnameInput = screen.getByLabelText("FIRST NAME");
+      const surnameInput = screen.getByLabelText("SURNAME");
+      const emailInput = screen.getByLabelText("EMAIL");
+      const passwordInput = screen.getByLabelText("PASSWORD");
+      const addressInput = screen.getByLabelText("ADDRESS & NUMBER");
+      const cityInput = screen.getByLabelText("CITY");
+      const phoneInput = screen.getByLabelText("PHONE NUMBER");
+      const checkboxInput = screen.getByRole("checkbox", {
+        name: "I'm an Artist and I want to Sell My Work",
+      });
+
+      const registerButton = screen.getByRole("button", { name: "REGISTER" });
+
+      const inputFile = screen.getByLabelText(/picture profile \(optional\)/i);
+
+      userEvent.upload(inputFile, fakeFile);
+
+      fireEvent.click(checkboxInput);
+      userEvent.type(firstnameInput, textInput[0]);
+      userEvent.type(surnameInput, textInput[1]);
+      userEvent.type(emailInput, textInput[2]);
+      userEvent.type(passwordInput, textInput[3]);
+      userEvent.type(addressInput, textInput[4]);
+      userEvent.type(cityInput, textInput[5]);
+      userEvent.type(phoneInput, textInput[6]);
+
+      userEvent.click(registerButton);
+
+      await waitFor(() => {
+        const uIaction = {
+          type: "ui/apiResponse",
+          payload: "Conflict",
+        };
+
+        store.dispatch(uIaction);
+      });
+
+      expect(mockDispatch).toHaveBeenCalled();
+
+      const closeModal = screen.getByRole("button", {
+        name: /×/i,
+      });
+
+      userEvent.click(closeModal);
+
+      const element = screen.getByTestId("custom-element");
+
+      await waitFor(() => {
+        const uIaction = {
+          type: "ui/cleanApiResponse",
+          payload: "new",
+        };
+
+        store.dispatch(uIaction);
+      });
+
+      expect(element).not.toBeInTheDocument();
+    });
+  });
+  describe("When the user fills all the required fields, and uploads an image, clicks the checkbox, the submit button becames enabled and the user clicks in the mentioned button, opening a modal. When the modal is closed it will close the modal as well", () => {
+    test("Then the dispatch should be invoked in both instances", async () => {
+      const fakeFile = new File(["test"], "test.png", { type: "image/png" });
+
+      const textInput = [
+        "Test",
+        "Test",
+        "test@test.com",
+        "1234",
+        "carrer de test, 101",
+        "Barcelona",
+        "111111111",
+      ];
+      render(
+        <BrowserRouter>
+          <Provider store={store}>
+            <RegisterForm />
+          </Provider>
+        </BrowserRouter>
+      );
+
+      const firstnameInput = screen.getByLabelText("FIRST NAME");
+      const surnameInput = screen.getByLabelText("SURNAME");
+      const emailInput = screen.getByLabelText("EMAIL");
+      const passwordInput = screen.getByLabelText("PASSWORD");
+      const addressInput = screen.getByLabelText("ADDRESS & NUMBER");
+      const cityInput = screen.getByLabelText("CITY");
+      const phoneInput = screen.getByLabelText("PHONE NUMBER");
+      const checkboxInput = screen.getByRole("checkbox", {
+        name: "I'm an Artist and I want to Sell My Work",
+      });
+
+      const registerButton = screen.getByRole("button", { name: "REGISTER" });
+
+      const inputFile = screen.getByLabelText(/picture profile \(optional\)/i);
+
+      userEvent.upload(inputFile, fakeFile);
+
+      fireEvent.click(checkboxInput);
+      userEvent.type(firstnameInput, textInput[0]);
+      userEvent.type(surnameInput, textInput[1]);
+      userEvent.type(emailInput, textInput[2]);
+      userEvent.type(passwordInput, textInput[3]);
+      userEvent.type(addressInput, textInput[4]);
+      userEvent.type(cityInput, textInput[5]);
+      userEvent.type(phoneInput, textInput[6]);
+
+      userEvent.click(registerButton);
+
+      await waitFor(() => {
+        const uIaction = {
+          type: "ui/apiResponse",
+          payload: "new",
+        };
+
+        store.dispatch(uIaction);
+      });
+
+      expect(mockDispatch).toHaveBeenCalled();
+
+      const closeModal = screen.getByRole("button", {
+        name: /×/i,
+      });
+
+      userEvent.click(closeModal);
+
+      const element = screen.getByTestId("custom-element");
+
+      await waitFor(() => {
+        const uIaction = {
+          type: "ui/cleanApiResponse",
+          payload: "new",
+        };
+
+        store.dispatch(uIaction);
+      });
+
+      expect(element).not.toBeInTheDocument();
+    });
+  });
+
+  describe("When the user fills all the required fields, and uploads an image, clicks the checkbox, the submit button becames enabled and the user clicks in the mentioned button, opening a loading modal. When the loading aciont is closed it will close the modal as well", () => {
+    test("Then the dispatch should be invoked in both instances", async () => {
+      const fakeFile = new File(["test"], "test.png", { type: "image/png" });
+
+      const textInput = [
+        "Test",
+        "Test",
+        "test@test.com",
+        "1234",
+        "carrer de test, 101",
+        "Barcelona",
+        "111111111",
+      ];
+      render(
+        <BrowserRouter>
+          <Provider store={store}>
+            <RegisterForm />
+          </Provider>
+        </BrowserRouter>
+      );
+
+      const firstnameInput = screen.getByLabelText("FIRST NAME");
+      const surnameInput = screen.getByLabelText("SURNAME");
+      const emailInput = screen.getByLabelText("EMAIL");
+      const passwordInput = screen.getByLabelText("PASSWORD");
+      const addressInput = screen.getByLabelText("ADDRESS & NUMBER");
+      const cityInput = screen.getByLabelText("CITY");
+      const phoneInput = screen.getByLabelText("PHONE NUMBER");
+      const checkboxInput = screen.getByRole("checkbox", {
+        name: "I'm an Artist and I want to Sell My Work",
+      });
+
+      const registerButton = screen.getByRole("button", { name: "REGISTER" });
+
+      const inputFile = screen.getByLabelText(/picture profile \(optional\)/i);
+
+      userEvent.upload(inputFile, fakeFile);
+
+      fireEvent.click(checkboxInput);
+      userEvent.type(firstnameInput, textInput[0]);
+      userEvent.type(surnameInput, textInput[1]);
+      userEvent.type(emailInput, textInput[2]);
+      userEvent.type(passwordInput, textInput[3]);
+      userEvent.type(addressInput, textInput[4]);
+      userEvent.type(cityInput, textInput[5]);
+      userEvent.type(phoneInput, textInput[6]);
+
+      userEvent.click(registerButton);
+
+      await waitFor(() => {
+        const uIaction = {
+          type: "ui/loading",
+        };
+
+        store.dispatch(uIaction);
+      });
+
+      const element = screen.getByTestId("custom-element");
+
+      await waitFor(() => {
+        const uIaction = {
+          type: "ui/finishedLoading",
+        };
+
+        store.dispatch(uIaction);
+      });
+
+      expect(mockDispatch).toHaveBeenCalled();
 
       expect(element).not.toBeInTheDocument();
     });

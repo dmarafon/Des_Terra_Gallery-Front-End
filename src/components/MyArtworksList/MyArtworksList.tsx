@@ -29,13 +29,30 @@ const MyArtworksList = () => {
             <NavLink to={"/addart"}>
               <Button
                 className={"general__button--orange"}
-                text={"ADD MORE ART +"}
+                text={"ADD YOUR ART +"}
               ></Button>
             </NavLink>
             <ul className="artworks__list">
-              {userArtworks?.map((userArtwork) => {
-                return <MyArtwork key={userArtwork.id} artwork={userArtwork} />;
-              })}
+              {userArtworks.length !== 0 ? (
+                userArtworks.map((userArtwork) => {
+                  return (
+                    <MyArtwork key={userArtwork.id} artwork={userArtwork} />
+                  );
+                })
+              ) : (
+                <div className="artwork__container">
+                  <div className="artwork__text--container">
+                    <p className="artwork__text--intro">STILL NO ARTWORKS?</p>
+                    <p className="artwork__text--intro">
+                      PRESS{" "}
+                      <span className="artwork__text--colored">
+                        "ADD YOUR ART"{" "}
+                      </span>
+                      TO START
+                    </p>
+                  </div>
+                </div>
+              )}
             </ul>
           </div>
         </MyArtworksListStyled>

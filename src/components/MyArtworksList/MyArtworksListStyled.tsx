@@ -24,13 +24,13 @@ const MyArtworksListStyled = styled.div`
     margin-bottom: 30px;
     display: flex;
     flex-direction: column;
-    align-content: flex-start;
     flex-wrap: wrap;
     margin-left: 40vw;
     margin-right: 40vw;
     font-size: 150%;
     font-weight: 700;
     text-align: center;
+    align-content: center;
 
     @media (min-width: 835px) and (max-width: 1023px) {
       margin-left: 37vw;

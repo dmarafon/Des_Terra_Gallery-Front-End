@@ -12,7 +12,7 @@ import ModalText from "../ModalText/ModalText";
 import MyArtworkStyled from "./MyArtworkStyled";
 
 const MyArtwork = ({
-  artwork: { id, title, image, purchaseprice, monthlyrateprice },
+  artwork: { id, title, image, imagebackup, purchaseprice, monthlyrateprice },
 }: {
   artwork: IArtworks;
 }) => {
@@ -23,12 +23,14 @@ const MyArtwork = ({
   const dispatch = useAppDispatch();
 
   const deleteArt = async () => {
-    await dispatch(deleteArtworkThunk(id));
-    dispatch(cleanApiResponseActionCreator());
+    await dispatch(deleteArtworkThunk(sessionStorage.getItem("deleteId")));
+    await dispatch(cleanApiResponseActionCreator());
+    await sessionStorage.clear();
     dispatch(loadUserArtworks(userId));
   };
 
   const callDeleteConfirmation = () => {
+    sessionStorage.setItem("deleteId", id);
     dispatch(apiResponseActionCreator("Delete Confirmation"));
   };
 
@@ -62,7 +64,7 @@ const MyArtwork = ({
           <div className="artwork__container">
             <img
               className="artwork__image"
-              src={image}
+              src={imagebackup}
               alt={`a painting called ${title}`}
             />
             <div className="artwork__text">

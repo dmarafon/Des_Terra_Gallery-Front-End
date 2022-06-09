@@ -1,10 +1,12 @@
 import { server } from "../../mocks/server";
 import axios from "axios";
 import {
+  createArtworkThunk,
   deleteArtworkThunk,
   loadArtworksThunk,
   loadUserArtworks,
 } from "./artworkThunks";
+import { artworkMock } from "../../mocks/artworkMock";
 
 beforeEach(() => server.listen());
 afterEach(() => server.resetHandlers());
@@ -55,6 +57,24 @@ describe("Given the loadUserArtworks", () => {
       const dispatch = jest.fn();
 
       const thunk = loadUserArtworks(userId);
+      await thunk(dispatch);
+
+      expect(dispatch).toHaveBeenCalled();
+    });
+  });
+});
+
+describe("Given the createArtwork", () => {
+  describe("When invoked and a error thrown", () => {
+    jest.spyOn(axios, "post").mockImplementation(() => {
+      throw new Error();
+    });
+
+    const artworTest = artworkMock[0];
+    test("Then the dispatch function will be called", async () => {
+      const dispatch = jest.fn();
+
+      const thunk = createArtworkThunk(artworTest);
       await thunk(dispatch);
 
       expect(dispatch).toHaveBeenCalled();

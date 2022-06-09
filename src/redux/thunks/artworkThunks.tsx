@@ -2,6 +2,7 @@ import axios from "axios";
 import {
   checkStatusCode,
   errorLoginValidation,
+  errorRegistrationValidation,
 } from "../../components/utils/errorValidation";
 import { loadartworksActionCreator } from "../features/artworkSlice";
 import {
@@ -49,13 +50,8 @@ export const loadUserArtworks =
         }
       );
 
-      if (artworkauthor.length > 0) {
-        dispatch(loadUserartworksActionCreator(artworkauthor));
-        return dispatch(finishedLoadingActionCreator());
-      } else {
-        dispatch(finishedLoadingActionCreator());
-        throw new Error("No Artworks");
-      }
+      dispatch(loadUserartworksActionCreator(artworkauthor));
+      dispatch(finishedLoadingActionCreator());
     } catch (error: any) {
       const errorResponse = errorLoginValidation(error);
       dispatch(finishedLoadingActionCreator());
@@ -64,7 +60,7 @@ export const loadUserArtworks =
   };
 
 export const deleteArtworkThunk =
-  (artworkId: string) => async (dispatch: AppDispatch) => {
+  (artworkId: any) => async (dispatch: AppDispatch) => {
     try {
       dispatch(loadingActionCreator());
 
@@ -81,5 +77,27 @@ export const deleteArtworkThunk =
       const errorResponse = errorLoginValidation(error);
       dispatch(finishedLoadingActionCreator());
       dispatch(apiResponseActionCreator(errorResponse));
+    }
+  };
+
+export const createArtworkThunk =
+  (formData: any) => async (dispatch: AppDispatch) => {
+    try {
+      dispatch(loadingActionCreator());
+      await axios
+        .post(`${process.env.REACT_APP_API_URL}artworks/addart`, formData, {
+          headers: { Authorization: `Bearer ${localStorage.token}` },
+        })
+        .then((response) => {
+          const apiResponse = response.request.response.substring(2, 5);
+          dispatch(apiResponseActionCreator(apiResponse.toString()));
+        });
+
+      dispatch(finishedLoadingActionCreator());
+    } catch (error: any) {
+      const errorResponse = errorRegistrationValidation(error);
+
+      dispatch(apiResponseActionCreator(errorResponse));
+      dispatch(finishedLoadingActionCreator());
     }
   };
