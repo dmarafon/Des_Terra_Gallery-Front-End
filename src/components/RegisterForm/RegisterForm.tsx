@@ -204,12 +204,12 @@ const RegisterForm = (): JSX.Element => {
                     onChange={changeData}
                     autoComplete="off"
                   />
-                  <label className="register__label" htmlFor="image">
+                  <label className="register__label" htmlFor="artimages">
                     PICTURE PROFILE (OPTIONAL)
                   </label>
                   <input
                     className="register__input"
-                    id="image"
+                    id="artimages"
                     type="file"
                     onChange={changeData}
                     autoComplete="off"

@@ -36,6 +36,7 @@ const ButtonStyled = styled.div`
   }
 
   .general__button--orange {
+    text-decoration: none;
     height: 55px;
     cursor: pointer;
     justify-content: center;

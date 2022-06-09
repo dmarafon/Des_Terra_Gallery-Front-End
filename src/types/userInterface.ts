@@ -21,5 +21,6 @@ export interface FormData {
   city: string;
   phonenumber: string;
   artist: string;
-  image: string;
+  pictureprofile: string;
+  imagebackup: string;
 }

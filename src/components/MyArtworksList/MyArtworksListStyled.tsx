@@ -1,6 +1,10 @@
 import styled from "styled-components";
 
 const MyArtworksListStyled = styled.div`
+  a {
+    text-decoration: none;
+  }
+
   .artwork__container {
     display: flex;
     flex-direction: column;

@@ -17,6 +17,7 @@ export const artworkMock = [
     purchaseprice: "120",
     monthlyrateprice: "10",
     image: "https://ibb.co/mht27wM",
+    imagebackup: "https://ibb.co/mht27wM",
     id: "6294aa4bc78dbede94290071",
   },
   {
@@ -35,7 +36,8 @@ export const artworkMock = [
     ],
     purchaseprice: "11",
     monthlyrateprice: "12",
-    image: "",
+    image: "https://ibb.co/mht27wM",
+    imagebackup: "https://ibb.co/mht27wM",
     id: "6294aa4bc78dbede94290073",
   },
   {
@@ -54,7 +56,8 @@ export const artworkMock = [
     ],
     purchaseprice: "11",
     monthlyrateprice: "12",
-    image: "",
+    image: "https://ibb.co/mht27wM",
+    imagebackup: "https://ibb.co/mht27wM",
     id: "6294aa4bc78dbede94290077",
   },
 ];
