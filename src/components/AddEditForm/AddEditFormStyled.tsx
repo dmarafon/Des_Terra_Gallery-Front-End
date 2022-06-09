@@ -55,10 +55,10 @@ const AddEditFormStyled = styled.div`
   }
 
   .addedit__text--container {
+    align-content: center;
     margin-bottom: 30px;
     display: flex;
     flex-direction: column;
-    align-content: flex-start;
     flex-wrap: wrap;
     margin-left: 90px;
     margin-right: 70px;
@@ -239,6 +239,7 @@ const AddEditFormStyled = styled.div`
     justify-content: center;
     height: 50px;
     width: 150px;
+    margin-right: 25px;
     background-color: #fac43b;
     color: #000000;
     border-radius: 5px;

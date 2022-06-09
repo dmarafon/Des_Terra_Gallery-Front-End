@@ -213,7 +213,7 @@ const AddEditForm = (): JSX.Element => {
                   </div>
                   <div className="addedit__form--second-labels">
                     <label className="addedit__label" htmlFor="purchaseprice">
-                      PURCHASE PRICE (€)
+                      PURCHASE PRICE
                     </label>
                     <input
                       className="addedit__input"
@@ -242,6 +242,7 @@ const AddEditForm = (): JSX.Element => {
                       DESCRIPTION (MAX 240 CHAR)
                     </label>
                     <textarea
+                      maxLength={240}
                       className="addedit__textarea"
                       id="description"
                       placeholder="Describe your Artwork here"
