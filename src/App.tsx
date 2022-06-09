@@ -14,7 +14,6 @@ import AboutPage from "./pages/AboutPage/AboutPage";
 import ArtworksPage from "./pages/ArtworksPage/ArtworksPage";
 import MyArtPage from "./pages/MyArtPage/MyArtPage";
 import Gatekeeper from "./components/Gatekeeper/Gatekeeper";
-import AddEditForm from "./components/AddEditForm/AddEdit";
 import AddEditPage from "./pages/AddEditPage/AddEditPage";
 
 const App = (): JSX.Element => {
