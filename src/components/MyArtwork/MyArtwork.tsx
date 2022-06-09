@@ -24,8 +24,8 @@ const MyArtwork = ({
 
   const deleteArt = async () => {
     await dispatch(deleteArtworkThunk(sessionStorage.getItem("deleteId")));
-    await dispatch(cleanApiResponseActionCreator());
-    await sessionStorage.clear();
+    dispatch(cleanApiResponseActionCreator());
+    sessionStorage.clear();
     dispatch(loadUserArtworks(userId));
   };
 

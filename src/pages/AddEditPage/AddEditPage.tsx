@@ -1,4 +1,4 @@
-import AddEditForm from "../../components/AddEditForm/AddEdit";
+import AddEditForm from "../../components/AddEditForm/AddEditForm";
 import Footer from "../../components/Footer/Footer";
 import Header from "../../components/Header/Header";
 
