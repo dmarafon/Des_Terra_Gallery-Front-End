@@ -50,13 +50,8 @@ export const loadUserArtworks =
         }
       );
 
-      if (artworkauthor.length > 0) {
-        dispatch(loadUserartworksActionCreator(artworkauthor));
-        return dispatch(finishedLoadingActionCreator());
-      } else {
-        dispatch(finishedLoadingActionCreator());
-        throw new Error("No Artworks");
-      }
+      dispatch(loadUserartworksActionCreator(artworkauthor));
+      dispatch(finishedLoadingActionCreator());
     } catch (error: any) {
       const errorResponse = errorLoginValidation(error);
       dispatch(finishedLoadingActionCreator());
@@ -95,7 +90,6 @@ export const createArtworkThunk =
         })
         .then((response) => {
           const apiResponse = response.request.response.substring(2, 5);
-          console.log(apiResponse);
           dispatch(apiResponseActionCreator(apiResponse.toString()));
         });
 

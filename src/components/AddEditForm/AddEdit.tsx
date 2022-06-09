@@ -51,7 +51,9 @@ const AddEditForm = (): JSX.Element => {
       formData.medium === "" ||
       formData.height === "" ||
       formData.width === "" ||
+      formData.style === "" ||
       formData.purchaseprice === "" ||
+      formData.monthlyrateprice === "" ||
       formData.description === ""
     ) {
       dispatch(apiResponseActionCreator("Blank"));
@@ -89,7 +91,8 @@ const AddEditForm = (): JSX.Element => {
           isOpen={feedback}
           customFunction={""}
         >
-          Please, you left one or more mandatory fields in blank
+          Please, you left one or more fields in blank. All fields are mandatory
+          to create your Artwork.
         </ModalText>
       )}
       {apiMessage === "new" && (
@@ -185,6 +188,7 @@ const AddEditForm = (): JSX.Element => {
                       id="style"
                       className="addedit__select"
                       name="style"
+                      required
                       value={formData.style}
                       onChange={changeData}
                     >
@@ -229,6 +233,7 @@ const AddEditForm = (): JSX.Element => {
                       value={formData.monthlyrateprice}
                       onChange={changeData}
                       autoComplete="off"
+                      required
                     />
                     <label className="addedit__label" htmlFor="description">
                       DESCRIPTION (MAX 240 CHAR)
@@ -241,6 +246,7 @@ const AddEditForm = (): JSX.Element => {
                       value={formData.description}
                       onChange={changeData}
                       autoComplete="off"
+                      required
                     />
                     <label className="addedit__label" htmlFor="artimages">
                       ARTWORK PICTURE
@@ -251,6 +257,8 @@ const AddEditForm = (): JSX.Element => {
                       type="file"
                       onChange={changeData}
                       autoComplete="off"
+                      accept="image/*"
+                      required
                     />
                   </div>
                 </div>

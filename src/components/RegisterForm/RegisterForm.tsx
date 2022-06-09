@@ -213,6 +213,7 @@ const RegisterForm = (): JSX.Element => {
                     type="file"
                     onChange={changeData}
                     autoComplete="off"
+                    accept="image/*"
                   />
                 </div>
                 <div className="register__form--second-labels">

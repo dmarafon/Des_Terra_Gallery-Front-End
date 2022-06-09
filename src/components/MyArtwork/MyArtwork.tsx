@@ -2,7 +2,6 @@ import {
   apiResponseActionCreator,
   cleanApiResponseActionCreator,
 } from "../../redux/features/uiSlice";
-import { deleteArtworkActionCreator } from "../../redux/features/userArtworkSlice";
 import {
   deleteArtworkThunk,
   loadUserArtworks,
@@ -27,7 +26,7 @@ const MyArtwork = ({
     await dispatch(deleteArtworkThunk(sessionStorage.getItem("deleteId")));
     await dispatch(cleanApiResponseActionCreator());
     await sessionStorage.clear();
-    await dispatch(deleteArtworkActionCreator(userId));
+    dispatch(loadUserArtworks(userId));
   };
 
   const callDeleteConfirmation = () => {

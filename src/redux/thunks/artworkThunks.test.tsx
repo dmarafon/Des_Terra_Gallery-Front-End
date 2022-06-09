@@ -3,6 +3,7 @@ import { artworkMock } from "../../mocks/artworkMock";
 import { server } from "../../mocks/server";
 import { loadartworksActionCreator } from "../features/artworkSlice";
 import {
+  createArtworkThunk,
   deleteArtworkThunk,
   loadArtworksThunk,
   loadUserArtworks,
@@ -110,6 +111,19 @@ describe("Given a loadUserArtworks function thunk", () => {
 
       const thunk = loadUserArtworks(artworkId);
 
+      await thunk(dispatch);
+
+      expect(dispatch).toHaveBeenCalled();
+    });
+  });
+});
+
+describe("Given the createArtworkThunk function", () => {
+  describe("When  is invoked", () => {
+    test("Then the dispatch function will be called", async () => {
+      const dispatch = jest.fn();
+
+      const thunk = createArtworkThunk(artworkMock[0]);
       await thunk(dispatch);
 
       expect(dispatch).toHaveBeenCalled();
