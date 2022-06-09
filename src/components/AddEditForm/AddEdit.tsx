@@ -196,7 +196,9 @@ const AddEditForm = (): JSX.Element => {
                       value={formData.style}
                       onChange={changeData}
                     >
-                      <option value="">Select a Style</option>
+                      <option disabled value="">
+                        Select a Style
+                      </option>
                       <option value="abstract">Abstract</option>
                       <option value="architecture">Architecture</option>
                       <option value="expressionist">Expressionist</option>
