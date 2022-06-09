@@ -326,4 +326,77 @@ describe("Given a RegisterForm component function", () => {
       expect(element).not.toBeInTheDocument();
     });
   });
+
+  describe("When the user fills all the required fields, and uploads an image, clicks the checkbox, the submit button becames enabled and the user clicks in the mentioned button, opening a loading modal. When the loading aciont is closed it will close the modal as well", () => {
+    test("Then the dispatch should be invoked in both instances", async () => {
+      const fakeFile = new File(["test"], "test.png", { type: "image/png" });
+
+      const textInput = [
+        "Test",
+        "Test",
+        "test@test.com",
+        "1234",
+        "carrer de test, 101",
+        "Barcelona",
+        "111111111",
+      ];
+      render(
+        <BrowserRouter>
+          <Provider store={store}>
+            <RegisterForm />
+          </Provider>
+        </BrowserRouter>
+      );
+
+      const firstnameInput = screen.getByLabelText("FIRST NAME");
+      const surnameInput = screen.getByLabelText("SURNAME");
+      const emailInput = screen.getByLabelText("EMAIL");
+      const passwordInput = screen.getByLabelText("PASSWORD");
+      const addressInput = screen.getByLabelText("ADDRESS & NUMBER");
+      const cityInput = screen.getByLabelText("CITY");
+      const phoneInput = screen.getByLabelText("PHONE NUMBER");
+      const checkboxInput = screen.getByRole("checkbox", {
+        name: "I'm an Artist and I want to Sell My Work",
+      });
+
+      const registerButton = screen.getByRole("button", { name: "REGISTER" });
+
+      const inputFile = screen.getByLabelText(/picture profile \(optional\)/i);
+
+      userEvent.upload(inputFile, fakeFile);
+
+      fireEvent.click(checkboxInput);
+      userEvent.type(firstnameInput, textInput[0]);
+      userEvent.type(surnameInput, textInput[1]);
+      userEvent.type(emailInput, textInput[2]);
+      userEvent.type(passwordInput, textInput[3]);
+      userEvent.type(addressInput, textInput[4]);
+      userEvent.type(cityInput, textInput[5]);
+      userEvent.type(phoneInput, textInput[6]);
+
+      userEvent.click(registerButton);
+
+      await waitFor(() => {
+        const uIaction = {
+          type: "ui/loading",
+        };
+
+        store.dispatch(uIaction);
+      });
+
+      const element = screen.getByTestId("custom-element");
+
+      await waitFor(() => {
+        const uIaction = {
+          type: "ui/finishedLoading",
+        };
+
+        store.dispatch(uIaction);
+      });
+
+      expect(mockDispatch).toHaveBeenCalled();
+
+      expect(element).not.toBeInTheDocument();
+    });
+  });
 });
