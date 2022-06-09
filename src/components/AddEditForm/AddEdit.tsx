@@ -124,165 +124,154 @@ const AddEditForm = (): JSX.Element => {
         <LoadingModal />
       ) : (
         <AddEditFormStyled>
-          <div className="addedit__form">
-            <form onSubmit={submitCreate} noValidate autoComplete="off">
-              <div className="addedit__text--container">
-                <p className="addedit__text--intro">ADD YOUR WORK</p>
-                <p className="addedit__text--intro">TO START SELLING AND </p>
-                <p className="addedit__text--intro">
-                  RENTING
-                  <span className="addedit__text--colored"> RIGHT NOW!</span>
-                </p>
-              </div>
-              <div className="addedit__form--container-labels">
-                <div className="addedit__form--first-labels">
-                  <label className="addedit__label" htmlFor="title">
-                    TITLE
-                  </label>
-                  <input
-                    className="addedit__input"
-                    id="title"
-                    placeholder="TITLE"
-                    value={formData.title}
-                    onChange={changeData}
-                    required
-                    autoComplete="off"
-                  />
-                  <label className="addedit__label" htmlFor="medium">
-                    MEDIUM
-                  </label>
-                  <input
-                    className="addedit__input"
-                    id="medium"
-                    placeholder="MEDIUM"
-                    value={formData.medium}
-                    onChange={changeData}
-                    required
-                    autoComplete="off"
-                  />
-                  <label className="addedit__label" htmlFor="height">
-                    HEIGHT (DIMENSIONS)
-                  </label>
-                  <input
-                    className="addedit__input"
-                    id="height"
-                    type="height"
-                    placeholder="HEIGHT"
-                    value={formData.height}
-                    onChange={changeData}
-                    required
-                    autoComplete="off"
-                  />
-                  <label className="addedit__label" htmlFor="width">
-                    WIDTH (DIMENSIONS)
-                  </label>
-                  <input
-                    className="addedit__input"
-                    id="width"
-                    type="width"
-                    placeholder="WIDTH"
-                    value={formData.width}
-                    onChange={changeData}
-                    required
-                    autoComplete="off"
-                  />
-                  <label className="addedit__label" htmlFor="style">
-                    STYLE
-                  </label>
-                  <select
-                    id="style"
-                    className="addedit__input"
-                    name="languages"
-                    value={formData.style}
-                    onChange={changeData}
-                  >
-                    <option value="">Select a Style</option>
-                    <option value="abstract">Abstract</option>
-                    <option value="architecture">Architecture</option>
-                    <option value="expressionist">Expressionist</option>
-                    <option value="figurative">Figurative</option>
-                    <option value="geometric">Geometric</option>
-                    <option value="minimal">Minimal</option>
-                    <option value="nature">Nature</option>
-                    <option value="people">People</option>
-                    <option value="psychedelic">Psychedelic</option>
-                    <option value="urban">Urban</option>
-                  </select>
+          <div>
+            <div className="addedit__form">
+              <form onSubmit={submitCreate} noValidate autoComplete="off">
+                <div className="addedit__text--container">
+                  <p className="addedit__text--intro">ADD YOUR WORK</p>
+                  <p className="addedit__text--intro">TO START SELLING AND </p>
+                  <p className="addedit__text--intro">
+                    RENTING
+                    <span className="addedit__text--colored"> RIGHT NOW!</span>
+                  </p>
                 </div>
-                <div className="addedit__form--second-labels">
-                  <label className="addedit__label" htmlFor="purchaseprice">
-                    PURCHASE PRICE (€)
-                  </label>
-                  <input
-                    className="addedit__input"
-                    id="purchaseprice"
-                    placeholder="€"
-                    value={formData.purchaseprice}
-                    required
-                    onChange={changeData}
-                    autoComplete="off"
-                  />
-                  <label className="addedit__label" htmlFor="monthlyrateprice">
-                    MONTHLY RATE PRICE
-                  </label>
-                  <input
-                    className="addedit__input"
-                    id="monthlyrateprice"
-                    placeholder="€"
-                    value={formData.monthlyrateprice}
-                    onChange={changeData}
-                    autoComplete="off"
-                  />
-                  <label className="addedit__label" htmlFor="description">
-                    DESCRIPTION (MAX 240 CHAR)
-                  </label>
-                  <textarea
-                    className="addedit__input"
-                    id="description"
-                    placeholder="DESCRIBE YOUR ARTWORK HERE"
-                    value={formData.description}
-                    onChange={changeData}
-                    autoComplete="off"
-                  />
-                  <label className="addedit__label" htmlFor="artimages">
-                    ARTWORK PICTURE
-                  </label>
-                  <input
-                    className="addedit__input"
-                    id="artimages"
-                    type="file"
-                    onChange={changeData}
-                    autoComplete="off"
-                  />
-                  <div className="addedit__input--checkbox">
+                <div className="addedit__form--container-labels">
+                  <div className="addedit__form--first-labels">
+                    <label className="addedit__label" htmlFor="title">
+                      TITLE
+                    </label>
                     <input
-                      className="addedit__input--checkbox_click"
-                      id="artist"
-                      type="checkbox"
-                      name="subscribe"
-                      value="false"
+                      className="addedit__input"
+                      id="title"
+                      placeholder="TITLE"
+                      value={formData.title}
                       onChange={changeData}
+                      required
+                      autoComplete="off"
+                    />
+                    <label className="addedit__label" htmlFor="medium">
+                      MEDIUM
+                    </label>
+                    <input
+                      className="addedit__input"
+                      id="medium"
+                      placeholder="MEDIUM"
+                      value={formData.medium}
+                      onChange={changeData}
+                      required
+                      autoComplete="off"
+                    />
+                    <label className="addedit__label" htmlFor="height">
+                      HEIGHT (DIMENSIONS)
+                    </label>
+                    <input
+                      className="addedit__input"
+                      id="height"
+                      type="height"
+                      placeholder="HEIGHT"
+                      value={formData.height}
+                      onChange={changeData}
+                      required
+                      autoComplete="off"
+                    />
+                    <label className="addedit__label" htmlFor="width">
+                      WIDTH (DIMENSIONS)
+                    </label>
+                    <input
+                      className="addedit__input"
+                      id="width"
+                      type="width"
+                      placeholder="WIDTH"
+                      value={formData.width}
+                      onChange={changeData}
+                      required
+                      autoComplete="off"
+                    />
+                    <label className="addedit__label" htmlFor="style">
+                      STYLE
+                    </label>
+                    <select
+                      id="style"
+                      className="addedit__select"
+                      name="style"
+                      value={formData.style}
+                      onChange={changeData}
+                    >
+                      <option value="">Select a Style</option>
+                      <option value="abstract">Abstract</option>
+                      <option value="architecture">Architecture</option>
+                      <option value="expressionist">Expressionist</option>
+                      <option value="figurative">Figurative</option>
+                      <option value="geometric">Geometric</option>
+                      <option value="minimal">Minimal</option>
+                      <option value="nature">Nature</option>
+                      <option value="people">People</option>
+                      <option value="psychedelic">Psychedelic</option>
+                      <option value="urban">Urban</option>
+                    </select>
+                  </div>
+                  <div className="addedit__form--second-labels">
+                    <label className="addedit__label" htmlFor="purchaseprice">
+                      PURCHASE PRICE (€)
+                    </label>
+                    <input
+                      className="addedit__input"
+                      id="purchaseprice"
+                      placeholder="€"
+                      value={formData.purchaseprice}
+                      required
+                      onChange={changeData}
+                      autoComplete="off"
                     />
                     <label
-                      className="addedit__label--checkbox"
-                      htmlFor="artist"
+                      className="addedit__label"
+                      htmlFor="monthlyrateprice"
                     >
-                      I'm an Artist and I want to Sell My Work
+                      MONTHLY RATE PRICE
                     </label>
-                  </div>
-                  <div className="addedit__button--container">
-                    <button
-                      className="addedit__button"
-                      type="submit"
-                      disabled={false}
-                      value="Send"
-                    >
-                      ADD YOUR ART
-                    </button>
+                    <input
+                      className="addedit__input"
+                      id="monthlyrateprice"
+                      placeholder="€"
+                      value={formData.monthlyrateprice}
+                      onChange={changeData}
+                      autoComplete="off"
+                    />
+                    <label className="addedit__label" htmlFor="description">
+                      DESCRIPTION (MAX 240 CHAR)
+                    </label>
+                    <textarea
+                      className="addedit__textarea"
+                      id="description"
+                      placeholder="Describe your Artwork here"
+                      value={formData.description}
+                      onChange={changeData}
+                      autoComplete="off"
+                    />
+                    <label className="addedit__label" htmlFor="artimages">
+                      ARTWORK PICTURE
+                    </label>
+                    <input
+                      className="addedit__input"
+                      id="artimages"
+                      type="file"
+                      onChange={changeData}
+                      autoComplete="off"
+                    />
                   </div>
                 </div>
-              </div>
-            </form>
+              </form>
+            </div>
+            <div className="addedit__button--container">
+              <button
+                className="addedit__button"
+                type="submit"
+                disabled={false}
+                value="Send"
+              >
+                ADD YOUR ART
+              </button>
+            </div>
           </div>
         </AddEditFormStyled>
       )}

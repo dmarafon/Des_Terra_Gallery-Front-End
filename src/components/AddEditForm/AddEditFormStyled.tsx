@@ -12,6 +12,48 @@ const AddEditFormStyled = styled.div`
     flex-direction: column;
   }
 
+  .addedit__select {
+    font-size: 2.2vh;
+    font-family: "Karla", sans-serif;
+    margin: 15px 0;
+    padding: 15px 10px;
+    width: 100%;
+    outline: none;
+    border: 1px solid #000000;
+    border-radius: 5px;
+    display: inline-block;
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+    -webkit-transition: 0.2s ease all;
+    -moz-transition: 0.2s ease all;
+    -ms-transition: 0.2s ease all;
+    -o-transition: 0.2s ease all;
+    transition: 0.2s ease all;
+  }
+
+  .addedit__select option {
+    font-size: 30px;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    font-family: "Karla", sans-serif;
+    margin: 15px 0;
+    padding: 15px 10px;
+    width: 100%;
+    outline: none;
+    border: 1px solid #000000;
+    border-radius: 5px;
+    display: inline-block;
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+    -webkit-transition: 0.2s ease all;
+    -moz-transition: 0.2s ease all;
+    -ms-transition: 0.2s ease all;
+    -o-transition: 0.2s ease all;
+    transition: 0.2s ease all;
+  }
+
   .addedit__text--container {
     margin-bottom: 30px;
     display: flex;
@@ -146,6 +188,28 @@ const AddEditFormStyled = styled.div`
     transition: 0.2s ease all;
   }
 
+  .addedit__textarea {
+    resize: none;
+    font-size: 2.2vh;
+    font-family: "Karla", sans-serif;
+    margin: 15px 0;
+    padding: 15px 10px;
+    width: 100%;
+    height: 33.3%;
+    outline: none;
+    border: 1px solid #000000;
+    border-radius: 5px;
+    display: inline-block;
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+    -webkit-transition: 0.2s ease all;
+    -moz-transition: 0.2s ease all;
+    -ms-transition: 0.2s ease all;
+    -o-transition: 0.2s ease all;
+    transition: 0.2s ease all;
+  }
+
   .addedit__input--checkbox_click {
     width: 2vh;
     height: 2vh;
@@ -168,7 +232,6 @@ const AddEditFormStyled = styled.div`
     @media (max-width: 920px) {
       align-content: center;
     }
-    margin-top: 40px;
   }
 
   .addedit__button {
