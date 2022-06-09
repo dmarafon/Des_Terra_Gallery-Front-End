@@ -27,6 +27,7 @@ describe("Given a MyArtwork component", () => {
       image:
         "https://firebasestorage.googleapis.com/v0/b/desterra.appspot.com/o/users%2F629d1dce77d93a10ce003a2b%2FDaniel%20Segrove%20(2).jpeg?alt=media&token=3dbc5fd0-cf71-4f86-a877-3141ad2a70b7",
       title: "sleep",
+      imagebackup: "",
       id: "6294aa4bc78dbede9429006e",
     };
 

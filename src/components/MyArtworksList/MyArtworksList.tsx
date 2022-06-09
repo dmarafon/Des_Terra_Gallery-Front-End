@@ -26,14 +26,12 @@ const MyArtworksList = () => {
                 YOUR ART
               </p>
             </div>
-
-            <Button
-              className={"general__button--orange"}
-              text={"ADD MORE ART +"}
-            >
-              <NavLink to={"/myart"} />
-            </Button>
-
+            <NavLink to={"/addart"}>
+              <Button
+                className={"general__button--orange"}
+                text={"ADD MORE ART +"}
+              ></Button>
+            </NavLink>
             <ul className="artworks__list">
               {userArtworks?.map((userArtwork) => {
                 return <MyArtwork key={userArtwork.id} artwork={userArtwork} />;

@@ -7,6 +7,7 @@ export interface IArtworks {
   style: string;
   description: string;
   image: string;
+  imagebackup: string;
   purchaseprice: string;
   monthlyrateprice: string;
   author: Array<{ firstname: string; surname: string }>;
