@@ -3,10 +3,7 @@ import {
   apiResponseActionCreator,
   cleanApiResponseActionCreator,
 } from "../../redux/features/uiSlice";
-import {
-  loginUserThunk,
-  registerUserThunk,
-} from "../../redux/thunks/userThunks";
+import { createArtworkThunk } from "../../redux/thunks/artworkThunks";
 import { useAppDispatch, useAppSelector } from "../hooks";
 import LoadingModal from "../LoadingModal/LoadingModal";
 import ModalText from "../ModalText/ModalText";
@@ -22,7 +19,6 @@ const AddEditForm = (): JSX.Element => {
     purchaseprice: "",
     monthlyrateprice: "",
     description: "",
-    artist: "false",
     artimages: "",
   };
 
@@ -39,8 +35,6 @@ const AddEditForm = (): JSX.Element => {
       [(event.target as HTMLInputElement).id]:
         (event.target as HTMLInputElement).type === "file"
           ? (event.target as HTMLInputElement).files?.[0] || ""
-          : (event.target as HTMLInputElement).type === "checkbox"
-          ? (event.target as HTMLInputElement).checked.toString()
           : (event.target as HTMLInputElement).value,
     });
   };
@@ -64,30 +58,27 @@ const AddEditForm = (): JSX.Element => {
       return;
     }
 
-    const newUser = new FormData();
-    newUser.append("title", formData.title.toLowerCase());
-    newUser.append("medium", formData.medium.toLowerCase());
-    newUser.append("height", formData.height.toLowerCase());
-    newUser.append("width", formData.width);
-    newUser.append("style", formData.style.toLowerCase());
-    newUser.append("purchaseprice", formData.purchaseprice.toLowerCase());
-    newUser.append("monthlyrateprice", formData.monthlyrateprice.toLowerCase());
-    newUser.append("description", formData.description);
-    newUser.append("artist", formData.artist);
-    newUser.append("artimages", formData.artimages);
+    const newArtwork = new FormData();
+    newArtwork.append("title", formData.title.toLowerCase());
+    newArtwork.append("medium", formData.medium.toLowerCase());
+    newArtwork.append("height", formData.height);
+    newArtwork.append("width", formData.width);
+    newArtwork.append("style", formData.style.toLowerCase());
+    newArtwork.append("purchaseprice", formData.purchaseprice.toLowerCase());
+    newArtwork.append(
+      "monthlyrateprice",
+      formData.monthlyrateprice.toLowerCase()
+    );
+    newArtwork.append("description", formData.description);
+    newArtwork.append("artimages", formData.artimages);
 
-    dispatch(registerUserThunk(newUser));
+    dispatch(createArtworkThunk(newArtwork));
     setFormData(formInitialState);
     resetForm();
   };
 
   const submitClosingModalResponse = () => {
     dispatch(cleanApiResponseActionCreator());
-  };
-
-  const loginUser = {
-    email: sessionStorage.getItem("email"),
-    password: sessionStorage.getItem("password"),
   };
 
   return (
@@ -105,9 +96,10 @@ const AddEditForm = (): JSX.Element => {
         <ModalText
           handleClose={submitClosingModalResponse}
           isOpen={feedback}
-          customFunction={loginUserThunk(loginUser)}
+          customFunction={""}
         >
-          Your user was Created Succesfully! Close this window to Login
+          Your Artwork was Created Succesfully! You will be redirected to your
+          Art page
         </ModalText>
       )}
       {apiMessage === "Conflict" && (
@@ -262,17 +254,17 @@ const AddEditForm = (): JSX.Element => {
                     />
                   </div>
                 </div>
+                <div className="addedit__button--container">
+                  <button
+                    className="addedit__button"
+                    type="submit"
+                    disabled={false}
+                    value="Send"
+                  >
+                    ADD YOUR ART
+                  </button>
+                </div>
               </form>
-            </div>
-            <div className="addedit__button--container">
-              <button
-                className="addedit__button"
-                type="submit"
-                disabled={false}
-                value="Send"
-              >
-                ADD YOUR ART
-              </button>
             </div>
           </div>
         </AddEditFormStyled>

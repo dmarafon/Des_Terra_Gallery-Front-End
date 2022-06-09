@@ -2,7 +2,15 @@ import { IArtworks } from "../../types/artworksInterface";
 import ArtworkStyled from "./ArtworkStyled";
 
 const Artwork = ({
-  artwork: { id, title, image, purchaseprice, monthlyrateprice, author },
+  artwork: {
+    id,
+    title,
+    image,
+    imagebackup,
+    purchaseprice,
+    monthlyrateprice,
+    author,
+  },
 }: {
   artwork: IArtworks;
 }) => {
@@ -17,7 +25,7 @@ const Artwork = ({
         <div className="artwork__container">
           <img
             className="artwork__image"
-            src={image}
+            src={imagebackup}
             alt={`painting by ${firstnameUpperCase} ${surnameUpperCase}`}
           />
           <div className="artwork__text">
