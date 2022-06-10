@@ -15,7 +15,7 @@ import { loadUserartworksActionCreator } from "../features/userArtworkSlice";
 import { AppDispatch } from "../store/store";
 
 export const loadArtworksThunk = () => async (dispatch: AppDispatch) => {
-  const url: string = `${process.env.REACT_APP_API_URL}artworks/all`;
+  const url: string = `${process.env.REACT_APP_API_URL}artworks/all?page=1&limit=100`;
   try {
     dispatch(loadingActionCreator());
     const {
