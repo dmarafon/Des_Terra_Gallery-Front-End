@@ -12,6 +12,10 @@ const AddEditFormStyled = styled.div`
     flex-direction: column;
   }
 
+  .addedit__text--colored-edit {
+    color: #fa803b;
+    text-transform: uppercase;
+  }
   .addedit__select {
     font-size: 2.2vh;
     font-family: "Karla", sans-serif;

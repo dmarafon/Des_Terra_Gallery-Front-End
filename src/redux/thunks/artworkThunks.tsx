@@ -15,7 +15,6 @@ import { loadUserartworksActionCreator } from "../features/userArtworkSlice";
 import { AppDispatch } from "../store/store";
 
 export const loadArtworksThunk = () => async (dispatch: AppDispatch) => {
-  debugger;
   const url: string = `${process.env.REACT_APP_API_URL}artworks/all?page=1&limit=100`;
   try {
     dispatch(loadingActionCreator());
@@ -86,6 +85,32 @@ export const createArtworkThunk =
         .post(`${process.env.REACT_APP_API_URL}artworks/addart`, formData, {
           headers: { Authorization: `Bearer ${localStorage.token}` },
         })
+        .then((response) => {
+          const apiResponse = response.request.response.substring(2, 5);
+          dispatch(apiResponseActionCreator(apiResponse.toString()));
+        });
+
+      dispatch(finishedLoadingActionCreator());
+    } catch (error: any) {
+      const errorResponse = errorRegistrationValidation(error);
+
+      dispatch(apiResponseActionCreator(errorResponse));
+      dispatch(finishedLoadingActionCreator());
+    }
+  };
+
+export const editArtworkThunk =
+  (formData: any, artworkId: string) => async (dispatch: AppDispatch) => {
+    try {
+      dispatch(loadingActionCreator());
+      await axios
+        .put(
+          `${process.env.REACT_APP_API_URL}artworks/editart/${artworkId}`,
+          formData,
+          {
+            headers: { Authorization: `Bearer ${localStorage.token}` },
+          }
+        )
         .then((response) => {
           const apiResponse = response.request.response.substring(2, 5);
           dispatch(apiResponseActionCreator(apiResponse.toString()));
