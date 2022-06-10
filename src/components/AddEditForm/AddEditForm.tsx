@@ -1,15 +1,61 @@
-import { SyntheticEvent, useState } from "react";
+import { SyntheticEvent, useEffect, useState } from "react";
+import { useLocation, useParams } from "react-router-dom";
 import {
   apiResponseActionCreator,
   cleanApiResponseActionCreator,
 } from "../../redux/features/uiSlice";
 import { createArtworkThunk } from "../../redux/thunks/artworkThunks";
+import { loadSingleArtworkThunk } from "../../redux/thunks/singleArtworkThunk";
 import { useAppDispatch, useAppSelector } from "../hooks";
 import LoadingModal from "../LoadingModal/LoadingModal";
 import ModalText from "../ModalText/ModalText";
 import AddEditFormStyled from "./AddEditFormStyled";
 
 const AddEditForm = (): JSX.Element => {
+  const dispatch = useAppDispatch();
+
+  const {
+    title,
+    medium,
+    height,
+    width,
+    style,
+    purchaseprice,
+    monthlyrateprice,
+    description,
+  } = useAppSelector((state) => state.singleArtwork);
+
+  const { artworkId } = useParams();
+
+  useEffect(() => {
+    if (artworkId) {
+      dispatch(loadSingleArtworkThunk(artworkId));
+
+      setFormData({
+        title: title,
+        medium: medium,
+        height: height,
+        width: width,
+        style: style,
+        purchaseprice: purchaseprice,
+        monthlyrateprice: monthlyrateprice,
+        description: description,
+        artimages: "",
+      });
+    }
+  }, [
+    artworkId,
+    description,
+    dispatch,
+    height,
+    medium,
+    monthlyrateprice,
+    purchaseprice,
+    style,
+    title,
+    width,
+  ]);
+
   const formInitialState = {
     title: "",
     medium: "",
@@ -26,8 +72,6 @@ const AddEditForm = (): JSX.Element => {
   const apiMessage = useAppSelector((state) => state.ui.apiResponse);
   const loading = useAppSelector((state) => state.ui.loading);
   const feedback = useAppSelector((state) => state.ui.feedback);
-
-  const dispatch = useAppDispatch();
 
   const changeData = (event: SyntheticEvent) => {
     setFormData({

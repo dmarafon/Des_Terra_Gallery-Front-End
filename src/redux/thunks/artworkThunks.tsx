@@ -15,6 +15,7 @@ import { loadUserartworksActionCreator } from "../features/userArtworkSlice";
 import { AppDispatch } from "../store/store";
 
 export const loadArtworksThunk = () => async (dispatch: AppDispatch) => {
+  debugger;
   const url: string = `${process.env.REACT_APP_API_URL}artworks/all?page=1&limit=100`;
   try {
     dispatch(loadingActionCreator());
@@ -43,12 +44,9 @@ export const loadUserArtworks =
 
       const {
         data: { artworkauthor },
-      } = await axios.get(
-        `${process.env.REACT_APP_API_URL}artworks/myart/${userId}`,
-        {
-          headers: { Authorization: `Bearer ${localStorage.token}` },
-        }
-      );
+      } = await axios.get(`${process.env.REACT_APP_API_URL}artworks/myart`, {
+        headers: { Authorization: `Bearer ${localStorage.token}` },
+      });
 
       dispatch(loadUserartworksActionCreator(artworkauthor));
       dispatch(finishedLoadingActionCreator());

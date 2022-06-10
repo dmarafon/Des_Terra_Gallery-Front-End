@@ -50,7 +50,7 @@ const App = (): JSX.Element => {
         }
       />
       <Route
-        path="/editart"
+        path="/editart/:artworkId"
         element={
           <Gatekeeper>
             <AddEditPage />
