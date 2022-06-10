@@ -4,7 +4,6 @@ import { Provider } from "react-redux";
 import { BrowserRouter } from "react-router-dom";
 import store from "../../redux/store/store";
 import ModalText from "./ModalText";
-import { loginUserThunk } from "../../redux/thunks/userThunks";
 import { server } from "../../mocks/server";
 import axios from "axios";
 import * as router from "react-router";

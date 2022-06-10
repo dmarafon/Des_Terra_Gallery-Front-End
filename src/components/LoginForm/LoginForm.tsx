@@ -123,6 +123,7 @@ const LoginForm = (): JSX.Element => {
                   PASSWORD
                 </label>
                 <input
+                  autoComplete="current-password"
                   className="login__input"
                   id="password"
                   type="password"
