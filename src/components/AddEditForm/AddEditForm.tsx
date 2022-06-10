@@ -34,7 +34,7 @@ const AddEditForm = (): JSX.Element => {
       ...formData,
       [(event.target as HTMLInputElement).id]:
         (event.target as HTMLInputElement).type === "file"
-          ? (event.target as HTMLInputElement).files?.[0] || ""
+          ? (event.target as HTMLInputElement).files?.[0]
           : (event.target as HTMLInputElement).value,
     });
   };
