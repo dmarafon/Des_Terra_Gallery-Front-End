@@ -5,7 +5,7 @@ import store from "../../redux/store/store";
 import HomePage from "./HomePage";
 describe("Given a HomePage", () => {
   describe("When it's invoked", () => {
-    test("Then it will render 3 social media svg icons and 2 images, 1 from the Header and 1 for an art", () => {
+    test("Then it will render 3 social media svg icons and 2 images, 1 from the Header and 1 for an artwork", () => {
       const totalImages = 2;
       render(
         <BrowserRouter>
