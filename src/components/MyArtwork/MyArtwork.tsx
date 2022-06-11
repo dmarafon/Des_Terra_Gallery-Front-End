@@ -101,11 +101,13 @@ const MyArtwork = ({
       <li className="artwork__list" key={id}>
         <MyArtworkStyled>
           <div className="artwork__container">
-            <img
-              className="artwork__image"
-              src={imagebackup}
-              alt={`a painting called ${title}`}
-            />
+            <NavLink to={`/artwork/${id}`}>
+              <img
+                className="artwork__image"
+                src={imagebackup}
+                alt={`a painting called ${title}`}
+              />
+            </NavLink>
             <div className="artwork__text">
               <h3 className="artwork__text--title">{titleUpperCase}</h3>
               <p className="artwork__text--price">{`${monthlyrateprice}€ /month | ${purchaseprice}€ Purchase`}</p>

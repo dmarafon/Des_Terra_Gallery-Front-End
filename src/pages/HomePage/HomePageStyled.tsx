@@ -11,6 +11,7 @@ const HomePageStyled = styled.div`
     position: relative;
     text-align: center;
     width: 500vw;
+    cursor: pointer;
   }
 
   .home__text--container {
