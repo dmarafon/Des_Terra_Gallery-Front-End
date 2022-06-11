@@ -12,8 +12,6 @@ jest.mock("react-router-dom", () => ({
   useNavigate: () => mockDispatch,
 }));
 
-const mockUseNavigate = jest.fn();
-
 describe("Given a Login Page", () => {
   describe("When it's invoked and an user clicks on the 'Login' button and login successfully", () => {
     test("Then it should be redirectioned to the Home Page", async () => {
