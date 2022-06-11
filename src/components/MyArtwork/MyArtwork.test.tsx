@@ -1,11 +1,19 @@
-import { render, screen } from "@testing-library/react";
+import { render, screen, waitFor } from "@testing-library/react";
 import userEvent from "@testing-library/user-event";
 import { Provider } from "react-redux";
 import { BrowserRouter } from "react-router-dom";
+import { server } from "../../mocks/server";
 import store from "../../redux/store/store";
-import { loadUserArtworks } from "../../redux/thunks/artworkThunks";
+import {
+  deleteArtworkThunk,
+  loadUserArtworks,
+} from "../../redux/thunks/artworkThunks";
 import { loadSingleArtworkThunk } from "../../redux/thunks/singleArtworkThunk";
 import MyArtwork from "./MyArtwork";
+
+beforeEach(() => server.listen());
+afterEach(() => server.resetHandlers());
+afterAll(() => server.close());
 
 describe("Given a MyArtwork component", () => {
   describe("When it's invoked and given 1 artwork to render", () => {
@@ -70,13 +78,13 @@ describe("Given a MyArtwork component", () => {
 
         const dispatch = jest.fn();
 
-        const deleteActionDispatch = loadUserArtworks(userId);
+        const deleteActionDispatch = deleteArtworkThunk(userId);
+
+        deleteActionDispatch(dispatch);
 
         const loadActionDispatch = loadUserArtworks(userId);
 
         loadActionDispatch(dispatch);
-
-        deleteActionDispatch(dispatch);
 
         expect(dispatch).toHaveBeenCalled();
       });

@@ -19,4 +19,23 @@ export const handlers = [
     `${process.env.REACT_APP_API_URL}artworks/editart/${artworkMock[0].id}`,
     (req, res, ctx) => res(ctx.status(200), ctx.json({ token: mockToken }))
   ),
+
+  rest.get(
+    `${process.env.REACT_APP_API_URL}artworks/single/1234`,
+    (req, res, ctx) => res(ctx.status(200))
+  ),
+
+  rest.get(`${process.env.REACT_APP_API_URL}artworks/myart`, (req, res, ctx) =>
+    res(ctx.status(200))
+  ),
+
+  rest.delete(
+    `${process.env.REACT_APP_API_URL}artworks/1234`,
+    (req, res, ctx) => res(ctx.status(200), ctx.json({ token: mockToken }))
+  ),
+
+  rest.delete(
+    `${process.env.REACT_APP_API_URL}artworks/6294aa4bc78dbede9429006e`,
+    (req, res, ctx) => res(ctx.status(200), ctx.json({ token: mockToken }))
+  ),
 ];

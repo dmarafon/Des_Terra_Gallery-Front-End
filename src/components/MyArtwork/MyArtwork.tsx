@@ -60,14 +60,17 @@ const MyArtwork = ({
   };
 
   const deleteArt = async () => {
-    await dispatch(deleteArtworkThunk(sessionStorage.getItem("deleteId")));
+    debugger;
+
+    await dispatch(deleteArtworkThunk(id));
+    debugger;
     dispatch(cleanApiResponseActionCreator());
-    sessionStorage.clear();
+    debugger;
+
     dispatch(loadUserArtworks(userId));
   };
 
   const callDeleteConfirmation = () => {
-    sessionStorage.setItem("deleteId", id);
     dispatch(apiResponseActionCreator("Delete Confirmation"));
   };
 
