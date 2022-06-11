@@ -1,47 +1,70 @@
-import { NavLink } from "react-router-dom";
+import { useEffect } from "react";
+import { NavLink, useParams } from "react-router-dom";
+import { loadSingleArtworkThunk } from "../../redux/thunks/singleArtworkThunk";
 import Button from "../Button/Button";
-import { useAppSelector } from "../hooks";
+import { useAppDispatch, useAppSelector } from "../hooks";
+import LoadingModal from "../LoadingModal/LoadingModal";
 import DetailArtworkStyled from "./DetailArtworkStyled";
 
 const DetailArtwork = (): JSX.Element => {
   const logged = useAppSelector((state) => state.user.logged);
+  const loading = useAppSelector((state) => state.ui.loading);
+  const {
+    title,
+    author: [{ firstname, surname }],
+    height,
+    width,
+    medium,
+    monthlyrateprice,
+    purchaseprice,
+    description,
+    imagebackup,
+  } = useAppSelector((state) => state.singleArtwork);
 
-  return (
+  const dispatch = useAppDispatch();
+
+  const { artworkId } = useParams();
+
+  useEffect(() => {
+    if (artworkId) {
+      dispatch(loadSingleArtworkThunk(artworkId));
+    }
+  }, [artworkId, dispatch]);
+
+  return loading ? (
+    <LoadingModal />
+  ) : (
     <DetailArtworkStyled>
       <div className="detail__container">
-        <h2 className="detail__heading--title">sleep</h2>
+        <h2 className="detail__heading--title">{title}</h2>
         <p className="detail__paragraph--author">
-          by <span className="detail__paragraph--special">Daniel Segrove</span>
+          by{" "}
+          <span className="detail__paragraph--special">
+            {firstname ? firstname : ""} {surname ? surname : ""}
+          </span>
         </p>
         <ul>
           <li className="detail__list">
-            Dimensions: Height 18 in x Width 22 in.
+            Dimensions: Height {height} in x Width {width} in.
           </li>
-          <li className="detail__list">Medium: Oil on canvas</li>
+          <li className="detail__list">Medium: {medium}</li>
           <li className="detail__list">
-            38 €{" "}
+            {monthlyrateprice} €{" "}
             <span className="detail__paragraph--special_second">/month</span> |
-            400 €
+            {purchaseprice} €
             <span className="detail__paragraph--special_second"> Purchase</span>
           </li>
         </ul>
-        <p className="detail__paragraph--description">
-          This work was created during a residence in Chile where I had the
-          pleasure to meet Kamiko. I was very inspired by her art and even more
-          by her perfect stillness while posing to this painting. One thing that
-          I will take from Kamiko is that silence goes to places that sound
-          would never dare to go.
-        </p>
+        <p className="detail__paragraph--description">{description}</p>
       </div>
       <div className="detail__image--container">
         <div className="detail__image--container_second">
           <img
             className="detail__image"
-            src="https://firebasestorage.googleapis.com/v0/b/desterra-181ac.appspot.com/o/Daniel%20Segrove%20(11).jpeg?alt=media&token=f1f97305-1e42-4af7-9933-c81152df4f5a"
-            alt=""
+            src={imagebackup}
+            alt={`a painting by ${firstname} ${surname}`}
           />
         </div>
-
         {logged ? (
           <div className="detail__button--container">
             <Button
