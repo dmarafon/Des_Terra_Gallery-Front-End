@@ -41,6 +41,25 @@ describe("Given an App component", () => {
         user: { id: "", firstName: "", email: "", logged: false },
         artworks: [],
         userArtworks: [],
+        singleArtwork: {
+          author: [
+            {
+              firstname: "",
+              surname: "",
+            },
+          ],
+          description: "",
+          height: "",
+          id: "",
+          image: "",
+          imagebackup: "",
+          medium: "",
+          monthlyrateprice: "",
+          purchaseprice: "",
+          style: "",
+          title: "",
+          width: "",
+        },
       };
 
       expect(getStoreActionState).toStrictEqual(expectedTokenData);

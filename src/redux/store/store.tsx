@@ -3,6 +3,7 @@ import userReducer from "../features/userSlice";
 import uiReducer from "../features/uiSlice";
 import artworkReducer from "../features/artworkSlice";
 import userArtworksReducer from "../features/userArtworkSlice";
+import singleArtworkReducer from "../features/singleArtworkSlice";
 
 const store = configureStore({
   reducer: {
@@ -10,6 +11,7 @@ const store = configureStore({
     ui: uiReducer,
     artworks: artworkReducer,
     userArtworks: userArtworksReducer,
+    singleArtwork: singleArtworkReducer,
   },
 });
 

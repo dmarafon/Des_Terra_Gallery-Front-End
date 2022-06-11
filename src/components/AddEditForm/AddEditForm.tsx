@@ -1,15 +1,64 @@
-import { SyntheticEvent, useState } from "react";
+import { SyntheticEvent, useEffect, useState } from "react";
+import { useParams } from "react-router-dom";
 import {
   apiResponseActionCreator,
   cleanApiResponseActionCreator,
 } from "../../redux/features/uiSlice";
-import { createArtworkThunk } from "../../redux/thunks/artworkThunks";
+import {
+  createArtworkThunk,
+  editArtworkThunk,
+} from "../../redux/thunks/artworkThunks";
+import { loadSingleArtworkThunk } from "../../redux/thunks/singleArtworkThunk";
 import { useAppDispatch, useAppSelector } from "../hooks";
 import LoadingModal from "../LoadingModal/LoadingModal";
 import ModalText from "../ModalText/ModalText";
 import AddEditFormStyled from "./AddEditFormStyled";
 
 const AddEditForm = (): JSX.Element => {
+  const dispatch = useAppDispatch();
+
+  const {
+    title,
+    medium,
+    height,
+    width,
+    style,
+    purchaseprice,
+    monthlyrateprice,
+    description,
+  } = useAppSelector((state) => state.singleArtwork);
+
+  const { artworkId } = useParams();
+
+  useEffect(() => {
+    if (artworkId) {
+      dispatch(loadSingleArtworkThunk(artworkId));
+
+      setFormData({
+        title: title || "",
+        medium: medium || "",
+        height: height || "",
+        width: width || "",
+        style: style || "",
+        purchaseprice: purchaseprice || "",
+        monthlyrateprice: monthlyrateprice || "",
+        description: description || "",
+        artimages: "",
+      });
+    }
+  }, [
+    artworkId,
+    description,
+    dispatch,
+    height,
+    medium,
+    monthlyrateprice,
+    purchaseprice,
+    style,
+    title,
+    width,
+  ]);
+
   const formInitialState = {
     title: "",
     medium: "",
@@ -26,8 +75,7 @@ const AddEditForm = (): JSX.Element => {
   const apiMessage = useAppSelector((state) => state.ui.apiResponse);
   const loading = useAppSelector((state) => state.ui.loading);
   const feedback = useAppSelector((state) => state.ui.feedback);
-
-  const dispatch = useAppDispatch();
+  const singleArtwork = useAppSelector((state) => state.singleArtwork);
 
   const changeData = (event: SyntheticEvent) => {
     setFormData({
@@ -74,10 +122,16 @@ const AddEditForm = (): JSX.Element => {
     newArtwork.append("description", formData.description);
     newArtwork.append("artimages", formData.artimages);
 
-    dispatch(createArtworkThunk(newArtwork));
+    if (artworkId) {
+      dispatch(editArtworkThunk(newArtwork, artworkId));
+    } else {
+      dispatch(createArtworkThunk(newArtwork));
+    }
     setFormData(formInitialState);
     resetForm();
   };
+
+  const artTitle = singleArtwork.title;
 
   const submitClosingModalResponse = () => {
     dispatch(cleanApiResponseActionCreator());
@@ -121,14 +175,31 @@ const AddEditForm = (): JSX.Element => {
           <div>
             <div className="addedit__form">
               <form onSubmit={submitCreate} noValidate autoComplete="off">
-                <div className="addedit__text--container">
-                  <p className="addedit__text--intro">ADD YOUR WORK</p>
-                  <p className="addedit__text--intro">TO START SELLING AND </p>
-                  <p className="addedit__text--intro">
-                    RENTING
-                    <span className="addedit__text--colored"> RIGHT NOW!</span>
-                  </p>
-                </div>
+                {artworkId ? (
+                  <div className="addedit__text--container">
+                    <p className="addedit__text--intro">EDIT YOUR WORK</p>
+                    <p className="addedit__text--intro">
+                      {" "}
+                      <span className="addedit__text--colored-edit">
+                        {`"${artTitle}"`}
+                      </span>{" "}
+                    </p>
+                  </div>
+                ) : (
+                  <div className="addedit__text--container">
+                    <p className="addedit__text--intro">ADD YOUR WORK</p>
+                    <p className="addedit__text--intro">
+                      TO START SELLING AND{" "}
+                    </p>
+                    <p className="addedit__text--intro">
+                      RENTING
+                      <span className="addedit__text--colored">
+                        {" "}
+                        RIGHT NOW!
+                      </span>
+                    </p>
+                  </div>
+                )}
                 <div className="addedit__form--container-labels">
                   <div className="addedit__form--first-labels">
                     <label className="addedit__label" htmlFor="title">
@@ -263,14 +334,25 @@ const AddEditForm = (): JSX.Element => {
                   </div>
                 </div>
                 <div className="addedit__button--container">
-                  <button
-                    className="addedit__button"
-                    type="submit"
-                    disabled={false}
-                    value="Send"
-                  >
-                    ADD YOUR ART
-                  </button>
+                  {artworkId ? (
+                    <button
+                      className="addedit__button"
+                      type="submit"
+                      disabled={false}
+                      value="Send"
+                    >
+                      EDIT YOUR ART
+                    </button>
+                  ) : (
+                    <button
+                      className="addedit__button"
+                      type="submit"
+                      disabled={false}
+                      value="Send"
+                    >
+                      ADD YOUR ART
+                    </button>
+                  )}
                 </div>
               </form>
             </div>
