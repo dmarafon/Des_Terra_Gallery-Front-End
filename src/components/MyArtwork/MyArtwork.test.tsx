@@ -4,6 +4,7 @@ import { Provider } from "react-redux";
 import { BrowserRouter } from "react-router-dom";
 import store from "../../redux/store/store";
 import { loadUserArtworks } from "../../redux/thunks/artworkThunks";
+import { loadSingleArtworkThunk } from "../../redux/thunks/singleArtworkThunk";
 import MyArtwork from "./MyArtwork";
 
 describe("Given a MyArtwork component", () => {
@@ -109,6 +110,32 @@ describe("Given a MyArtwork component", () => {
         loadActionDispatch(dispatch);
 
         deleteActionDispatch(dispatch);
+
+        expect(dispatch).toHaveBeenCalled();
+      });
+    });
+
+    describe("When it's invoked with a user logged in and the user clicks in the edit button", () => {
+      test("Then it will dispatch the action to load a single user artwork to be edited", async () => {
+        const userId = "1234";
+
+        render(
+          <BrowserRouter>
+            <Provider store={store}>
+              <MyArtwork artwork={artwork} />
+            </Provider>
+          </BrowserRouter>
+        );
+
+        const editButton = screen.getByTestId("myartwork-test1");
+
+        userEvent.click(editButton);
+
+        const dispatch = jest.fn();
+
+        const loadSingleActionDispatch = loadSingleArtworkThunk(userId);
+
+        loadSingleActionDispatch(dispatch);
 
         expect(dispatch).toHaveBeenCalled();
       });

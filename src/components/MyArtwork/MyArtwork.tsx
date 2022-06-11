@@ -57,7 +57,6 @@ const MyArtwork = ({
       },
     ];
     loadSingleArtwork(artwork);
-    sessionStorage.setItem("editArtwork", JSON.stringify(artwork));
   };
 
   const deleteArt = async () => {
