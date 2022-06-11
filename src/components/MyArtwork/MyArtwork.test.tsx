@@ -2,9 +2,18 @@ import { render, screen } from "@testing-library/react";
 import userEvent from "@testing-library/user-event";
 import { Provider } from "react-redux";
 import { BrowserRouter } from "react-router-dom";
+import { server } from "../../mocks/server";
 import store from "../../redux/store/store";
-import { loadUserArtworks } from "../../redux/thunks/artworkThunks";
+import {
+  deleteArtworkThunk,
+  loadUserArtworks,
+} from "../../redux/thunks/artworkThunks";
+import { loadSingleArtworkThunk } from "../../redux/thunks/singleArtworkThunk";
 import MyArtwork from "./MyArtwork";
+
+beforeEach(() => server.listen());
+afterEach(() => server.resetHandlers());
+afterAll(() => server.close());
 
 describe("Given a MyArtwork component", () => {
   describe("When it's invoked and given 1 artwork to render", () => {
@@ -69,13 +78,13 @@ describe("Given a MyArtwork component", () => {
 
         const dispatch = jest.fn();
 
-        const deleteActionDispatch = loadUserArtworks(userId);
+        const deleteActionDispatch = deleteArtworkThunk(userId);
+
+        deleteActionDispatch(dispatch);
 
         const loadActionDispatch = loadUserArtworks(userId);
 
         loadActionDispatch(dispatch);
-
-        deleteActionDispatch(dispatch);
 
         expect(dispatch).toHaveBeenCalled();
       });
@@ -109,6 +118,32 @@ describe("Given a MyArtwork component", () => {
         loadActionDispatch(dispatch);
 
         deleteActionDispatch(dispatch);
+
+        expect(dispatch).toHaveBeenCalled();
+      });
+    });
+
+    describe("When it's invoked with a user logged in and the user clicks in the edit button", () => {
+      test("Then it will dispatch the action to load a single user artwork to be edited", async () => {
+        const userId = "1234";
+
+        render(
+          <BrowserRouter>
+            <Provider store={store}>
+              <MyArtwork artwork={artwork} />
+            </Provider>
+          </BrowserRouter>
+        );
+
+        const editButton = screen.getByTestId("myartwork-test1");
+
+        userEvent.click(editButton);
+
+        const dispatch = jest.fn();
+
+        const loadSingleActionDispatch = loadSingleArtworkThunk(userId);
+
+        loadSingleActionDispatch(dispatch);
 
         expect(dispatch).toHaveBeenCalled();
       });

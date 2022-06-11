@@ -67,6 +67,7 @@ export const deleteArtworkThunk =
           headers: { Authorization: `Bearer ${localStorage.token}` },
         }
       );
+
       dispatch(finishedLoadingActionCreator());
 
       checkStatusCode(status, artworkId);

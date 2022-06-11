@@ -15,6 +15,7 @@ import ArtworksPage from "./pages/ArtworksPage/ArtworksPage";
 import MyArtPage from "./pages/MyArtPage/MyArtPage";
 import Gatekeeper from "./components/Gatekeeper/Gatekeeper";
 import AddEditPage from "./pages/AddEditPage/AddEditPage";
+import GatekeeperReversed from "./components/GateKeeperReversed/GatekeeperReversed";
 
 const App = (): JSX.Element => {
   const dispatch = useAppDispatch();
@@ -59,8 +60,22 @@ const App = (): JSX.Element => {
       />
       <Route path="/about" element={<AboutPage />} />
       <Route path="/artwork" element={<ArtworksPage />} />
-      <Route path="/users/login" element={<LoginPage />} />
-      <Route path="/users/register" element={<RegisterPage />} />
+      <Route
+        path="/users/login"
+        element={
+          <GatekeeperReversed>
+            <LoginPage />
+          </GatekeeperReversed>
+        }
+      />
+      <Route
+        path="/users/register"
+        element={
+          <GatekeeperReversed>
+            <RegisterPage />
+          </GatekeeperReversed>
+        }
+      />
     </Routes>
   );
 };
