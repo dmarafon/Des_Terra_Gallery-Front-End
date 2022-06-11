@@ -95,7 +95,6 @@ const AboutPageStyled = styled.div`
   }
 
   .about__container {
-    display: flex;
     text-align: left;
     font-family: "Karla", sans-serif;
     text-decoration: none;

@@ -16,6 +16,7 @@ import MyArtPage from "./pages/MyArtPage/MyArtPage";
 import Gatekeeper from "./components/Gatekeeper/Gatekeeper";
 import AddEditPage from "./pages/AddEditPage/AddEditPage";
 import GatekeeperReversed from "./components/GateKeeperReversed/GatekeeperReversed";
+import DetailArtworkPage from "./pages/DetailArtworkPage/DetailArtworkPage";
 
 const App = (): JSX.Element => {
   const dispatch = useAppDispatch();
@@ -60,6 +61,7 @@ const App = (): JSX.Element => {
       />
       <Route path="/about" element={<AboutPage />} />
       <Route path="/artwork" element={<ArtworksPage />} />
+      <Route path="/artwork/:artworkId" element={<DetailArtworkPage />} />
       <Route
         path="/users/login"
         element={
