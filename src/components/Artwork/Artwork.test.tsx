@@ -61,7 +61,7 @@ describe("Given a Artwork component", () => {
       id: "6294aa4bc78dbede9429006e",
     };
 
-    test("Then it should create 1 list item with an empty name  field", () => {
+    test("Then it should create 1 list item with an empty name field", () => {
       const totalNumberOfLists = 1;
 
       render(<Artwork artwork={artwork} />);

@@ -54,7 +54,7 @@ describe("Given a AddEditForm component function", () => {
   });
 
   describe("When the user types 'My Title' in the firstname input field", () => {
-    test("Then its value should be 'My Name", () => {
+    test("Then its value should be 'My Title", () => {
       const inputText = "My Title";
 
       render(
