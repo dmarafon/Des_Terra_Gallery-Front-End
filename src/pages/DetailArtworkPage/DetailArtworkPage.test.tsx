@@ -3,10 +3,9 @@ import { Provider } from "react-redux";
 import { BrowserRouter } from "react-router-dom";
 import { artworkMock } from "../../mocks/artworkMock";
 import store from "../../redux/store/store";
-import { loadUserArtworks } from "../../redux/thunks/artworkThunks";
 import DetailArtworkPage from "./DetailArtworkPage";
 
-describe("Given a MyArtPage", () => {
+describe("Given a DetailArtworkPage", () => {
   describe("When it's invoked with 1 art item in the store", () => {
     const loadUserArtworks = {
       type: "singleArtwork/loadSingleArtwork",
@@ -102,13 +101,6 @@ describe("Given a MyArtPage", () => {
       expect(elementIconButton3).toBeInTheDocument();
 
       expect(displayImage).toHaveLength(totalImages);
-
-      // const dispatch = jest.fn();
-
-      // const actionDispatch = loadUserArtworks(userId);
-      // await actionDispatch(dispatch);
-
-      // expect(dispatch).toHaveBeenCalled();
     });
   });
 });

@@ -147,7 +147,7 @@ const HeaderStyled = styled.header`
     .menu {
       position: absolute;
       top: -1000px;
-      margin-top: 100px;
+      margin-top: 145px;
       left: 0;
       flex-direction: column;
       width: 100%;
