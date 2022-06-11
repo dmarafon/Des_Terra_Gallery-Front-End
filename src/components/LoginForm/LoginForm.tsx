@@ -23,7 +23,6 @@ const LoginForm = (): JSX.Element => {
   const dispatch = useAppDispatch();
 
   useEffect(() => {
-    debugger;
     if (logged) {
       navigate("/home");
     }

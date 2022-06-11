@@ -60,13 +60,8 @@ const MyArtwork = ({
   };
 
   const deleteArt = async () => {
-    debugger;
-
     await dispatch(deleteArtworkThunk(id));
-    debugger;
     dispatch(cleanApiResponseActionCreator());
-    debugger;
-
     dispatch(loadUserArtworks(userId));
   };
 

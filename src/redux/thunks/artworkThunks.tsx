@@ -58,7 +58,6 @@ export const loadUserArtworks =
 
 export const deleteArtworkThunk =
   (artworkId: any) => async (dispatch: AppDispatch) => {
-    debugger;
     try {
       dispatch(loadingActionCreator());
 
@@ -68,15 +67,11 @@ export const deleteArtworkThunk =
           headers: { Authorization: `Bearer ${localStorage.token}` },
         }
       );
-      debugger;
 
       dispatch(finishedLoadingActionCreator());
-      debugger;
 
       checkStatusCode(status, artworkId);
-      debugger;
     } catch (error: any) {
-      debugger;
       const errorResponse = errorLoginValidation(error);
       dispatch(finishedLoadingActionCreator());
       dispatch(apiResponseActionCreator(errorResponse));
