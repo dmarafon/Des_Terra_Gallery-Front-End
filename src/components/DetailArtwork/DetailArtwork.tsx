@@ -50,7 +50,7 @@ const DetailArtwork = (): JSX.Element => {
           <li className="detail__list">Medium: {medium}</li>
           <li className="detail__list">
             {monthlyrateprice} €{" "}
-            <span className="detail__paragraph--special_second">/month</span> |
+            <span className="detail__paragraph--special_second">/month</span> |{" "}
             {purchaseprice} €
             <span className="detail__paragraph--special_second"> Purchase</span>
           </li>
