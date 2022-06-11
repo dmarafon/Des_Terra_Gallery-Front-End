@@ -16,9 +16,9 @@ const Artwork = ({
 }) => {
   const firstnameUpperCase = author[0]?.firstname?.toUpperCase();
   const surnameUpperCase = author[0]?.surname?.toUpperCase();
-  debugger;
+
   const titleUpperCase = title.toUpperCase();
-  debugger;
+
   return (
     <li className="artwork__list" key={id}>
       <ArtworkStyled>

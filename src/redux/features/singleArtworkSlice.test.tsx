@@ -1,14 +1,32 @@
-import { artworkMock } from "../../mocks/artworkMock";
-import { IArtworks } from "../../types/artworksInterface";
-import artworksSlice, { loadartworksActionCreator } from "./artworkSlice";
-import { loadSingleArtworkActionCreator } from "./singleArtworkSlice";
+import singleArtworkSlice, {
+  loadSingleArtworkActionCreator,
+} from "./singleArtworkSlice";
 
 describe("Given a singleArtworkReduces", () => {
   describe("When it receives an initial state and a loadSingleArtwork action with 1 art as payload", () => {
     test("Then it should return a new records state with the 3 art objecs and an array of the 3 arts", () => {
-      const artworkPayload = artworkMock[0];
-
       const initialStatus = {
+        title: "",
+        medium: "",
+        height: "",
+        width: "",
+        style: "",
+        description: "",
+        author: [
+          {
+            surname: "",
+            firstname: "",
+            id: "",
+          },
+        ],
+        purchaseprice: "",
+        monthlyrateprice: "",
+        image: "",
+        imagebackup: "",
+        id: "",
+      };
+
+      const artworkPayload = {
         title: "concreto",
         medium: "drawing on paper",
         height: "20 inches",
@@ -20,6 +38,7 @@ describe("Given a singleArtworkReduces", () => {
           {
             surname: "perea",
             firstname: "jesus",
+            id: "1223331",
           },
         ],
         purchaseprice: "120",
@@ -29,11 +48,11 @@ describe("Given a singleArtworkReduces", () => {
         id: "6294aa4bc78dbede94290071",
       };
 
-      const expectedNewState = { ...initialStatus };
+      const expectedNewState = { ...artworkPayload };
 
-      const loadArworkAction = loadSingleArtworkActionCreator(initialStatus);
+      const loadArworkAction = loadSingleArtworkActionCreator(artworkPayload);
 
-      const newState = artworksSlice(initialStatus, loadArworkAction);
+      const newState = singleArtworkSlice(initialStatus, loadArworkAction);
 
       expect(newState).toEqual(expectedNewState);
     });
