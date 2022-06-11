@@ -27,6 +27,7 @@ describe("Given a LoggedChecked function", () => {
       jest.mock("react-router-dom", () => ({
         useNavigate: () => mockUseNavigate,
       }));
+
       render(
         <BrowserRouter>
           <Provider store={store}>

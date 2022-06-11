@@ -37,8 +37,6 @@ describe("Given a MyArtwork component", () => {
       id: "6294aa4bc78dbede9429006e",
     };
     test("Then it will dispatch the action to delete and to load again the users artworks", async () => {
-      const userId = "1234";
-
       render(
         <BrowserRouter>
           <Provider store={store}>

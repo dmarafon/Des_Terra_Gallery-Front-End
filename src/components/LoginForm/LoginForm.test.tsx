@@ -51,7 +51,7 @@ describe("Given a Login Page", () => {
     });
   });
   describe("When the user fills the name, username and password fields", () => {
-    test("Then the register button should be enabled", () => {
+    test("Then the login button should be enabled", () => {
       const textInput = ["jose", "1234"];
 
       render(
@@ -71,6 +71,30 @@ describe("Given a Login Page", () => {
       userEvent.type(passwordField, textInput[1]);
 
       expect(signInButton).not.toBeDisabled();
+    });
+  });
+
+  describe("When it's invoked and an user clicks on the 'Login' button and login successfully", () => {
+    test("Then it should be redirectioned to the Home Page", () => {
+      const textInput = ["jose", "1234"];
+
+      render(
+        <BrowserRouter>
+          <Provider store={store}>
+            <LoginForm />
+          </Provider>
+        </BrowserRouter>
+      );
+      const usernameField = screen.getByLabelText("EMAIL");
+      const passwordField = screen.getByLabelText("PASSWORD");
+
+      userEvent.type(usernameField, textInput[0]);
+      userEvent.type(passwordField, textInput[1]);
+
+      const signInButton = screen.getByRole("button", { name: "SIGN IN" });
+      userEvent.click(signInButton);
+
+      expect(mockDispatch).toHaveBeenCalled();
     });
   });
 });
