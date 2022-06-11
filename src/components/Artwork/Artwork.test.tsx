@@ -1,4 +1,5 @@
 import { render, screen } from "@testing-library/react";
+import { BrowserRouter } from "react-router-dom";
 import Artwork from "./Artwork";
 
 describe("Given a Artwork component", () => {
@@ -29,7 +30,11 @@ describe("Given a Artwork component", () => {
     test("Then it should create 1 list item", () => {
       const totalNumberOfLists = 1;
 
-      render(<Artwork artwork={artwork} />);
+      render(
+        <BrowserRouter>
+          <Artwork artwork={artwork} />
+        </BrowserRouter>
+      );
 
       const artworkListElement = screen.getAllByRole("listitem");
 
@@ -64,7 +69,11 @@ describe("Given a Artwork component", () => {
     test("Then it should create 1 list item with an empty name field", () => {
       const totalNumberOfLists = 1;
 
-      render(<Artwork artwork={artwork} />);
+      render(
+        <BrowserRouter>
+          <Artwork artwork={artwork} />
+        </BrowserRouter>
+      );
 
       const artworkListElement = screen.getAllByRole("listitem");
 

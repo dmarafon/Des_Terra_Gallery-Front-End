@@ -1,3 +1,4 @@
+import { NavLink } from "react-router-dom";
 import { IArtworks } from "../../types/artworksInterface";
 import ArtworkStyled from "./ArtworkStyled";
 
@@ -23,13 +24,15 @@ const Artwork = ({
     <li className="artwork__list" key={id}>
       <ArtworkStyled>
         <div className="artwork__container">
-          <img
-            className="artwork__image"
-            src={imagebackup}
-            alt={`painting by ${
-              firstnameUpperCase ? firstnameUpperCase : ""
-            }  ${surnameUpperCase ? surnameUpperCase : ""}`}
-          />
+          <NavLink to={`/artwork/${id}`}>
+            <img
+              className="artwork__image"
+              src={imagebackup}
+              alt={`painting by ${
+                firstnameUpperCase ? firstnameUpperCase : ""
+              }  ${surnameUpperCase ? surnameUpperCase : ""}`}
+            />
+          </NavLink>
           <div className="artwork__text">
             <h2 className="artwork__text--author">{`${firstnameUpperCase} ${surnameUpperCase}`}</h2>
             <h3 className="artwork__text--title">{titleUpperCase}</h3>
