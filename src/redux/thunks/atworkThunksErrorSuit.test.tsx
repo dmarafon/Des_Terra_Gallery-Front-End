@@ -3,6 +3,7 @@ import axios from "axios";
 import {
   createArtworkThunk,
   deleteArtworkThunk,
+  editArtworkThunk,
   loadArtworksThunk,
   loadUserArtworks,
 } from "./artworkThunks";
@@ -78,6 +79,23 @@ describe("Given the createArtwork", () => {
       await thunk(dispatch);
 
       expect(dispatch).toHaveBeenCalled();
+    });
+  });
+  describe("Given the editArtwork", () => {
+    describe("When invoked and a error thrown", () => {
+      jest.spyOn(axios, "put").mockImplementation(() => {
+        throw new Error();
+      });
+
+      const artworTest = artworkMock[0];
+      test("Then the dispatch function will be called", async () => {
+        const dispatch = jest.fn();
+
+        const thunk = editArtworkThunk(artworTest, artworTest.id);
+        await thunk(dispatch);
+
+        expect(dispatch).toHaveBeenCalled();
+      });
     });
   });
 });

@@ -5,6 +5,7 @@ import { loadartworksActionCreator } from "../features/artworkSlice";
 import {
   createArtworkThunk,
   deleteArtworkThunk,
+  editArtworkThunk,
   loadArtworksThunk,
   loadUserArtworks,
 } from "./artworkThunks";
@@ -127,6 +128,19 @@ describe("Given the createArtworkThunk function", () => {
       await thunk(dispatch);
 
       expect(dispatch).toHaveBeenCalled();
+    });
+  });
+
+  describe("Given the editArtworkThunk function", () => {
+    describe("When  is invoked", () => {
+      test("Then the dispatch function will be called", async () => {
+        const dispatch = jest.fn();
+
+        const thunk = editArtworkThunk(artworkMock[0], artworkMock[0].id);
+        await thunk(dispatch);
+
+        expect(dispatch).toHaveBeenCalled();
+      });
     });
   });
 });
