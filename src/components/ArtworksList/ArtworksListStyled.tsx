@@ -18,6 +18,12 @@ const ArtworksListStyled = styled.div`
     justify-content: center;
     padding-inline-start: 0;
   }
+
+  .artwork__filter--container {
+    display: flex;
+    justify-content: center;
+  }
+
   .artworks__navigate--button_first {
     filter: invert(61%) sepia(10%) saturate(5710%) hue-rotate(335deg)
       brightness(102%) contrast(96%);
@@ -49,9 +55,10 @@ const ArtworksListStyled = styled.div`
   }
 
   .artworks__navigate--button_deactivated_right {
+    filter: invert(100%) sepia(0%) saturate(7452%) hue-rotate(15deg)
+      brightness(134%) contrast(100%);
     width: 10vh;
     margin-right: 100px;
-    cursor: default;
     @media (max-width: 995px) {
       position: fixed;
       right: 5%;
@@ -80,7 +87,65 @@ const ArtworksListStyled = styled.div`
     color: #fa803b;
     font-weight: bolder;
     font-size: 200%;
+    font-family: "Karla", sans-serif;
     cursor: default;
+  }
+
+  .dropdown__container {
+    display: flex;
+    justify-content: flex-end;
+    margin-right: 10%;
+  }
+
+  dropdown__container--right {
+    display: flex;
+    justify-content: flex-end;
+    margin-right: 0;
+  }
+
+  .dropbtn {
+    background-color: #ffff;
+    color: black;
+    border: 1px solid black;
+    font-weight: bolder;
+    border-radius: 5px;
+    padding: 12px;
+    font-family: "Karla", sans-serif;
+    font-size: 16px;
+  }
+
+  .dropdown {
+    position: relative;
+    display: inline-block;
+  }
+
+  .dropdown-content {
+    display: none;
+    position: absolute;
+    background-color: #ffff;
+    min-width: 160px;
+    box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
+    z-index: 1;
+  }
+
+  .dropdown-content a {
+    color: black;
+    padding: 12px 16px;
+    text-decoration: none;
+    display: block;
+  }
+
+  .dropdown-content a:hover {
+    background-color: #ddd;
+  }
+
+  .dropdown:hover .dropdown-content {
+    display: block;
+  }
+
+  .dropdown:hover .dropbtn {
+    background-color: #fac43b;
+    color: black;
   }
 `;
 export default ArtworksListStyled;
