@@ -134,7 +134,7 @@ const ArtworksList = () => {
                 </div>
               </div>
             </div>
-            <div className="dropdown__container">
+            <div className="dropdown__container--center">
               <div className="dropdown">
                 <button className="dropbtn">SORT BY RENT PRICE</button>
                 <div className="dropdown-content">
@@ -194,6 +194,43 @@ const ArtworksList = () => {
                     Urban
                   </NavLink>
                 </div>
+              </div>
+            </div>
+          </div>
+          <div className="dropdown__container--right_responsive">
+            <div className="dropdown">
+              <button className="dropbtn">SELECT YOUR STYLE</button>
+              <div className="dropdown-content">
+                <NavLink to={`/artwork/1/abstract/sortOrderRent=-1`}>
+                  Abstract
+                </NavLink>
+                <NavLink to={`/artwork/1/architecture/sortOrderRent=-1`}>
+                  Architecture
+                </NavLink>
+                <NavLink to={`/artwork/1/expressionist/sortOrderRent=-1`}>
+                  Expressionist
+                </NavLink>
+                <NavLink to={`/artwork/1/figurative/sortOrderRent=-1`}>
+                  Figurative
+                </NavLink>
+                <NavLink to={`/artwork/1/geometric/sortOrderRent=-1`}>
+                  Geometric
+                </NavLink>
+                <NavLink to={`/artwork/1/minimal/sortOrderRent=-1`}>
+                  Minimal
+                </NavLink>
+                <NavLink to={`/artwork/1/nature/sortOrderRent=-1`}>
+                  Nature
+                </NavLink>
+                <NavLink to={`/artwork/1/people/sortOrderRent=-1`}>
+                  People
+                </NavLink>
+                <NavLink to={`/artwork/1/psychedelic/sortOrderRent=-1`}>
+                  Psychedelic
+                </NavLink>
+                <NavLink to={`/artwork/1/urban/sortOrderRent=-1`}>
+                  Urban
+                </NavLink>
               </div>
             </div>
           </div>

@@ -21,6 +21,7 @@ const ArtworksListStyled = styled.div`
 
   .artwork__filter--container {
     display: flex;
+    margin-top: 50px;
     justify-content: center;
   }
 
@@ -93,18 +94,39 @@ const ArtworksListStyled = styled.div`
 
   .dropdown__container {
     display: flex;
-    justify-content: flex-end;
     margin-right: 10%;
   }
 
-  dropdown__container--right {
+  .dropdown__container--center {
     display: flex;
-    justify-content: flex-end;
+    justify-content: center;
     margin-right: 0;
   }
 
+  .dropdown__container--right {
+    display: flex;
+    justify-content: center;
+    margin-right: 0;
+    margin-left: 10%;
+    @media (max-width: 1492px) {
+      display: none;
+    }
+  }
+
+  .dropdown__container--right_responsive {
+    display: flex;
+    margin-right: 300px;
+    margin-top: 50px;
+    margin-left: 0;
+    margin-right: 0;
+    justify-content: center;
+    @media (min-width: 1492px) {
+      display: none;
+    }
+  }
+
   .dropbtn {
-    background-color: #ffff;
+    background-color: #fac43b;
     color: black;
     border: 1px solid black;
     font-weight: bolder;
@@ -123,7 +145,6 @@ const ArtworksListStyled = styled.div`
     display: none;
     position: absolute;
     background-color: #ffff;
-    min-width: 160px;
     box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
     z-index: 1;
   }
@@ -144,7 +165,7 @@ const ArtworksListStyled = styled.div`
   }
 
   .dropdown:hover .dropbtn {
-    background-color: #fac43b;
+    background-color: #ffd15c;
     color: black;
   }
 `;
