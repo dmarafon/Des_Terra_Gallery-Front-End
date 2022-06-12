@@ -1,4 +1,4 @@
-import { useEffect } from "react";
+import { useCallback, useEffect } from "react";
 import { useNavigate, useParams } from "react-router-dom";
 import { loadArtworksThunk } from "../../redux/thunks/artworkThunks";
 import Artwork from "../Artwork/Artwork";
@@ -14,7 +14,6 @@ const ArtworksList = () => {
 
   const navigate = useNavigate();
 
-  console.log(page);
   const { totalPage, currentPage } = useAppSelector(
     (state) => state.pagination
   );
@@ -25,20 +24,26 @@ const ArtworksList = () => {
     return userCurrentPage;
   };
 
+  const calaculateLinkPage = useCallback(() => {
+    const pageQuery = (Number(page) - 1) * limitPage + 1;
+
+    return pageQuery.toString();
+  }, [page]);
+
   const dispatch = useAppDispatch();
 
   useEffect(() => {
-    dispatch(loadArtworksThunk("", "", "", page));
-  }, [currentPage, dispatch, page]);
+    dispatch(loadArtworksThunk("", "", "", calaculateLinkPage()));
+  }, [calaculateLinkPage, currentPage, dispatch, page]);
 
   const changePageBack = () => {
-    let nextPage = Number(page) - limitPage;
+    const nextPage = Number(page) - 1;
 
     navigate(`/artwork/${nextPage}`);
   };
 
   const changePageForward = () => {
-    let nextPage = Number(page) + limitPage;
+    const nextPage = Number(page) + 1;
 
     navigate(`/artwork/${nextPage}`);
   };
