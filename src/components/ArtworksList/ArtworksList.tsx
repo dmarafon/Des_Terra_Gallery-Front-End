@@ -71,7 +71,7 @@ const ArtworksList = () => {
       );
     } else if (sortOrderRent) {
       navigate(`/artwork/${nextPage}/sortOrderRent=${sortOrderRent}`);
-    } else if (sortOrderRent) {
+    } else if (sortOrderPurchase) {
       navigate(`/artwork/${nextPage}/sortOrderPurchase=${sortOrderPurchase}`);
     } else {
       navigate(`/artwork/${nextPage}`);
@@ -91,7 +91,7 @@ const ArtworksList = () => {
       );
     } else if (sortOrderRent) {
       navigate(`/artwork/${nextPage}/sortOrderRent=${sortOrderRent}`);
-    } else if (sortOrderRent) {
+    } else if (sortOrderPurchase) {
       navigate(`/artwork/${nextPage}/sortOrderPurchase=${sortOrderPurchase}`);
     } else {
       navigate(`/artwork/${nextPage}`);
