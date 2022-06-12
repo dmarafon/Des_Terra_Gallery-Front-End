@@ -59,7 +59,7 @@ const Header = (): JSX.Element => {
                 <NavLink to={"/about"}>Why Desterra?</NavLink>
               </li>
               <li>
-                <NavLink to="/artwork">Artwork</NavLink>
+                <NavLink to="/artwork/1">Artwork</NavLink>
               </li>
               {userData.logged ? (
                 <li onClick={submitLogOut}>
