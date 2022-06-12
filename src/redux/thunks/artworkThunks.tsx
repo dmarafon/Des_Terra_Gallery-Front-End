@@ -5,6 +5,7 @@ import {
   errorRegistrationValidation,
 } from "../../components/utils/errorValidation";
 import { loadartworksActionCreator } from "../features/artworkSlice";
+import { countPaginationActionCreator } from "../features/paginationSlice";
 import {
   apiResponseActionCreator,
   finishedLoadingActionCreator,
@@ -57,12 +58,14 @@ export const loadArtworksThunk =
         }
       } else {
         const {
-          data: { artworks },
+          data: { artworks, totalPage, currentPage },
         } = await axios.get(`${url}all?page=${page}&limit=12`);
         dispatch(finishedLoadingActionCreator());
 
         if (artworks) {
-          dispatch(loadartworksActionCreator(artworks));
+          const pagination = { totalPage, currentPage };
+          await dispatch(loadartworksActionCreator(artworks));
+          dispatch(countPaginationActionCreator(pagination));
         } else {
           dispatch(finishedLoadingActionCreator());
           throw new Error("No Artworks");

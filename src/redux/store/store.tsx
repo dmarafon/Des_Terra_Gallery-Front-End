@@ -4,6 +4,7 @@ import uiReducer from "../features/uiSlice";
 import artworkReducer from "../features/artworkSlice";
 import userArtworksReducer from "../features/userArtworkSlice";
 import singleArtworkReducer from "../features/singleArtworkSlice";
+import paginationReducer from "../features/paginationSlice";
 
 const store = configureStore({
   reducer: {
@@ -12,6 +13,7 @@ const store = configureStore({
     artworks: artworkReducer,
     userArtworks: userArtworksReducer,
     singleArtwork: singleArtworkReducer,
+    pagination: paginationReducer,
   },
 });
 
