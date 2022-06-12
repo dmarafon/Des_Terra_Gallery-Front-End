@@ -101,7 +101,7 @@ const MyArtwork = ({
       <li className="artwork__list" key={id}>
         <MyArtworkStyled>
           <div className="artwork__container">
-            <NavLink to={`/artwork/${id}`}>
+            <NavLink to={`/artwork/details/${id}`}>
               <img
                 className="artwork__image"
                 src={imagebackup}

@@ -61,7 +61,10 @@ const App = (): JSX.Element => {
       />
       <Route path="/about" element={<AboutPage />} />
       <Route path="/artwork/:page" element={<ArtworksPage />} />
-      <Route path="/artwork/:artworkId" element={<DetailArtworkPage />} />
+      <Route
+        path="/artwork/details/:artworkId"
+        element={<DetailArtworkPage />}
+      />
       <Route
         path="/users/login"
         element={
