@@ -60,6 +60,10 @@ describe("Given an App component", () => {
           title: "",
           width: "",
         },
+        pagination: {
+          totalPage: 0,
+          currentPage: "",
+        },
       };
 
       expect(getStoreActionState).toStrictEqual(expectedTokenData);
