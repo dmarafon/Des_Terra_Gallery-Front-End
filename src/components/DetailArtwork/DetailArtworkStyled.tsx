@@ -86,6 +86,7 @@ const DetailArtworkStyled = styled.div`
     font-weight: 400;
     font-size: 23px;
     margin-bottom: 25px;
+    text-transform: capitalize;
   }
 
   .detail__image--container {

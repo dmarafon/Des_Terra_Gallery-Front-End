@@ -15,6 +15,7 @@ const DetailArtwork = (): JSX.Element => {
     height,
     width,
     medium,
+    style,
     monthlyrateprice,
     purchaseprice,
     description,
@@ -48,6 +49,8 @@ const DetailArtwork = (): JSX.Element => {
             Dimensions: Height {height} in x Width {width} in.
           </li>
           <li className="detail__list">Medium: {medium}</li>
+          <li className="detail__list">Style: {style}</li>
+
           <li className="detail__list">
             {monthlyrateprice} €{" "}
             <span className="detail__paragraph--special_second">/month</span> |{" "}

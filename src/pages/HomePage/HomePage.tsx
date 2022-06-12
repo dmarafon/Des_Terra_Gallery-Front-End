@@ -16,7 +16,7 @@ const HomePage = (): JSX.Element => {
               <p>Part 2</p>
             </div>
             <div className="home__image--container">
-              <NavLink to={`/artwork/62a4d428e3ffe55db3fa7e18`}>
+              <NavLink to={`/artwork/details/62a4d428e3ffe55db3fa7e18`}>
                 <img
                   className="home__image--first"
                   src="https://firebasestorage.googleapis.com/v0/b/desterra-181ac.appspot.com/o/summer_painting-part-2-high.jpeg?alt=media&token=85032b5c-9380-4e35-ad7d-8ce078cb4f8c"

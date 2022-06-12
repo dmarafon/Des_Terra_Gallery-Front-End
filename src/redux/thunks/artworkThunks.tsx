@@ -5,6 +5,7 @@ import {
   errorRegistrationValidation,
 } from "../../components/utils/errorValidation";
 import { loadartworksActionCreator } from "../features/artworkSlice";
+import { countPaginationActionCreator } from "../features/paginationSlice";
 import {
   apiResponseActionCreator,
   finishedLoadingActionCreator,
@@ -14,27 +15,104 @@ import { loadUserartworksActionCreator } from "../features/userArtworkSlice";
 
 import { AppDispatch } from "../store/store";
 
-export const loadArtworksThunk = () => async (dispatch: AppDispatch) => {
-  const url: string = `${process.env.REACT_APP_API_URL}artworks/all?page=1&limit=100`;
-  try {
-    dispatch(loadingActionCreator());
-    const {
-      data: { artworks },
-    } = await axios.get(url);
-    dispatch(finishedLoadingActionCreator());
+export const loadArtworksThunk =
+  (
+    filterStyle: string | void,
+    sortOrderPurchase: string | void,
+    sortOrderRent: string | void,
+    page: string | void
+  ) =>
+  async (dispatch: AppDispatch) => {
+    const url: string = `${process.env.REACT_APP_API_URL}artworks/`;
+    try {
+      dispatch(loadingActionCreator());
 
-    if (artworks) {
-      dispatch(loadartworksActionCreator(artworks));
-    } else {
+      if (filterStyle && sortOrderPurchase) {
+        const {
+          data: { artworks, totalPage, currentPage },
+        } = await axios.get(
+          `${url}all?page=${page}&limit=12&filterStyle=${filterStyle}&sortOrderPurchase=${sortOrderPurchase}`
+        );
+        dispatch(finishedLoadingActionCreator());
+
+        if (artworks) {
+          const pagination = { totalPage, currentPage };
+          await dispatch(loadartworksActionCreator(artworks));
+          dispatch(countPaginationActionCreator(pagination));
+        } else {
+          dispatch(finishedLoadingActionCreator());
+          throw new Error("No Artworks");
+        }
+        dispatch(finishedLoadingActionCreator());
+      } else if (filterStyle && sortOrderRent) {
+        const {
+          data: { artworks, totalPage, currentPage },
+        } = await axios.get(
+          `${url}all?page=${page}&limit=12&filterStyle=${filterStyle}&sortOrderRent=${sortOrderRent}`
+        );
+        dispatch(finishedLoadingActionCreator());
+
+        if (artworks) {
+          const pagination = { totalPage, currentPage };
+          await dispatch(loadartworksActionCreator(artworks));
+          dispatch(countPaginationActionCreator(pagination));
+        } else {
+          dispatch(finishedLoadingActionCreator());
+          throw new Error("No Artworks");
+        }
+      } else if (sortOrderRent) {
+        const {
+          data: { artworks, totalPage, currentPage },
+        } = await axios.get(
+          `${url}all?page=${page}&limit=12&sortOrderRent=${sortOrderRent}`
+        );
+        dispatch(finishedLoadingActionCreator());
+
+        if (artworks) {
+          const pagination = { totalPage, currentPage };
+          await dispatch(loadartworksActionCreator(artworks));
+          dispatch(countPaginationActionCreator(pagination));
+        } else {
+          dispatch(finishedLoadingActionCreator());
+          throw new Error("No Artworks");
+        }
+      } else if (sortOrderPurchase) {
+        const {
+          data: { artworks, totalPage, currentPage },
+        } = await axios.get(
+          `${url}all?page=${page}&limit=12&sortOrderPurchase=${sortOrderPurchase}`
+        );
+        dispatch(finishedLoadingActionCreator());
+
+        if (artworks) {
+          const pagination = { totalPage, currentPage };
+          await dispatch(loadartworksActionCreator(artworks));
+          dispatch(countPaginationActionCreator(pagination));
+        } else {
+          dispatch(finishedLoadingActionCreator());
+          throw new Error("No Artworks");
+        }
+      } else {
+        const {
+          data: { artworks, totalPage, currentPage },
+        } = await axios.get(`${url}all?page=${page}&limit=12`);
+        dispatch(finishedLoadingActionCreator());
+
+        if (artworks) {
+          const pagination = { totalPage, currentPage };
+          await dispatch(loadartworksActionCreator(artworks));
+          dispatch(countPaginationActionCreator(pagination));
+        } else {
+          dispatch(finishedLoadingActionCreator());
+          throw new Error("No Artworks");
+        }
+      }
+    } catch (error: any) {
+      const errorResponse = errorLoginValidation(error);
       dispatch(finishedLoadingActionCreator());
-      throw new Error("No Artworks");
+      dispatch(apiResponseActionCreator(errorResponse));
     }
-  } catch (error: any) {
-    const errorResponse = errorLoginValidation(error);
-    dispatch(finishedLoadingActionCreator());
-    dispatch(apiResponseActionCreator(errorResponse));
-  }
-};
+  };
 
 export const loadUserArtworks =
   (userId: string) => async (dispatch: AppDispatch) => {
