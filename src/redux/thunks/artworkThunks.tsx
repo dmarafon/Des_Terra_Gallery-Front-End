@@ -37,7 +37,7 @@ export const loadArtworksThunk =
 
         if (artworks) {
           const pagination = { totalPage, currentPage };
-          await dispatch(loadartworksActionCreator(artworks));
+          dispatch(loadartworksActionCreator(artworks));
           dispatch(countPaginationActionCreator(pagination));
         } else {
           dispatch(finishedLoadingActionCreator());
@@ -54,7 +54,7 @@ export const loadArtworksThunk =
 
         if (artworks) {
           const pagination = { totalPage, currentPage };
-          await dispatch(loadartworksActionCreator(artworks));
+          dispatch(loadartworksActionCreator(artworks));
           dispatch(countPaginationActionCreator(pagination));
         } else {
           dispatch(finishedLoadingActionCreator());
@@ -70,7 +70,7 @@ export const loadArtworksThunk =
 
         if (artworks) {
           const pagination = { totalPage, currentPage };
-          await dispatch(loadartworksActionCreator(artworks));
+          dispatch(loadartworksActionCreator(artworks));
           dispatch(countPaginationActionCreator(pagination));
         } else {
           dispatch(finishedLoadingActionCreator());
@@ -86,7 +86,7 @@ export const loadArtworksThunk =
 
         if (artworks) {
           const pagination = { totalPage, currentPage };
-          await dispatch(loadartworksActionCreator(artworks));
+          dispatch(loadartworksActionCreator(artworks));
           dispatch(countPaginationActionCreator(pagination));
         } else {
           dispatch(finishedLoadingActionCreator());
@@ -100,7 +100,7 @@ export const loadArtworksThunk =
 
         if (artworks) {
           const pagination = { totalPage, currentPage };
-          await dispatch(loadartworksActionCreator(artworks));
+          dispatch(loadartworksActionCreator(artworks));
           dispatch(countPaginationActionCreator(pagination));
         } else {
           dispatch(finishedLoadingActionCreator());
