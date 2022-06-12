@@ -9,7 +9,7 @@ const ArtworksPage = (): JSX.Element => {
   const dispatch = useAppDispatch();
 
   useEffect(() => {
-    dispatch(loadArtworksThunk());
+    dispatch(loadArtworksThunk("", "", "", "1"));
   }, [dispatch]);
 
   return (

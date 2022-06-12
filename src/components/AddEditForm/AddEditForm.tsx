@@ -232,7 +232,7 @@ const AddEditForm = (): JSX.Element => {
                     <input
                       className="addedit__input"
                       id="height"
-                      type="height"
+                      type="number"
                       placeholder="HEIGHT"
                       value={formData.height}
                       onChange={changeData}
@@ -245,12 +245,12 @@ const AddEditForm = (): JSX.Element => {
                     <input
                       className="addedit__input"
                       id="width"
-                      type="width"
                       placeholder="WIDTH"
                       value={formData.width}
                       onChange={changeData}
                       required
                       autoComplete="off"
+                      type="number"
                     />
                     <label className="addedit__label" htmlFor="style">
                       STYLE
@@ -290,6 +290,7 @@ const AddEditForm = (): JSX.Element => {
                       required
                       onChange={changeData}
                       autoComplete="off"
+                      type="number"
                     />
                     <label
                       className="addedit__label"
@@ -305,6 +306,7 @@ const AddEditForm = (): JSX.Element => {
                       onChange={changeData}
                       autoComplete="off"
                       required
+                      type="number"
                     />
                     <label className="addedit__label" htmlFor="description">
                       DESCRIPTION (MAX 240 CHAR)
