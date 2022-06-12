@@ -33,6 +33,34 @@ const ArtworksListStyled = styled.div`
     }
   }
 
+  .artworks__navigate--button_deactivated_left {
+    filter: invert(100%) sepia(0%) saturate(7452%) hue-rotate(15deg)
+      brightness(134%) contrast(100%);
+    width: 10vh;
+    margin-right: 100px;
+    cursor: default;
+    @media (max-width: 995px) {
+      position: fixed;
+      left: 5%;
+      bottom: 40%;
+      z-index: 1000;
+      width: 8vh;
+    }
+  }
+
+  .artworks__navigate--button_deactivated_right {
+    width: 10vh;
+    margin-right: 100px;
+    cursor: default;
+    @media (max-width: 995px) {
+      position: fixed;
+      right: 5%;
+      bottom: 40%;
+      z-index: 1000;
+      width: 8vh;
+    }
+  }
+
   .artworks__navigate--button_second {
     filter: invert(61%) sepia(10%) saturate(5710%) hue-rotate(335deg)
       brightness(102%) contrast(96%);
