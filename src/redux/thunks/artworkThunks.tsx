@@ -24,7 +24,6 @@ export const loadArtworksThunk =
   ) =>
   async (dispatch: AppDispatch) => {
     const url: string = `${process.env.REACT_APP_API_URL}artworks/`;
-
     try {
       dispatch(loadingActionCreator());
 
