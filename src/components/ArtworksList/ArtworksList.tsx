@@ -163,6 +163,7 @@ const ArtworksList = () => {
               <div className="dropdown">
                 <button className="dropbtn">SELECT YOUR STYLE</button>
                 <div className="dropdown-content">
+                  <NavLink to={`/artwork/1/`}>All Artworks</NavLink>
                   <NavLink to={`/artwork/1/abstract/sortOrderRent=-1`}>
                     Abstract
                   </NavLink>
