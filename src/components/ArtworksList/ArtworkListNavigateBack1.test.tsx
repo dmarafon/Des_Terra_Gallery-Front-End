@@ -7,7 +7,6 @@ import { server } from "../../mocks/server";
 import store from "../../redux/store/store";
 import ArtworkList from "./ArtworksList";
 import axios from "axios";
-import Router from "react-router-dom";
 
 beforeEach(() => server.listen());
 afterEach(() => server.resetHandlers());
