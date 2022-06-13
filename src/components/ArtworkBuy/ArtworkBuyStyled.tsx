@@ -7,24 +7,63 @@ const ArtworkBuyStyled = styled.div`
   margin: 20px;
   flex-direction: column;
 
+  .artwork_buy__text--title {
+    font-size: 1px;
+  }
+
   .artwork__list {
     display: flex;
   }
 
   .artwork__list--info {
     display: flex;
+    margin-top: 80px;
+    @media (max-width: 1150px) {
+      flex-direction: column;
+    }
+  }
+
+  .artwork__input {
+    width: 70px;
+    height: 30px;
+    border: 1px solid black;
+  }
+
+  .artwork__input[type="number"] {
+    font-size: 20px;
   }
 
   .artwork__container {
     position: relative;
-    margin: 20px;
     width: 345;
     text-align: center;
+    margin-right: 100px;
+    @media (max-width: 1150px) {
+      margin-right: 0px;
+    }
   }
 
   .artwork__rent--container {
     display: flex;
     flex-direction: column;
+    margin-right: 100px;
+    justify-content: space-between;
+    @media (max-width: 1150px) {
+      margin-right: 0px;
+      margin-top: 120px;
+    }
+  }
+
+  .artwork__purchase--container {
+    display: flex;
+    flex-direction: column;
+    margin-right: 100px;
+    justify-content: space-between;
+    @media (max-width: 1150px) {
+      margin-right: 0px;
+      margin-top: 150px;
+      margin-bottom: 70px;
+    }
   }
 
   .artwork_buy__button {
@@ -102,6 +141,25 @@ const ArtworkBuyStyled = styled.div`
     margin-left: 15px;
   }
 
+  .artworkbuy__text {
+    font-weight: 400;
+    font-size: 120%;
+  }
+
+  .artworkbuy__text--important {
+    font-weight: 700;
+    font-size: 120%;
+  }
+
+  .artworkbuy__text--important_total {
+    font-weight: 800;
+    font-size: 150%;
+  }
+
+  .artwork__buy--color {
+    color: #fa803b;
+  }
+
   .artwork__text--author {
     font-weight: lighter;
     font-size: 120%;
@@ -110,6 +168,7 @@ const ArtworkBuyStyled = styled.div`
   .artwork__text--title {
     margin-top: -5px;
     font-size: 150%;
+    font-weight: 700;
   }
 
   .artwork__text--price {

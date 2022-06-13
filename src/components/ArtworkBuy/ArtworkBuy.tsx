@@ -113,7 +113,12 @@ const ArtworkBuy = ({
           </div>
         </div>
         <div className="artwork__rent--container">
-          <p>Total Months to Be Rented</p>
+          <p className="artwork__text--title">
+            {" "}
+            <span className="artwork__buy--color">RENTING</span> TOTAL PRICE
+          </p>
+          <p className="artworkbuy__text">Total Months to Be Rented</p>
+          <p className="artworkbuy__text"> (MAX 48 Months)</p>
           <input
             className="artwork__input"
             id="months"
@@ -124,48 +129,70 @@ const ArtworkBuy = ({
             autoComplete="off"
             type="number"
             min="1"
-          />
-          <p>Renting Total Price</p>
-          <p>
+            max="48"
+          />{" "}
+          <p className="artworkbuy__text--important">
             {inputData} Months X {monthlyrateprice} € ={" "}
-            {`${calculateMonthlyPriceRent()} €`}
+            <span className="artwork__buy--color">
+              {" "}
+              {`${calculateMonthlyPriceRent()} €`}
+            </span>
           </p>
-          <p>Shipping Costs (5% of Total Price)</p>
-          <p>(Free on Purchases Above 200 €)</p>
-          <p>{`${
-            calculateShippingPriceRent() === 0
-              ? `Free Shipping`
-              : `${calculateShippingPriceRent()} €`
-          }`}</p>
-          <p>IVA 10% = {`${calculateIVARent()} €`}</p>
-          <p>
-            TOTAL{" "}
-            {`${
-              calculateMonthlyPriceRent() +
-              calculateIVARent() +
-              calculateShippingPriceRent()
-            } €`}
+          <p className="artworkbuy__text">Shipping Costs (5% of Total Price)</p>
+          <p className="artworkbuy__text">(Free on Purchases Above 200 €)</p>
+          <p className="artworkbuy__text--important">
+            <span className="artwork__buy--color">{`${
+              calculateShippingPriceRent() === 0
+                ? `Free Shipping`
+                : `${calculateShippingPriceRent()} €`
+            }`}</span>
+          </p>
+          <p className="artworkbuy__text--important">
+            IVA 10% ={" "}
+            <span className="artwork__buy--color">{`${calculateIVARent()} €`}</span>
+          </p>
+          <p className="artworkbuy__text--important_total">
+            TOTAL =
+            <span className="artwork__buy--color">
+              {" "}
+              {`${
+                calculateMonthlyPriceRent() +
+                calculateIVARent() +
+                calculateShippingPriceRent()
+              } €`}
+            </span>
           </p>
           <button className="artwork_buy__button">RENT</button>
         </div>
         <div className="artwork__purchase--container">
-          <p>Purchase Total Price</p>
-          <p>{purchaseprice} €</p>
-          <p>Shipping Costs (5% of Total Price)</p>
-          <p>(Free on Purchases Above 200 €)</p>
-          <p>{`${
-            calculateShippingPriceBuy() === 0
-              ? `Free Shipping`
-              : `${calculateShippingPriceBuy()} €`
-          }`}</p>
-          <p>IVA 10% = {`${calculateIVABuy()} €`}</p>
-          <p>
-            TOTAL{" "}
-            {`${
-              Number(purchaseprice) +
-              calculateShippingPriceBuy() +
-              calculateIVABuy()
-            } €`}
+          <p className="artwork__text--title">
+            {" "}
+            <span className="artwork__buy--color">BUY</span> TOTAL PRICE
+          </p>
+          <p className="artworkbuy__text--important">{purchaseprice} €</p>
+          <p className="artworkbuy__text">Shipping Costs (5% of Total Price)</p>
+          <p className="artworkbuy__text">(Free on Purchases Above 200 €)</p>
+          <p className="artworkbuy__text--important">
+            <span className="artwork__buy--color">{`${
+              calculateShippingPriceBuy() === 0
+                ? `Free Shipping`
+                : `${calculateShippingPriceBuy()} €`
+            }`}</span>
+          </p>
+          <p className="artworkbuy__text--important">
+            IVA 10% ={" "}
+            <span className="artwork__buy--color">{`${calculateIVABuy()} €`}</span>
+          </p>
+          <p className="artworkbuy__text--important_total">
+            TOTAL ={" "}
+            <span className="artwork__buy--color">
+              {" "}
+              {`${
+                Number(purchaseprice) +
+                calculateShippingPriceBuy() +
+                calculateIVABuy()
+              } €`}
+            </span>
           </p>
           <button className="artwork_buy__button">BUY</button>
         </div>
