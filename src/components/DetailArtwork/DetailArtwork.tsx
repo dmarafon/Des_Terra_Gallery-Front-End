@@ -70,10 +70,12 @@ const DetailArtwork = (): JSX.Element => {
         </div>
         {logged ? (
           <div className="detail__button--container">
-            <Button
-              text={"BUY OR RENT"}
-              className="general__button--orange"
-            ></Button>
+            <NavLink to={`/artwork/buy/${artworkId}`}>
+              <Button
+                text={"BUY OR RENT"}
+                className="general__button--orange"
+              ></Button>
+            </NavLink>
           </div>
         ) : (
           <div className="detail__info--container">

@@ -6,12 +6,11 @@ import { useAppDispatch, useAppSelector } from "../hooks";
 import LoadingModal from "../LoadingModal/LoadingModal";
 import ArtworksListStyled from "./ArtworksListStyled";
 
-const ArtworksList = () => {
+const ArtworksList = (): JSX.Element => {
   const artworks = useAppSelector((state) => state.artworks);
   const loading = useAppSelector((state) => state.ui.loading);
 
   const { filterStyle, sortOrderPurchase, sortOrderRent, page } = useParams();
-  debugger;
   const navigate = useNavigate();
 
   const { totalPage, currentPage } = useAppSelector(
@@ -27,7 +26,6 @@ const ArtworksList = () => {
 
   const dispatch = useAppDispatch();
   useEffect(() => {
-    debugger;
     if (filterStyle && sortOrderPurchase) {
       dispatch(
         loadArtworksThunk(
