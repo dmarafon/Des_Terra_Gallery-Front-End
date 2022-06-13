@@ -11,7 +11,7 @@ const ArtworksList = () => {
   const loading = useAppSelector((state) => state.ui.loading);
 
   const { filterStyle, sortOrderPurchase, sortOrderRent, page } = useParams();
-
+  debugger;
   const navigate = useNavigate();
 
   const { totalPage, currentPage } = useAppSelector(
