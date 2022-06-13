@@ -26,8 +26,8 @@ const ArtworksList = () => {
   }, [page]);
 
   const dispatch = useAppDispatch();
-
   useEffect(() => {
+    debugger;
     if (filterStyle && sortOrderPurchase) {
       dispatch(
         loadArtworksThunk(
@@ -241,6 +241,7 @@ const ArtworksList = () => {
           </ul>
           <div className="artworks__navigate--container">
             <svg
+              data-testid="back-button"
               className={
                 Number(page) <= 1
                   ? "artworks__navigate--button_deactivated_left"
@@ -258,6 +259,7 @@ const ArtworksList = () => {
 
             <p className="artworks__navigate--counter">{`${currentPage}/${totalPage}`}</p>
             <svg
+              data-testid="forward-button"
               className={
                 Number(page) === totalPage || totalPage === 0
                   ? "artworks__navigate--button_deactivated_right"
