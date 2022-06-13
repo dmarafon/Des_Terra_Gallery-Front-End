@@ -17,6 +17,7 @@ import Gatekeeper from "./components/Gatekeeper/Gatekeeper";
 import AddEditPage from "./pages/AddEditPage/AddEditPage";
 import GatekeeperReversed from "./components/GateKeeperReversed/GatekeeperReversed";
 import DetailArtworkPage from "./pages/DetailArtworkPage/DetailArtworkPage";
+import NotFoundPage from "./pages/NotFoundPage/NotFoundPage";
 
 const App = (): JSX.Element => {
   const dispatch = useAppDispatch();
@@ -97,6 +98,7 @@ const App = (): JSX.Element => {
           </GatekeeperReversed>
         }
       />
+      <Route path="*" element={<NotFoundPage />} />
     </Routes>
   );
 };
