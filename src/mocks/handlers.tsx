@@ -38,4 +38,9 @@ export const handlers = [
     `${process.env.REACT_APP_API_URL}artworks/6294aa4bc78dbede9429006e`,
     (req, res, ctx) => res(ctx.status(200), ctx.json({ token: mockToken }))
   ),
+
+  rest.get(
+    `${process.env.REACT_APP_API_URL}artworks/all?page=1&limit=12`,
+    (req, res, ctx) => res(ctx.status(200))
+  ),
 ];
