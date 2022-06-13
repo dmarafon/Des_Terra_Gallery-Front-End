@@ -581,7 +581,7 @@ describe("Given a ArtworkList component", () => {
         const paginationAction = {
           type: "pagination/countPagination",
           payload: {
-            totalPage: "3",
+            totalPage: 3,
             currentPage: 1,
           },
         };
