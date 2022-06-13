@@ -60,6 +60,7 @@ export const loadArtworksThunk =
           dispatch(finishedLoadingActionCreator());
           throw new Error("No Artworks");
         }
+        dispatch(finishedLoadingActionCreator());
       } else if (sortOrderRent) {
         const {
           data: { artworks, totalPage, currentPage },
@@ -76,6 +77,7 @@ export const loadArtworksThunk =
           dispatch(finishedLoadingActionCreator());
           throw new Error("No Artworks");
         }
+        dispatch(finishedLoadingActionCreator());
       } else if (sortOrderPurchase) {
         const {
           data: { artworks, totalPage, currentPage },
@@ -92,6 +94,7 @@ export const loadArtworksThunk =
           dispatch(finishedLoadingActionCreator());
           throw new Error("No Artworks");
         }
+        dispatch(finishedLoadingActionCreator());
       } else {
         const {
           data: { artworks, totalPage, currentPage },
@@ -107,6 +110,7 @@ export const loadArtworksThunk =
           throw new Error("No Artworks");
         }
       }
+      dispatch(finishedLoadingActionCreator());
     } catch (error: any) {
       const errorResponse = errorLoginValidation(error);
       dispatch(finishedLoadingActionCreator());
