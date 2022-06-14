@@ -70,10 +70,6 @@ const RegisterForm = (): JSX.Element => {
         dispatch(apiResponseActionCreator("Email Invalid"));
         break;
 
-      case formData.password === "":
-        dispatch(apiResponseActionCreator("Password Blank"));
-        break;
-
       case formData.password.length < 5:
         dispatch(apiResponseActionCreator("Password Length"));
         break;
