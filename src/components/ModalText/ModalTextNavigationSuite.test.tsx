@@ -74,7 +74,7 @@ describe("Given a Modal component", () => {
     });
   });
 
-  describe("When its invoked and the user clicks in the button after another successfull message", () => {
+  describe("When its invoked and the user clicks in the button after another successfull message about creating a new artwork", () => {
     beforeEach(() => server.listen());
     afterEach(() => server.resetHandlers());
     afterAll(() => server.close());
@@ -92,7 +92,7 @@ describe("Given a Modal component", () => {
       data: { token: "test" },
     });
 
-    test("Then the button should not send the user to the Home Page", async () => {
+    test("Then the button should send the user to the MyArt page", async () => {
       const testFunction = () => {
         return "test";
       };
@@ -115,7 +115,99 @@ describe("Given a Modal component", () => {
       userEvent.click(testButton);
 
       await waitFor(() => {
-        expect(navigate).not.toHaveBeenCalled();
+        expect(navigate).toHaveBeenCalledWith("/myart");
+      });
+    });
+  });
+
+  describe("When its invoked and the user clicks in the button after another successfull message about updating a new artwork", () => {
+    beforeEach(() => server.listen());
+    afterEach(() => server.resetHandlers());
+    afterAll(() => server.close());
+
+    const mockedAxios = axios as jest.Mocked<typeof axios>;
+
+    const uIaction = {
+      type: "ui/apiResponse",
+      payload: "upd",
+    };
+
+    store.dispatch(uIaction);
+
+    mockedAxios.post.mockResolvedValue({
+      data: { token: "test" },
+    });
+
+    test("Then the button should send the user to the MyArt Page", async () => {
+      const testFunction = () => {
+        return "test";
+      };
+
+      render(
+        <BrowserRouter>
+          <Provider store={store}>
+            <ModalText
+              children={"Test Modal"}
+              handleClose={testFunction}
+              isOpen={true}
+              customFunction={""}
+            />
+          </Provider>
+        </BrowserRouter>
+      );
+
+      const testButton = screen.getByRole("button");
+
+      userEvent.click(testButton);
+
+      await waitFor(() => {
+        expect(navigate).toHaveBeenCalledWith("/myart");
+      });
+    });
+  });
+
+  describe("When its invoked and the user clicks in the button after an unknown error", () => {
+    beforeEach(() => server.listen());
+    afterEach(() => server.resetHandlers());
+    afterAll(() => server.close());
+
+    const mockedAxios = axios as jest.Mocked<typeof axios>;
+
+    const uIaction = {
+      type: "ui/apiResponse",
+      payload: "Unknown Error",
+    };
+
+    store.dispatch(uIaction);
+
+    mockedAxios.post.mockResolvedValue({
+      data: { token: "test" },
+    });
+
+    test("Then the button should send the user to the MyArt Page", async () => {
+      const testFunction = () => {
+        return "test";
+      };
+
+      render(
+        <BrowserRouter>
+          <Provider store={store}>
+            <ModalText
+              children={"Test Modal"}
+              handleClose={testFunction}
+              isOpen={true}
+              customFunction={""}
+            />
+          </Provider>
+        </BrowserRouter>
+      );
+
+      const testButton = screen.getByRole("button");
+
+      userEvent.click(testButton);
+
+      await waitFor(() => {
+        expect(navigate).toHaveBeenCalledWith("/myart");
       });
     });
   });
