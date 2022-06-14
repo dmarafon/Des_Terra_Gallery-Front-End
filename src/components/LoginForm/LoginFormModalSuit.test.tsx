@@ -35,23 +35,20 @@ describe("Given a Login Page", () => {
 
       userEvent.click(signInButton);
 
+      expect(mockDispatch).toHaveBeenCalled();
+
       await waitFor(() => {
         const uIaction = {
-          type: "ui/apiResponse",
-          payload: "Email Blank",
+          type: "ui/cleanApiResponse",
         };
 
         store.dispatch(uIaction);
       });
-
-      const element = screen.getByTestId("custom-element");
-
-      expect(element).toBeInTheDocument();
     });
   });
 
-  describe("When the user fills the name, username and password fields", () => {
-    test("Then the login button should be enabled", async () => {
+  describe("When the user fills the password field and leave the email in blank", () => {
+    test("Then it should dispatch the action to call the modal", async () => {
       const textInput = ["jose", ""];
 
       render(
@@ -70,7 +67,7 @@ describe("Given a Login Page", () => {
       userEvent.type(usernameField, textInput[0]);
       userEvent.type(passwordField, textInput[1]);
 
-      expect(signInButton).not.toBeDisabled();
+      userEvent.click(signInButton);
 
       await waitFor(() => {
         const uIaction = {
@@ -84,6 +81,92 @@ describe("Given a Login Page", () => {
       const element = screen.getByTestId("custom-element");
 
       expect(element).toBeInTheDocument();
+
+      await waitFor(() => {
+        const uIaction = {
+          type: "ui/cleanApiResponse",
+        };
+
+        store.dispatch(uIaction);
+      });
+    });
+  });
+
+  describe("When the user fills the email and leaves the password field in blank", () => {
+    test("Then it should dispatch the action to call the modal", async () => {
+      const textInput = ["jose", ""];
+
+      render(
+        <BrowserRouter>
+          <Provider store={store}>
+            <LoginForm />
+          </Provider>
+        </BrowserRouter>
+      );
+
+      const usernameField = screen.getByLabelText("EMAIL");
+      const passwordField = screen.getByLabelText("PASSWORD");
+
+      const signInButton = screen.getByRole("button", { name: "SIGN IN" });
+
+      userEvent.type(usernameField, textInput[0]);
+      userEvent.type(passwordField, textInput[1]);
+
+      userEvent.click(signInButton);
+
+      expect(mockDispatch).toHaveBeenCalled();
+    });
+  });
+
+  describe("When the user fills the email and  the password is less than 5 characters", () => {
+    test("Then it should dispatch the action to call the modal", async () => {
+      const textInput = ["jose", "1234"];
+
+      render(
+        <BrowserRouter>
+          <Provider store={store}>
+            <LoginForm />
+          </Provider>
+        </BrowserRouter>
+      );
+
+      const usernameField = screen.getByLabelText("EMAIL");
+      const passwordField = screen.getByLabelText("PASSWORD");
+
+      const signInButton = screen.getByRole("button", { name: "SIGN IN" });
+
+      userEvent.type(usernameField, textInput[0]);
+      userEvent.type(passwordField, textInput[1]);
+
+      userEvent.click(signInButton);
+
+      expect(mockDispatch).toHaveBeenCalled();
+    });
+  });
+
+  describe("When the user fills the email and  the password is equal to  5 characters", () => {
+    test("Then it should dispatch the action to call the modal", async () => {
+      const textInput = ["jose", "12345"];
+
+      render(
+        <BrowserRouter>
+          <Provider store={store}>
+            <LoginForm />
+          </Provider>
+        </BrowserRouter>
+      );
+
+      const usernameField = screen.getByLabelText("EMAIL");
+      const passwordField = screen.getByLabelText("PASSWORD");
+
+      const signInButton = screen.getByRole("button", { name: "SIGN IN" });
+
+      userEvent.type(usernameField, textInput[0]);
+      userEvent.type(passwordField, textInput[1]);
+
+      userEvent.click(signInButton);
+
+      expect(mockDispatch).toHaveBeenCalled();
     });
   });
 });
