@@ -260,8 +260,14 @@ const LoginFormStyled = styled.div`
     opacity: 0.4;
   }
 
+  .modal-content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
   .login__modal--break_text {
-    padding-top: 0;
+    margin-bottom: 40px;
   }
 `;
 
