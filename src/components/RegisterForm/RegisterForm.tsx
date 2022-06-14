@@ -56,16 +56,27 @@ const RegisterForm = (): JSX.Element => {
     const validRegex =
       /^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/;
     switch (true) {
-      case formData.firstname === "" ||
-        formData.surname === "" ||
-        formData.email === "" ||
-        formData.password === "" ||
-        formData.address === "" ||
-        formData.city === "" ||
-        formData.phonenumber === "":
-        dispatch(apiResponseActionCreator("Blank"));
+      case formData.firstname === "":
+        dispatch(apiResponseActionCreator("Blank 'First Name'"));
         break;
-
+      case formData.surname === "":
+        dispatch(apiResponseActionCreator("Blank 'Surname'"));
+        break;
+      case formData.email === "":
+        dispatch(apiResponseActionCreator("Blank 'Email'"));
+        break;
+      case formData.password === "":
+        dispatch(apiResponseActionCreator("Blank 'Password'"));
+        break;
+      case formData.address === "":
+        dispatch(apiResponseActionCreator("Blank 'Address & Number'"));
+        break;
+      case formData.city === "":
+        dispatch(apiResponseActionCreator("Blank 'City'"));
+        break;
+      case formData.phonenumber === "":
+        dispatch(apiResponseActionCreator("Blank 'Phone Number'"));
+        break;
       case !formData.email.match(validRegex):
         dispatch(apiResponseActionCreator("Email Invalid"));
         break;
@@ -145,13 +156,14 @@ const RegisterForm = (): JSX.Element => {
           <p className="login__modal--break_text"></p>
         </ModalText>
       )}
-      {apiMessage === "Blank" && (
+      {apiMessage.startsWith("Blank") && (
         <ModalText
           handleClose={submitClosingModalResponse}
           isOpen={feedback}
           customFunction={""}
         >
-          Please, you left one or more mandatory fields in blank
+          Please, you left the {apiMessage.substring(6)} mandatory field in
+          blank
         </ModalText>
       )}
       {apiMessage === "new" && (
