@@ -154,8 +154,8 @@ const ArtworksList = (): JSX.Element => {
                 <p className="artwork__text--intro">
                   {" "}
                   SORTED BY
-                  <span className="artwork__text--colored"> PURCHASE</span>
-                  PRICE{" "}
+                  <span className="artwork__text--colored"> PURCHASE </span>
+                  PRICE
                 </p>
               ) : (
                 ""
