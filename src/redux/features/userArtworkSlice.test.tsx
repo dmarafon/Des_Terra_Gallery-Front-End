@@ -7,7 +7,7 @@ import userArtworkSlice, {
 
 describe("Given a userArtworksReducer", () => {
   describe("When it receives an initial state and a loadUserArtworks action with 3 arts as payload", () => {
-    test("Then it should return a new records state with the 3 art objecs and an array of the 3 arts", () => {
+    test("Then it should return a new artwork state with the 3 art objecs and an array of the 3 arts", () => {
       const artworkPayload = artworkMock;
 
       const initialStatus: IArtworks[] = [];
@@ -22,7 +22,7 @@ describe("Given a userArtworksReducer", () => {
     });
   });
 
-  describe("When it receives an initial state with 3 records and a delete artwork action with the id of one of he 2 records", () => {
+  describe("When it receives an initial state with 3 artwork and a delete artwork action with the id of one of he 2 artworks", () => {
     test("Then it should return a new state with an array without the art of the id in the action payload", () => {
       const initialStatus: IArtworks[] = artworkMock;
       const idPayload = "6294aa4bc78dbede94290077";

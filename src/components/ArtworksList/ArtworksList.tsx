@@ -1,14 +1,18 @@
 import { useCallback, useEffect } from "react";
 import { NavLink, useNavigate, useParams } from "react-router-dom";
+import { cleanApiResponseActionCreator } from "../../redux/features/uiSlice";
 import { loadArtworksThunk } from "../../redux/thunks/artworkThunks";
 import Artwork from "../Artwork/Artwork";
 import { useAppDispatch, useAppSelector } from "../hooks";
 import LoadingModal from "../LoadingModal/LoadingModal";
+import ModalText from "../ModalText/ModalText";
 import ArtworksListStyled from "./ArtworksListStyled";
 
 const ArtworksList = (): JSX.Element => {
   const artworks = useAppSelector((state) => state.artworks);
   const loading = useAppSelector((state) => state.ui.loading);
+  const feedback = useAppSelector((state) => state.ui.feedback);
+  const apiMessage = useAppSelector((state) => state.ui.apiResponse);
 
   const { filterStyle, sortOrderPurchase, sortOrderRent, page } = useParams();
   const navigate = useNavigate();
@@ -96,8 +100,21 @@ const ArtworksList = (): JSX.Element => {
     }
   };
 
+  const submitClosingModalResponse = () => {
+    dispatch(cleanApiResponseActionCreator());
+  };
+
   return (
     <>
+      {apiMessage === "Unknown Error" && (
+        <ModalText
+          handleClose={submitClosingModalResponse}
+          isOpen={feedback}
+          customFunction={""}
+        >
+          We're sorry, but we don't have this style available anymore
+        </ModalText>
+      )}
       {loading ? (
         <LoadingModal />
       ) : (

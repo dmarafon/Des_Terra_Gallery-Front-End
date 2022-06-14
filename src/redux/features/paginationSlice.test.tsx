@@ -4,7 +4,7 @@ import paginationSlice, {
 
 describe("Given a paginationReducar", () => {
   describe("When it receives an initial state and a countPagination action with 1 pagination information as payload", () => {
-    test("Then it should return a new records state with the the total page and current information", () => {
+    test("Then it should return a new artwork state with the the total page and current information", () => {
       const initialStatus = {
         totalPage: 0,
         currentPage: "",

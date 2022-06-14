@@ -157,6 +157,17 @@ const AddEditForm = (): JSX.Element => {
 
   return (
     <>
+      {apiMessage === "General " && (
+        <ModalText
+          handleClose={submitClosingModalResponse}
+          isOpen={false}
+          customFunction={""}
+        >
+          Oops... We're sorry, something went wrong with our servers, try again
+          later
+          <p className="login__modal--break_text"></p>
+        </ModalText>
+      )}
       {apiMessage === "Unknown Error" && (
         <ModalText
           handleClose={submitClosingModalResponse}
