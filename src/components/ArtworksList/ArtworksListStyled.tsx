@@ -126,9 +126,9 @@ const ArtworksListStyled = styled.div`
   }
 
   .dropbtn {
-    background-color: #fac43b;
-    color: black;
-    border: 1px solid black;
+    background-color: #fa803b;
+    color: white;
+    border: none;
     font-weight: bolder;
     border-radius: 5px;
     padding: 12px;
@@ -165,8 +165,8 @@ const ArtworksListStyled = styled.div`
   }
 
   .dropdown:hover .dropbtn {
-    background-color: #ffd15c;
-    color: black;
+    background-color: #f99459;
+    color: white;
   }
 
   .artwork__text--container {
