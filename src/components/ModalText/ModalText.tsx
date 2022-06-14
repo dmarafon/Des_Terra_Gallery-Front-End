@@ -34,7 +34,14 @@ const ModalText = ({
     if (!customFunction && apiMessage === "upd") {
       navigate("/myart");
     }
+
     if (
+      !customFunction &&
+      location.pathname === "/artwork/1" &&
+      apiMessage === "Unknown Error"
+    ) {
+      navigate("/home");
+    } else if (
       !customFunction &&
       location.pathname.startsWith("/artwork") === true &&
       apiMessage === "Unknown Error"

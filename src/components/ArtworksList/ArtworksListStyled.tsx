@@ -35,7 +35,7 @@ const ArtworksListStyled = styled.div`
       position: fixed;
       left: 5%;
       bottom: 40%;
-      z-index: 1000;
+      z-index: 999;
       width: 8vh;
     }
   }
@@ -50,7 +50,7 @@ const ArtworksListStyled = styled.div`
       position: fixed;
       left: 5%;
       bottom: 40%;
-      z-index: 1000;
+      z-index: 999;
       width: 8vh;
     }
   }
@@ -64,7 +64,7 @@ const ArtworksListStyled = styled.div`
       position: fixed;
       right: 5%;
       bottom: 40%;
-      z-index: 1000;
+      z-index: 999;
       width: 8vh;
     }
   }
@@ -79,7 +79,7 @@ const ArtworksListStyled = styled.div`
       position: fixed;
       right: 5%;
       bottom: 40%;
-      z-index: 1000;
+      z-index: 999;
       width: 8vh;
     }
   }

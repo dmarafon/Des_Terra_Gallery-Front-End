@@ -112,7 +112,7 @@ const ArtworksList = (): JSX.Element => {
           isOpen={feedback}
           customFunction={""}
         >
-          We're sorry, but we don't have this style available anymore
+          We're sorry, but this is not available for the moment
         </ModalText>
       )}
       {loading ? (
