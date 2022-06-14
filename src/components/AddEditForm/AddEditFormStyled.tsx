@@ -12,6 +12,10 @@ const AddEditFormStyled = styled.div`
     flex-direction: column;
   }
 
+  .login__modal--break_text {
+    margin-bottom: 40px;
+  }
+
   .addedit__text--colored-edit {
     color: #fa803b;
     text-transform: uppercase;

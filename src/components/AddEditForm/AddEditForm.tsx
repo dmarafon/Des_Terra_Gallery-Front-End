@@ -94,41 +94,59 @@ const AddEditForm = (): JSX.Element => {
   const submitCreate = (event: SyntheticEvent) => {
     event.preventDefault();
 
-    if (
-      formData.title === "" ||
-      formData.medium === "" ||
-      formData.height === "" ||
-      formData.width === "" ||
-      formData.style === "" ||
-      formData.purchaseprice === "" ||
-      formData.monthlyrateprice === "" ||
-      formData.description === ""
-    ) {
-      dispatch(apiResponseActionCreator("Blank"));
-      return;
-    }
+    switch (true) {
+      case formData.title === "":
+        dispatch(apiResponseActionCreator("Blank 'Title'"));
+        break;
+      case formData.medium === "":
+        dispatch(apiResponseActionCreator("Blank 'Medium'"));
+        break;
+      case formData.height === "":
+        dispatch(apiResponseActionCreator("Blank 'Height'"));
+        break;
+      case formData.width === "":
+        dispatch(apiResponseActionCreator("Blank 'Width'"));
+        break;
+      case formData.style === "":
+        dispatch(apiResponseActionCreator("Blank 'Style'"));
+        break;
+      case formData.purchaseprice === "":
+        dispatch(apiResponseActionCreator("Blank 'Purchase Price'"));
+        break;
+      case formData.monthlyrateprice === "":
+        dispatch(apiResponseActionCreator("Blank 'Monthly Rate Price'"));
+        break;
 
-    const newArtwork = new FormData();
-    newArtwork.append("title", formData.title.toLowerCase());
-    newArtwork.append("medium", formData.medium.toLowerCase());
-    newArtwork.append("height", formData.height);
-    newArtwork.append("width", formData.width);
-    newArtwork.append("style", formData.style.toLowerCase());
-    newArtwork.append("purchaseprice", formData.purchaseprice.toLowerCase());
-    newArtwork.append(
-      "monthlyrateprice",
-      formData.monthlyrateprice.toLowerCase()
-    );
-    newArtwork.append("description", formData.description);
-    newArtwork.append("artimages", formData.artimages);
+      case formData.description === "":
+        dispatch(apiResponseActionCreator("Blank 'Description'"));
+        break;
 
-    if (artworkId) {
-      dispatch(editArtworkThunk(newArtwork, artworkId));
-    } else {
-      dispatch(createArtworkThunk(newArtwork));
+      default:
+        const newArtwork = new FormData();
+        newArtwork.append("title", formData.title.toLowerCase());
+        newArtwork.append("medium", formData.medium.toLowerCase());
+        newArtwork.append("height", formData.height);
+        newArtwork.append("width", formData.width);
+        newArtwork.append("style", formData.style.toLowerCase());
+        newArtwork.append(
+          "purchaseprice",
+          formData.purchaseprice.toLowerCase()
+        );
+        newArtwork.append(
+          "monthlyrateprice",
+          formData.monthlyrateprice.toLowerCase()
+        );
+        newArtwork.append("description", formData.description);
+        newArtwork.append("artimages", formData.artimages);
+
+        if (artworkId) {
+          dispatch(editArtworkThunk(newArtwork, artworkId));
+        } else {
+          dispatch(createArtworkThunk(newArtwork));
+        }
+        setFormData(formInitialState);
+        resetForm();
     }
-    setFormData(formInitialState);
-    resetForm();
   };
 
   const artTitle = singleArtwork.title;
@@ -139,14 +157,25 @@ const AddEditForm = (): JSX.Element => {
 
   return (
     <>
-      {apiMessage === "Blank" && (
+      {apiMessage === "Unknown Error" && (
+        <ModalText
+          handleClose={submitClosingModalResponse}
+          isOpen={false}
+          customFunction={""}
+        >
+          Oops... We're sorry, something went wrong with our servers, try again
+          later
+          <p className="login__modal--break_text"></p>
+        </ModalText>
+      )}
+      {apiMessage.startsWith("Blank") && (
         <ModalText
           handleClose={submitClosingModalResponse}
           isOpen={feedback}
           customFunction={""}
         >
-          Please, you left one or more fields in blank. All fields are mandatory
-          to create your Artwork.
+          Please, you left the {apiMessage.substring(6)} mandatory field in
+          blank. All fields are mandatory.
         </ModalText>
       )}
       {apiMessage === "new" && (
@@ -159,13 +188,17 @@ const AddEditForm = (): JSX.Element => {
           Art page
         </ModalText>
       )}
-      {apiMessage === "Conflict" && (
+      {apiMessage === "Bad Request" && (
         <ModalText
           handleClose={submitClosingModalResponse}
           isOpen={feedback}
           customFunction={""}
         >
-          This email is already in use, please, choose another email
+          We're sorry, something went wrong
+          <p className="login__modal--break_text">
+            {" "}
+            Please, try again to Create your Art
+          </p>
         </ModalText>
       )}
       {loading ? (
@@ -213,6 +246,7 @@ const AddEditForm = (): JSX.Element => {
                       onChange={changeData}
                       required
                       autoComplete="off"
+                      maxLength={33}
                     />
                     <label className="addedit__label" htmlFor="medium">
                       MEDIUM
@@ -225,6 +259,7 @@ const AddEditForm = (): JSX.Element => {
                       onChange={changeData}
                       required
                       autoComplete="off"
+                      maxLength={33}
                     />
                     <label className="addedit__label" htmlFor="height">
                       HEIGHT (DIMENSIONS)
@@ -239,6 +274,7 @@ const AddEditForm = (): JSX.Element => {
                       onChange={changeData}
                       required
                       autoComplete="off"
+                      maxLength={4}
                     />
                     <label className="addedit__label" htmlFor="width">
                       WIDTH (DIMENSIONS)
@@ -253,6 +289,7 @@ const AddEditForm = (): JSX.Element => {
                       autoComplete="off"
                       type="number"
                       min="1"
+                      maxLength={4}
                     />
                     <label className="addedit__label" htmlFor="style">
                       STYLE
@@ -294,6 +331,7 @@ const AddEditForm = (): JSX.Element => {
                       autoComplete="off"
                       type="number"
                       min="1"
+                      maxLength={10}
                     />
                     <label
                       className="addedit__label"
@@ -311,6 +349,7 @@ const AddEditForm = (): JSX.Element => {
                       required
                       type="number"
                       min="1"
+                      maxLength={10}
                     />
                     <label className="addedit__label" htmlFor="description">
                       DESCRIPTION (MAX 240 CHAR)

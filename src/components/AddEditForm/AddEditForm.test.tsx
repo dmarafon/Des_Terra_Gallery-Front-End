@@ -221,7 +221,7 @@ describe("Given a AddEditForm component function", () => {
       await waitFor(() => {
         const uIaction = {
           type: "ui/apiResponse",
-          payload: "Conflict",
+          payload: "Bad Request",
         };
 
         store.dispatch(uIaction);
