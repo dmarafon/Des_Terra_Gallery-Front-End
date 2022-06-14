@@ -18,6 +18,7 @@ import AddEditPage from "./pages/AddEditPage/AddEditPage";
 import GatekeeperReversed from "./components/GateKeeperReversed/GatekeeperReversed";
 import DetailArtworkPage from "./pages/DetailArtworkPage/DetailArtworkPage";
 import NotFoundPage from "./pages/NotFoundPage/NotFoundPage";
+import ArtworkBuyPage from "./pages/ArtworkBuyPage/ArtworkBuyPage";
 
 const App = (): JSX.Element => {
   const dispatch = useAppDispatch();
@@ -77,6 +78,14 @@ const App = (): JSX.Element => {
       <Route
         path="/artwork/:page/:filterStyle/sortOrderRent=:sortOrderRent"
         element={<ArtworksPage />}
+      />
+      <Route
+        path="/artwork/buy/:artworkId"
+        element={
+          <Gatekeeper>
+            <ArtworkBuyPage />
+          </Gatekeeper>
+        }
       />
       <Route
         path="/artwork/details/:artworkId"

@@ -85,7 +85,7 @@ const ArtworksListStyled = styled.div`
   }
 
   .artworks__navigate--counter {
-    color: #fa803b;
+    color: #ff701e;
     font-weight: bolder;
     font-size: 200%;
     font-family: "Karla", sans-serif;
