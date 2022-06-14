@@ -1,9 +1,7 @@
 import { render } from "@testing-library/react";
-import { debug } from "console";
 import { Provider } from "react-redux";
 import { BrowserRouter } from "react-router-dom";
 import store from "../../redux/store/store";
-import { loadArtworksThunk } from "../../redux/thunks/artworkThunks";
 import { loadSingleArtworkThunk } from "../../redux/thunks/singleArtworkThunk";
 import ArtworkBuyPage from "./ArtworkBuyPage";
 
