@@ -9,7 +9,7 @@ afterEach(() => server.resetHandlers());
 afterAll(() => server.close());
 
 describe("Given the loadArtworks function thunk", () => {
-  describe("When invoked passing only a page parameter", () => {
+  describe("When invoked and a Bad Request occours", () => {
     const page = "13";
     test("Then the dispatch function will be called", async () => {
       const dispatch = jest.fn();
@@ -28,7 +28,7 @@ describe("Given the loadArtworks function thunk", () => {
   });
 });
 
-describe("When invoked passing a filter style parmeter, a sort order purchase parameter and a page parameter", () => {
+describe("When invoked passing a filter style parmeter, a sort order purchase parameter and a page parameter and a Bad Request occours", () => {
   const filterStyle = "minilamism";
   const sortOrderPurchase = "1";
   const page = "13";
@@ -47,7 +47,7 @@ describe("When invoked passing a filter style parmeter, a sort order purchase pa
     expect(dispatch).not.toHaveBeenCalledWith(loadAction);
   });
 
-  describe("When invoked passing a sort order purchase parameter and a page parameter", () => {
+  describe("When invoked passing a sort order purchase parameter and a page parameter and a Bad Request occours", () => {
     const sortOrderPurchase = "1";
     const page = "13";
     test("Then the dispatch function will be called", async () => {
@@ -65,7 +65,7 @@ describe("When invoked passing a filter style parmeter, a sort order purchase pa
       expect(dispatch).not.toHaveBeenCalledWith(loadAction);
     });
 
-    describe("When invoked passing a filter style parmeter, a sort order rent parameter and a page parameter", () => {
+    describe("When invoked passing a filter style parmeter, a sort order rent parameter and a page parameter and a Bad Request occours", () => {
       const filterStyle = "minilamism";
       const sortOrderRent = "1";
       const page = "13";
@@ -101,7 +101,7 @@ describe("When invoked passing a filter style parmeter, a sort order purchase pa
       });
     });
 
-    describe("When invoked passing  a sort order rent parameter and a page parameter", () => {
+    describe("When invoked passing  a sort order rent parameter and a page parameter and a Bad Request occours", () => {
       const sortOrderRent = "1";
       const page = "13";
       test("Then the dispatch function will be called", async () => {

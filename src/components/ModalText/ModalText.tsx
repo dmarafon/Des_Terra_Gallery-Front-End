@@ -67,7 +67,11 @@ const ModalText = ({
         <div className="modal" ref={nodeRef}>
           <div className="modal-content">
             <div className="modal-button">
-              <button onClick={buttonOnClick} className="modal-button--closed">
+              <button
+                data-testid="modal-button"
+                onClick={buttonOnClick}
+                className="modal-button--closed"
+              >
                 &times;
               </button>
               {children}
