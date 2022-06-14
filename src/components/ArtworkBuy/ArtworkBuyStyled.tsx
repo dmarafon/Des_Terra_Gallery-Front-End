@@ -148,7 +148,7 @@ const ArtworkBuyStyled = styled.div`
 
   .artworkbuy__text--important {
     font-weight: 700;
-    font-size: 120%;
+    font-size: 135%;
   }
 
   .artworkbuy__text--important_total {
