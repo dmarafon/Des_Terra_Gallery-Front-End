@@ -53,40 +53,50 @@ const RegisterForm = (): JSX.Element => {
 
   const submitRegister = (event: SyntheticEvent) => {
     event.preventDefault();
+    const validRegex =
+      /^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/;
+    switch (true) {
+      case formData.firstname === "" ||
+        formData.surname === "" ||
+        formData.email === "" ||
+        formData.password === "" ||
+        formData.address === "" ||
+        formData.city === "" ||
+        formData.phonenumber === "":
+        dispatch(apiResponseActionCreator("Blank"));
+        break;
 
-    if (
-      formData.firstname === "" ||
-      formData.surname === "" ||
-      formData.email === "" ||
-      formData.password === "" ||
-      formData.address === "" ||
-      formData.city === "" ||
-      formData.phonenumber === ""
-    ) {
-      dispatch(apiResponseActionCreator("Blank"));
-      return;
+      case !formData.email.match(validRegex):
+        dispatch(apiResponseActionCreator("Email Invalid"));
+        break;
+
+      case formData.password.length < 5:
+        dispatch(apiResponseActionCreator("Password Length"));
+        break;
+
+      default:
+        sessionStorage.setItem("email", formData.email);
+        sessionStorage.setItem("password", formData.password);
+        const newUser = new FormData();
+        newUser.append("firstname", formData.firstname.toLowerCase());
+        newUser.append("surname", formData.surname.toLowerCase());
+        newUser.append("email", formData.email.toLowerCase());
+        newUser.append("password", formData.password);
+        newUser.append("webpage", formData.webpage.toLowerCase());
+        newUser.append("address", formData.address.toLowerCase());
+        newUser.append(
+          "apartmentdoorstair",
+          formData.apartmentdoorstair.toLowerCase()
+        );
+        newUser.append("city", formData.city.toLowerCase());
+        newUser.append("phonenumber", formData.phonenumber);
+        newUser.append("artist", formData.artist);
+        newUser.append("artimages", formData.artimages);
+
+        dispatch(registerUserThunk(newUser));
+        setFormData(formInitialState);
+        resetForm();
     }
-    sessionStorage.setItem("email", formData.email);
-    sessionStorage.setItem("password", formData.password);
-    const newUser = new FormData();
-    newUser.append("firstname", formData.firstname.toLowerCase());
-    newUser.append("surname", formData.surname.toLowerCase());
-    newUser.append("email", formData.email.toLowerCase());
-    newUser.append("password", formData.password);
-    newUser.append("webpage", formData.webpage.toLowerCase());
-    newUser.append("address", formData.address.toLowerCase());
-    newUser.append(
-      "apartmentdoorstair",
-      formData.apartmentdoorstair.toLowerCase()
-    );
-    newUser.append("city", formData.city.toLowerCase());
-    newUser.append("phonenumber", formData.phonenumber);
-    newUser.append("artist", formData.artist);
-    newUser.append("artimages", formData.artimages);
-
-    dispatch(registerUserThunk(newUser));
-    setFormData(formInitialState);
-    resetForm();
   };
 
   const submitClosingModalResponse = () => {
@@ -100,6 +110,41 @@ const RegisterForm = (): JSX.Element => {
 
   return (
     <>
+      {apiMessage === "Password Length" && (
+        <ModalText
+          handleClose={submitClosingModalResponse}
+          isOpen={feedback}
+          customFunction={""}
+        >
+          <div className="login__modal--container">
+            <p className="login__modal--break_text">
+              Your Password should be longer than 5 characters
+            </p>
+          </div>
+        </ModalText>
+      )}
+      {apiMessage === "Email Invalid" && (
+        <ModalText
+          handleClose={submitClosingModalResponse}
+          isOpen={false}
+          customFunction={""}
+        >
+          The email format is incorrect. Please, check the inputed email
+          addressed
+          <p className="login__modal--break_text"></p>
+        </ModalText>
+      )}
+      {apiMessage === "Unknown Error" && (
+        <ModalText
+          handleClose={submitClosingModalResponse}
+          isOpen={false}
+          customFunction={""}
+        >
+          Oops... We're sorry, something went wrong with our servers, try again
+          later
+          <p className="login__modal--break_text"></p>
+        </ModalText>
+      )}
       {apiMessage === "Blank" && (
         <ModalText
           handleClose={submitClosingModalResponse}
@@ -118,7 +163,7 @@ const RegisterForm = (): JSX.Element => {
           Your user was Created Succesfully! Close this window to Login
         </ModalText>
       )}
-      {apiMessage === "Conflict" && (
+      {apiMessage === "User alr" && (
         <ModalText
           handleClose={submitClosingModalResponse}
           isOpen={feedback}
@@ -154,6 +199,7 @@ const RegisterForm = (): JSX.Element => {
                     onChange={changeData}
                     required
                     autoComplete="off"
+                    maxLength={35}
                   />
                   <label className="register__label" htmlFor="surname">
                     SURNAME
@@ -166,6 +212,7 @@ const RegisterForm = (): JSX.Element => {
                     onChange={changeData}
                     required
                     autoComplete="off"
+                    maxLength={35}
                   />
                   <label className="register__label" htmlFor="email">
                     EMAIL
@@ -179,6 +226,7 @@ const RegisterForm = (): JSX.Element => {
                     onChange={changeData}
                     required
                     autoComplete="off"
+                    maxLength={33}
                   />
                   <label className="register__label" htmlFor="password">
                     PASSWORD
@@ -187,11 +235,13 @@ const RegisterForm = (): JSX.Element => {
                     className="register__input"
                     id="password"
                     type="password"
-                    placeholder="PASSWORD"
+                    placeholder="(MIN 5 CHAR - MAX 15 CHAR)"
                     value={formData.password}
                     onChange={changeData}
                     required
                     autoComplete="off"
+                    minLength={5}
+                    maxLength={15}
                   />
                   <label className="register__label" htmlFor="webpage">
                     WEB PAGE (OPTIONAL)
@@ -203,6 +253,7 @@ const RegisterForm = (): JSX.Element => {
                     value={formData.webpage}
                     onChange={changeData}
                     autoComplete="off"
+                    maxLength={50}
                   />
                   <label className="register__label" htmlFor="artimages">
                     PICTURE PROFILE (OPTIONAL)
@@ -214,6 +265,7 @@ const RegisterForm = (): JSX.Element => {
                     onChange={changeData}
                     autoComplete="off"
                     accept="image/*"
+                    required
                   />
                 </div>
                 <div className="register__form--second-labels">
@@ -228,6 +280,7 @@ const RegisterForm = (): JSX.Element => {
                     required
                     onChange={changeData}
                     autoComplete="off"
+                    maxLength={35}
                   />
                   <label
                     className="register__label"
@@ -242,6 +295,7 @@ const RegisterForm = (): JSX.Element => {
                     value={formData.apartmentdoorstair}
                     onChange={changeData}
                     autoComplete="off"
+                    maxLength={35}
                   />
                   <label className="register__label" htmlFor="city">
                     CITY
@@ -253,6 +307,7 @@ const RegisterForm = (): JSX.Element => {
                     value={formData.city}
                     onChange={changeData}
                     autoComplete="off"
+                    maxLength={35}
                   />
                   <label className="register__label" htmlFor="phonenumber">
                     PHONE NUMBER
@@ -264,6 +319,7 @@ const RegisterForm = (): JSX.Element => {
                     value={formData.phonenumber}
                     onChange={changeData}
                     autoComplete="off"
+                    type="number"
                   />
                   <div className="register__input--checkbox">
                     <input
