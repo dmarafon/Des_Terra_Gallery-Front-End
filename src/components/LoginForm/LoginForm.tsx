@@ -30,14 +30,36 @@ const LoginForm = (): JSX.Element => {
 
   const loginSubmit = (event: SyntheticEvent) => {
     event.preventDefault();
-    if (formData.email === "" || formData.password === "") {
-      dispatch(apiResponseActionCreator("Blank"));
-      return;
-    }
-    const dispatchedData = { ...formData };
-    resetForm();
+    const validRegex =
+      /^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/;
 
-    dispatch(loginUserThunk(dispatchedData));
+    switch (true) {
+      case formData.email === "" && formData.password === "":
+        dispatch(apiResponseActionCreator("Blank"));
+        break;
+
+      case formData.email === "":
+        dispatch(apiResponseActionCreator("Email Blank"));
+        break;
+
+      case !formData.email.match(validRegex):
+        dispatch(apiResponseActionCreator("Email Invalid"));
+        break;
+
+      case formData.password === "":
+        dispatch(apiResponseActionCreator("Password Blank"));
+        break;
+
+      case formData.password.length < 5:
+        dispatch(apiResponseActionCreator("Password Length"));
+        break;
+
+      default:
+        const dispatchedData = { ...formData };
+        resetForm();
+
+        dispatch(loginUserThunk(dispatchedData));
+    }
   };
 
   const submitClosingModalResponse = () => {
@@ -59,14 +81,74 @@ const LoginForm = (): JSX.Element => {
 
   return (
     <>
+      {apiMessage === "Email Invalid" && (
+        <ModalText
+          handleClose={submitClosingModalResponse}
+          isOpen={false}
+          customFunction={""}
+        >
+          This is an invalid Email. Please, check the inputed email addressed
+          <p className="login__modal--break_text"></p>
+        </ModalText>
+      )}
+      {apiMessage === "Unknown Error" && (
+        <ModalText
+          handleClose={submitClosingModalResponse}
+          isOpen={false}
+          customFunction={""}
+        >
+          Oops... We're sorry, something went wrong with our servers, try again
+          later
+          <p className="login__modal--break_text"></p>
+        </ModalText>
+      )}
       {apiMessage === "Blank" && (
         <ModalText
           handleClose={submitClosingModalResponse}
           isOpen={feedback}
           customFunction={""}
         >
-          You left the Email or
+          You left the Email and
           <p className="login__modal--break_text">Password field in blank</p>
+        </ModalText>
+      )}
+      {apiMessage === "Email Blank" && (
+        <ModalText
+          handleClose={submitClosingModalResponse}
+          isOpen={feedback}
+          customFunction={""}
+        >
+          You left the Email field in blank.
+          <p className="login__modal--break_text">Please, fill your Email.</p>
+        </ModalText>
+      )}
+      {apiMessage === "Password Blank" && (
+        <ModalText
+          handleClose={submitClosingModalResponse}
+          isOpen={feedback}
+          customFunction={""}
+        >
+          <div className="login__modal--container">
+            <p className="login__modal--break_text">
+              You left the Password field in blank.
+            </p>
+            <p className="login__modal--break_text">
+              Please, fill your Password.
+            </p>
+          </div>
+        </ModalText>
+      )}
+      {apiMessage === "Password Length" && (
+        <ModalText
+          handleClose={submitClosingModalResponse}
+          isOpen={feedback}
+          customFunction={""}
+        >
+          <div className="login__modal--container">
+            <p className="login__modal--break_text">
+              Your Password should be longer than 5 characters
+            </p>
+          </div>
         </ModalText>
       )}
       {apiMessage === "Bad Request" && (
@@ -118,6 +200,7 @@ const LoginForm = (): JSX.Element => {
                   onChange={changeData}
                   required
                   placeholder="EMAIL"
+                  maxLength={33}
                 />
                 <label className="login__label" htmlFor="password">
                   PASSWORD
@@ -131,6 +214,8 @@ const LoginForm = (): JSX.Element => {
                   onChange={changeData}
                   required
                   placeholder="PASSWORD"
+                  maxLength={15}
+                  minLength={5}
                 />
               </div>
               <div className="login__button--container">

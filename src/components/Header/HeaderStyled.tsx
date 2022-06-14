@@ -60,6 +60,12 @@ const HeaderStyled = styled.header`
     margin-bottom: 50px;
   }
 
+  .top-nav_img-loading img {
+    margin-top: 50px;
+    width: 250px;
+    cursor: default;
+  }
+
   .top-nav_img img {
     margin-top: 50px;
     width: 250px;

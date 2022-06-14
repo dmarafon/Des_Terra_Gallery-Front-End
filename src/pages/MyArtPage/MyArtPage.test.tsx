@@ -1,4 +1,4 @@
-import { render, screen } from "@testing-library/react";
+import { render, screen, waitFor } from "@testing-library/react";
 import { Provider } from "react-redux";
 import { BrowserRouter } from "react-router-dom";
 import { artworkMock } from "../../mocks/artworkMock";
@@ -9,12 +9,15 @@ import MyArtPage from "./MyArtPage";
 describe("Given a MyArtPage", () => {
   describe("When it's invoked with 3 art item in the store", () => {
     test("Then it will render 3 social media svg icons, 1 logo image and 6 svg icon buttons images, 2 for each artwork", async () => {
-      const loadUserArtworks = {
-        type: "userArtworks/loadUserArtworks",
-        payload: artworkMock,
-      };
+      await waitFor(() => {
+        const loadUserArtworks = {
+          type: "userArtworks/loadUserArtworks",
+          payload: artworkMock,
+        };
 
-      store.dispatch(loadUserArtworks);
+        store.dispatch(loadUserArtworks);
+      });
+
       const totalSocialMediaImages = 4;
 
       const totalDeleteButtons = 3;
@@ -45,18 +48,20 @@ describe("Given a MyArtPage", () => {
 
   describe("When it's invoked with a user logged in", () => {
     test("Then it will dispatch the action to load the user artworks", async () => {
-      const userLogged = {
-        type: "user/login",
-        payload: {
-          firstName: "jesus",
-          email: "jesusperea@gmail.com",
-          id: "6295020ad1504446d0c04ce8",
-          iat: 1654559841,
-        },
-        artworkMock,
-      };
+      await waitFor(() => {
+        const userLogged = {
+          type: "user/login",
+          payload: {
+            firstName: "jesus",
+            email: "jesusperea@gmail.com",
+            id: "6295020ad1504446d0c04ce8",
+            iat: 1654559841,
+          },
+          artworkMock,
+        };
 
-      store.dispatch(userLogged);
+        store.dispatch(userLogged);
+      });
 
       const userId = "1234";
 
@@ -70,8 +75,10 @@ describe("Given a MyArtPage", () => {
 
       const dispatch = jest.fn();
 
-      const actionDispatch = loadUserArtworks(userId);
-      await actionDispatch(dispatch);
+      await waitFor(() => {
+        const actionDispatch = loadUserArtworks(userId);
+        actionDispatch(dispatch);
+      });
 
       expect(dispatch).toHaveBeenCalled();
     });
