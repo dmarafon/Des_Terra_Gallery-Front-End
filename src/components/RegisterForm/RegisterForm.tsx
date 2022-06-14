@@ -127,19 +127,6 @@ const RegisterForm = (): JSX.Element => {
           </div>
         </ModalText>
       )}
-      {apiMessage === "Bad Request" && (
-        <ModalText
-          handleClose={submitClosingModalResponse}
-          isOpen={feedback}
-          customFunction={""}
-        >
-          Wrong Email or Password
-          <p className="login__modal--break_text">
-            {" "}
-            Please, try again to Sign In
-          </p>
-        </ModalText>
-      )}
       {apiMessage === "Email Invalid" && (
         <ModalText
           handleClose={submitClosingModalResponse}
