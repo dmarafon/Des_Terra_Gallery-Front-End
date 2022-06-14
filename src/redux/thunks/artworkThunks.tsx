@@ -35,7 +35,7 @@ export const loadArtworksThunk =
         );
         dispatch(finishedLoadingActionCreator());
 
-        if (artworks) {
+        if (artworks.length !== 0) {
           const pagination = { totalPage, currentPage };
           dispatch(loadartworksActionCreator(artworks));
           dispatch(countPaginationActionCreator(pagination));
@@ -52,11 +52,12 @@ export const loadArtworksThunk =
         );
         dispatch(finishedLoadingActionCreator());
 
-        if (artworks) {
+        if (artworks.length !== 0) {
           const pagination = { totalPage, currentPage };
           dispatch(loadartworksActionCreator(artworks));
           dispatch(countPaginationActionCreator(pagination));
         } else {
+          dispatch(apiResponseActionCreator("No Artworks"));
           dispatch(finishedLoadingActionCreator());
           throw new Error("No Artworks");
         }
@@ -69,7 +70,7 @@ export const loadArtworksThunk =
         );
         dispatch(finishedLoadingActionCreator());
 
-        if (artworks) {
+        if (artworks.length !== 0) {
           const pagination = { totalPage, currentPage };
           dispatch(loadartworksActionCreator(artworks));
           dispatch(countPaginationActionCreator(pagination));
@@ -86,7 +87,7 @@ export const loadArtworksThunk =
         );
         dispatch(finishedLoadingActionCreator());
 
-        if (artworks) {
+        if (artworks.length !== 0) {
           const pagination = { totalPage, currentPage };
           dispatch(loadartworksActionCreator(artworks));
           dispatch(countPaginationActionCreator(pagination));
@@ -101,7 +102,7 @@ export const loadArtworksThunk =
         } = await axios.get(`${url}all?page=${page}&limit=12`);
         dispatch(finishedLoadingActionCreator());
 
-        if (artworks) {
+        if (artworks.length !== 0) {
           const pagination = { totalPage, currentPage };
           dispatch(loadartworksActionCreator(artworks));
           dispatch(countPaginationActionCreator(pagination));

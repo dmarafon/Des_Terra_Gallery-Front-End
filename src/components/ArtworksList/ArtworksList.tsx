@@ -1,14 +1,18 @@
 import { useCallback, useEffect } from "react";
 import { NavLink, useNavigate, useParams } from "react-router-dom";
+import { cleanApiResponseActionCreator } from "../../redux/features/uiSlice";
 import { loadArtworksThunk } from "../../redux/thunks/artworkThunks";
 import Artwork from "../Artwork/Artwork";
 import { useAppDispatch, useAppSelector } from "../hooks";
 import LoadingModal from "../LoadingModal/LoadingModal";
+import ModalText from "../ModalText/ModalText";
 import ArtworksListStyled from "./ArtworksListStyled";
 
 const ArtworksList = (): JSX.Element => {
   const artworks = useAppSelector((state) => state.artworks);
   const loading = useAppSelector((state) => state.ui.loading);
+  const feedback = useAppSelector((state) => state.ui.feedback);
+  const apiMessage = useAppSelector((state) => state.ui.apiResponse);
 
   const { filterStyle, sortOrderPurchase, sortOrderRent, page } = useParams();
   const navigate = useNavigate();
@@ -96,12 +100,68 @@ const ArtworksList = (): JSX.Element => {
     }
   };
 
+  const submitClosingModalResponse = () => {
+    dispatch(cleanApiResponseActionCreator());
+  };
+
   return (
     <>
+      {apiMessage === "Unknown Error" && (
+        <ModalText
+          handleClose={submitClosingModalResponse}
+          isOpen={feedback}
+          customFunction={""}
+        >
+          We're sorry, but this is not available for the moment
+        </ModalText>
+      )}
       {loading ? (
         <LoadingModal />
       ) : (
         <ArtworksListStyled>
+          <div>
+            <div className="artwork__text--container">
+              {filterStyle ? (
+                <p className="artwork__text--intro">
+                  ALL OF OUR
+                  <span className="artwork__text--colored">
+                    {" "}
+                    {filterStyle.toUpperCase()}{" "}
+                  </span>{" "}
+                  ART
+                </p>
+              ) : (
+                <p className="artwork__text--intro">
+                  ALL THE
+                  <span className="artwork__text--colored">
+                    {" "}
+                    DES TERRA{" "}
+                  </span>{" "}
+                  ARTISTS WORKS
+                </p>
+              )}
+              {sortOrderRent ? (
+                <p className="artwork__text--intro">
+                  {" "}
+                  SORTED BY
+                  <span className="artwork__text--colored"> RENT </span>
+                  PRICE{" "}
+                </p>
+              ) : (
+                ""
+              )}
+              {sortOrderPurchase ? (
+                <p className="artwork__text--intro">
+                  {" "}
+                  SORTED BY
+                  <span className="artwork__text--colored"> PURCHASE</span>
+                  PRICE{" "}
+                </p>
+              ) : (
+                ""
+              )}
+            </div>
+          </div>
           <div className="artwork__filter--container">
             <div className="dropdown__container">
               <div className="dropdown">

@@ -587,6 +587,13 @@ describe("Given a ArtworkList component", () => {
         };
         store.dispatch(paginationAction);
       });
+
+      await waitFor(() => {
+        const finisheLoading = {
+          type: "ui/finishedLoading",
+        };
+        store.dispatch(finisheLoading);
+      });
       const element = screen.getByTestId("forward-button");
 
       await waitFor(() => {

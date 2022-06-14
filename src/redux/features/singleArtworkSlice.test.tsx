@@ -4,7 +4,7 @@ import singleArtworkSlice, {
 
 describe("Given a singleArtworkReduces", () => {
   describe("When it receives an initial state and a loadSingleArtwork action with 1 art as payload", () => {
-    test("Then it should return a new records state with the 3 art objecs and an array of the 3 arts", () => {
+    test("Then it should return a new artwork state with the 1 art objec and an array of the 1 art", () => {
       const initialStatus = {
         title: "",
         medium: "",

@@ -1,5 +1,5 @@
 import { useRef } from "react";
-import { useNavigate } from "react-router-dom";
+import { useLocation, useNavigate } from "react-router-dom";
 import { useAppDispatch, useAppSelector } from "../hooks";
 import ReactPortal from "../ReactPortalDom/ReactPortal";
 import ModalTextStyled from "./ModalTextStyled";
@@ -19,6 +19,7 @@ const ModalText = ({
   const dispatch = useAppDispatch();
   const navigate = useNavigate();
   const apiMessage = useAppSelector((state) => state.ui.apiResponse);
+  const location = useLocation();
 
   const buttonOnClick = async () => {
     if (customFunction && apiMessage === "new") {
@@ -34,7 +35,19 @@ const ModalText = ({
       navigate("/myart");
     }
 
-    if (!customFunction && apiMessage === "Unknown Error") {
+    if (
+      !customFunction &&
+      location.pathname === "/artwork/1" &&
+      apiMessage === "Unknown Error"
+    ) {
+      navigate("/home");
+    } else if (
+      !customFunction &&
+      location.pathname.startsWith("/artwork") === true &&
+      apiMessage === "Unknown Error"
+    ) {
+      navigate("/artwork/1");
+    } else if (!customFunction && apiMessage === "Unknown Error") {
       navigate("/myart");
     }
 
@@ -54,7 +67,11 @@ const ModalText = ({
         <div className="modal" ref={nodeRef}>
           <div className="modal-content">
             <div className="modal-button">
-              <button onClick={buttonOnClick} className="modal-button--closed">
+              <button
+                data-testid="modal-button"
+                onClick={buttonOnClick}
+                className="modal-button--closed"
+              >
                 &times;
               </button>
               {children}
