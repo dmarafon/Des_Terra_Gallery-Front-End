@@ -9,13 +9,26 @@ describe("Given a errorLoginValidation function", () => {
     test("Then it should return the string message in the object 'Test Message', minus the last letter, as 'Test Messag", () => {
       const expectedErrorString = "Test Messag";
       const expectedErrorSent = {
-        response: { data: { msg: "Test Message" } },
+        response: { data: { msg: "Test Message", message: "" } },
       };
 
       const errorValidation = errorLoginValidation(expectedErrorSent);
 
       expect(errorValidation).toBe(expectedErrorString);
     });
+  });
+});
+
+describe("When its invoked passing an object with the message that starts with 'Email or pa'", () => {
+  test("Then it should return the string message 'Email Invalid'", () => {
+    const expectedErrorString = "Email Invalid";
+    const expectedErrorSent = {
+      response: { data: { message: "Email or pa" } },
+    };
+
+    const errorValidation = errorLoginValidation(expectedErrorSent);
+
+    expect(errorValidation).toBe(expectedErrorString);
   });
 });
 
