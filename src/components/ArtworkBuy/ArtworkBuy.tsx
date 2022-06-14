@@ -176,7 +176,10 @@ const ArtworkBuy = ({
                 {" "}
                 <span className="artwork__buy--color">BUY</span> TOTAL PRICE
               </p>
-              <p className="artworkbuy__text--important">{purchaseprice} €</p>
+              <p className="artworkbuy__text--important">
+                Purchase Price ={" "}
+                <span className="artwork__buy--color"> {purchaseprice} €</span>
+              </p>
               <p className="artworkbuy__text">
                 Shipping Costs (5% of Total Price)
               </p>
