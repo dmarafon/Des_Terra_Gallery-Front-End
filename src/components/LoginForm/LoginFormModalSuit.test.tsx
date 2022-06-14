@@ -14,7 +14,7 @@ jest.mock("react-redux", () => ({
 
 describe("Given a Login Page", () => {
   describe("When the user fills the password field and leaves the email field in blank", () => {
-    test("Then the login button should be enabled", async () => {
+    test("Then it should call the loading action and dispatch the action to call the modal", async () => {
       const textInput = ["", "1234"];
 
       render(
@@ -35,44 +35,26 @@ describe("Given a Login Page", () => {
 
       userEvent.click(signInButton);
 
-      expect(mockDispatch).toHaveBeenCalled();
-
       await waitFor(() => {
         const uIaction = {
-          type: "ui/cleanApiResponse",
+          type: "ui/loading",
         };
 
         store.dispatch(uIaction);
       });
-    });
-  });
 
-  describe("When the user fills the password field and leave the email in blank", () => {
-    test("Then it should dispatch the action to call the modal", async () => {
-      const textInput = ["jose", ""];
+      await waitFor(() => {
+        const uIaction = {
+          type: "ui/finishedLoading",
+        };
 
-      render(
-        <BrowserRouter>
-          <Provider store={store}>
-            <LoginForm />
-          </Provider>
-        </BrowserRouter>
-      );
-
-      const usernameField = screen.getByLabelText("EMAIL");
-      const passwordField = screen.getByLabelText("PASSWORD");
-
-      const signInButton = screen.getByRole("button", { name: "SIGN IN" });
-
-      userEvent.type(usernameField, textInput[0]);
-      userEvent.type(passwordField, textInput[1]);
-
-      userEvent.click(signInButton);
+        store.dispatch(uIaction);
+      });
 
       await waitFor(() => {
         const uIaction = {
           type: "ui/apiResponse",
-          payload: "Password Blank",
+          payload: "Email Blank",
         };
 
         store.dispatch(uIaction);
@@ -82,6 +64,8 @@ describe("Given a Login Page", () => {
 
       expect(element).toBeInTheDocument();
 
+      expect(mockDispatch).toHaveBeenCalled();
+
       await waitFor(() => {
         const uIaction = {
           type: "ui/cleanApiResponse",
@@ -91,10 +75,136 @@ describe("Given a Login Page", () => {
       });
     });
   });
+});
 
-  describe("When the user fills the email and leaves the password field in blank", () => {
-    test("Then it should dispatch the action to call the modal", async () => {
-      const textInput = ["jose", ""];
+describe("When the user fills the email and leaves the password field in blank", () => {
+  test("Then it should call the loading action and dispatch the action to call the modal", async () => {
+    const textInput = ["jose@gmail.com", ""];
+
+    render(
+      <BrowserRouter>
+        <Provider store={store}>
+          <LoginForm />
+        </Provider>
+      </BrowserRouter>
+    );
+
+    const usernameField = screen.getByLabelText("EMAIL");
+    const passwordField = screen.getByLabelText("PASSWORD");
+
+    const signInButton = screen.getByRole("button", { name: "SIGN IN" });
+
+    userEvent.type(usernameField, textInput[0]);
+    userEvent.type(passwordField, textInput[1]);
+
+    userEvent.click(signInButton);
+
+    await waitFor(() => {
+      const uIaction = {
+        type: "ui/loading",
+      };
+
+      store.dispatch(uIaction);
+    });
+
+    await waitFor(() => {
+      const uIaction = {
+        type: "ui/finishedLoading",
+      };
+
+      store.dispatch(uIaction);
+    });
+
+    await waitFor(() => {
+      const uIaction = {
+        type: "ui/apiResponse",
+        payload: "Password Blank",
+      };
+
+      store.dispatch(uIaction);
+    });
+
+    const element = screen.getByTestId("custom-element");
+
+    expect(element).toBeInTheDocument();
+
+    expect(mockDispatch).toHaveBeenCalled();
+
+    await waitFor(() => {
+      const uIaction = {
+        type: "ui/cleanApiResponse",
+      };
+
+      store.dispatch(uIaction);
+    });
+  });
+});
+
+describe("When the user fills the email and  the password is less than 5 characters", () => {
+  test("Then it should call the loading action and dispatch the action to call the modal", async () => {
+    const textInput = ["jose@gmail.com", "1234"];
+
+    render(
+      <BrowserRouter>
+        <Provider store={store}>
+          <LoginForm />
+        </Provider>
+      </BrowserRouter>
+    );
+
+    const usernameField = screen.getByLabelText("EMAIL");
+    const passwordField = screen.getByLabelText("PASSWORD");
+
+    const signInButton = screen.getByRole("button", { name: "SIGN IN" });
+
+    userEvent.type(usernameField, textInput[0]);
+    userEvent.type(passwordField, textInput[1]);
+
+    userEvent.click(signInButton);
+
+    await waitFor(() => {
+      const uIaction = {
+        type: "ui/loading",
+      };
+
+      store.dispatch(uIaction);
+    });
+
+    await waitFor(() => {
+      const uIaction = {
+        type: "ui/finishedLoading",
+      };
+
+      store.dispatch(uIaction);
+    });
+
+    await waitFor(() => {
+      const uIaction = {
+        type: "ui/apiResponse",
+        payload: "Password Length",
+      };
+
+      store.dispatch(uIaction);
+    });
+
+    const element = screen.getByTestId("custom-element");
+
+    expect(element).toBeInTheDocument();
+
+    expect(mockDispatch).toHaveBeenCalled();
+
+    await waitFor(() => {
+      const uIaction = {
+        type: "ui/cleanApiResponse",
+      };
+
+      store.dispatch(uIaction);
+    });
+  });
+
+  describe("When the user fills the email and  the password is equal to 5 characters", () => {
+    test("Then it should call the loading action and dispatch the action to call the modal", async () => {
+      const textInput = ["jose@gmail.com", "12345"];
 
       render(
         <BrowserRouter>
@@ -114,38 +224,28 @@ describe("Given a Login Page", () => {
 
       userEvent.click(signInButton);
 
-      expect(mockDispatch).toHaveBeenCalled();
-    });
-  });
+      await waitFor(() => {
+        const uIaction = {
+          type: "ui/loading",
+        };
 
-  describe("When the user fills the email and  the password is less than 5 characters", () => {
-    test("Then it should dispatch the action to call the modal", async () => {
-      const textInput = ["jose", "1234"];
+        store.dispatch(uIaction);
+      });
 
-      render(
-        <BrowserRouter>
-          <Provider store={store}>
-            <LoginForm />
-          </Provider>
-        </BrowserRouter>
-      );
+      await waitFor(() => {
+        const uIaction = {
+          type: "ui/finishedLoading",
+        };
 
-      const usernameField = screen.getByLabelText("EMAIL");
-      const passwordField = screen.getByLabelText("PASSWORD");
-
-      const signInButton = screen.getByRole("button", { name: "SIGN IN" });
-
-      userEvent.type(usernameField, textInput[0]);
-      userEvent.type(passwordField, textInput[1]);
-
-      userEvent.click(signInButton);
+        store.dispatch(uIaction);
+      });
 
       expect(mockDispatch).toHaveBeenCalled();
     });
   });
 
-  describe("When the user fills the email and  the password is equal to  5 characters", () => {
-    test("Then it should dispatch the action to call the modal", async () => {
+  describe("When an unknown error occurs in the server", () => {
+    test("Then it should call the loading action and dispatch the action to call the modal", async () => {
       const textInput = ["jose", "12345"];
 
       render(
@@ -166,7 +266,125 @@ describe("Given a Login Page", () => {
 
       userEvent.click(signInButton);
 
+      await waitFor(() => {
+        const uIaction = {
+          type: "ui/loading",
+        };
+
+        store.dispatch(uIaction);
+      });
+
+      await waitFor(() => {
+        const uIaction = {
+          type: "ui/finishedLoading",
+        };
+
+        store.dispatch(uIaction);
+      });
+
+      await waitFor(() => {
+        const uIaction = {
+          type: "ui/apiResponse",
+          payload: "Unknown Error",
+        };
+
+        store.dispatch(uIaction);
+      });
+
+      await waitFor(() => {
+        const uIaction = {
+          type: "ui/apiResponse",
+          payload: "Unknown Error",
+        };
+
+        store.dispatch(uIaction);
+      });
+
+      const element = screen.getByTestId("custom-element");
+
+      expect(element).toBeInTheDocument();
+
       expect(mockDispatch).toHaveBeenCalled();
+
+      await waitFor(() => {
+        const uIaction = {
+          type: "ui/cleanApiResponse",
+        };
+
+        store.dispatch(uIaction);
+      });
+    });
+  });
+
+  describe("When the user inputs an invalid email without an '@'", () => {
+    test("Then it should call the loading action and dispatch the action to call the modal", async () => {
+      const textInput = ["joseperea.com", "12345"];
+
+      render(
+        <BrowserRouter>
+          <Provider store={store}>
+            <LoginForm />
+          </Provider>
+        </BrowserRouter>
+      );
+
+      const usernameField = screen.getByLabelText("EMAIL");
+      const passwordField = screen.getByLabelText("PASSWORD");
+
+      const signInButton = screen.getByRole("button", { name: "SIGN IN" });
+
+      userEvent.type(usernameField, textInput[0]);
+      userEvent.type(passwordField, textInput[1]);
+
+      userEvent.click(signInButton);
+
+      await waitFor(() => {
+        const uIaction = {
+          type: "ui/loading",
+        };
+
+        store.dispatch(uIaction);
+      });
+
+      await waitFor(() => {
+        const uIaction = {
+          type: "ui/finishedLoading",
+        };
+
+        store.dispatch(uIaction);
+      });
+
+      await waitFor(() => {
+        const uIaction = {
+          type: "ui/apiResponse",
+          payload: "Email Invalid",
+        };
+
+        store.dispatch(uIaction);
+      });
+
+      await waitFor(() => {
+        const uIaction = {
+          type: "ui/apiResponse",
+          payload: "Unknown Error",
+        };
+
+        store.dispatch(uIaction);
+      });
+
+      const element = screen.getByTestId("custom-element");
+
+      expect(element).toBeInTheDocument();
+
+      expect(mockDispatch).toHaveBeenCalled();
+
+      await waitFor(() => {
+        const uIaction = {
+          type: "ui/cleanApiResponse",
+        };
+
+        store.dispatch(uIaction);
+      });
     });
   });
 });

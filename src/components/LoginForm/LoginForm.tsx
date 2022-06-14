@@ -30,20 +30,30 @@ const LoginForm = (): JSX.Element => {
 
   const loginSubmit = (event: SyntheticEvent) => {
     event.preventDefault();
+    const validRegex =
+      /^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/;
 
     switch (true) {
       case formData.email === "" && formData.password === "":
         dispatch(apiResponseActionCreator("Blank"));
         break;
+
       case formData.email === "":
         dispatch(apiResponseActionCreator("Email Blank"));
         break;
+
+      case !formData.email.match(validRegex):
+        dispatch(apiResponseActionCreator("Email Invalid"));
+        break;
+
       case formData.password === "":
         dispatch(apiResponseActionCreator("Password Blank"));
         break;
+
       case formData.password.length < 5:
         dispatch(apiResponseActionCreator("Password Length"));
         break;
+
       default:
         const dispatchedData = { ...formData };
         resetForm();
@@ -71,7 +81,17 @@ const LoginForm = (): JSX.Element => {
 
   return (
     <>
-      {apiMessage === "Unkwnown Error" && (
+      {apiMessage === "Email Invalid" && (
+        <ModalText
+          handleClose={submitClosingModalResponse}
+          isOpen={false}
+          customFunction={""}
+        >
+          This is an invalid Email. Please, check the inputed email addressed
+          <p className="login__modal--break_text"></p>
+        </ModalText>
+      )}
+      {apiMessage === "Unknown Error" && (
         <ModalText
           handleClose={submitClosingModalResponse}
           isOpen={false}
