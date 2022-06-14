@@ -1,12 +1,12 @@
-import { render, screen } from "@testing-library/react";
+import { render, screen, waitFor } from "@testing-library/react";
 import { Provider } from "react-redux";
-import { BrowserRouter } from "react-router-dom";
+import { MemoryRouter, Route, Routes } from "react-router-dom";
 import { artworkMock } from "../../mocks/artworkMock";
 import store from "../../redux/store/store";
 import ArtworkBuyPage from "./ArtworkBuyPage";
 
 describe("Given a ArtworkBuyPage", () => {
-  describe("When it's invoked with 1 art item in the store and an user logged in", () => {
+  describe("When it's invoked navigating to the page with the art id, loading 1 art item in the store and an user logged in", () => {
     const loadUserArtworks = {
       type: "singleArtwork/loadSingleArtwork",
       payload: {
@@ -21,7 +21,7 @@ describe("Given a ArtworkBuyPage", () => {
         description:
           "I love the summer. Those golden days, when the heat boils the skin and we integrate ourselves into the water. There's something fresh, young and very powerful about the sun, with his energy that bombard us everyday.",
         purchaseprice: "7000",
-        monthlyrateprice: "800",
+        monthlyrateprice: "10",
         author: [
           {
             firstname: "julio",
@@ -51,12 +51,28 @@ describe("Given a ArtworkBuyPage", () => {
       const totalImages = 2;
 
       render(
-        <BrowserRouter>
-          <Provider store={store}>
-            <ArtworkBuyPage />
-          </Provider>
-        </BrowserRouter>
+        <MemoryRouter
+          initialEntries={["/artwork/buy/62a28f41e2cb25089001eaee"]}
+        >
+          <Routes>
+            <Route
+              path="/artwork/buy/:artworkId"
+              element={
+                <Provider store={store}>
+                  <ArtworkBuyPage />
+                </Provider>
+              }
+            />
+          </Routes>
+        </MemoryRouter>
       );
+
+      await waitFor(() => {
+        const finisheLoading = {
+          type: "ui/finishedLoading",
+        };
+        store.dispatch(finisheLoading);
+      });
 
       const displayImage = screen.getAllByRole("img");
 
