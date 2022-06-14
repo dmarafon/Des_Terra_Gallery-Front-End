@@ -12,6 +12,13 @@ const RegisterFormStyled = styled.div`
     flex-direction: column;
   }
 
+  input[type="number"]::-webkit-inner-spin-button,
+  input[type="number"]::-webkit-outer-spin-button {
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+  }
+
   .register__text--container {
     margin-bottom: 30px;
     display: flex;

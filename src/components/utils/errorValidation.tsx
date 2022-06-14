@@ -5,12 +5,11 @@ import { AppDispatch } from "../../redux/store/store";
 export const errorLoginValidation = (error: {
   response: { data: { msg: string } };
 }) => {
-  switch (true) {
-    case typeof error?.response?.data?.msg === "undefined":
-      return "Unknown Error";
-    default:
-      return error.response.data.msg.substring(0, 11);
+  if (typeof error?.response?.data?.msg === "undefined") {
+    return "Unknown Error";
   }
+
+  return error.response.data.msg.substring(0, 11);
 };
 
 export const errorRegistrationValidation = (error: {
@@ -19,7 +18,7 @@ export const errorRegistrationValidation = (error: {
   if (typeof error?.response?.data?.message === "undefined") {
     return "Unknown Error";
   }
-
+  console.log(error.response.data.message.substring(0, 8));
   return error.response.data.message.substring(0, 8);
 };
 

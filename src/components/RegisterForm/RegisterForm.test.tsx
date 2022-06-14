@@ -212,7 +212,7 @@ describe("Given a RegisterForm component function", () => {
       await waitFor(() => {
         const uIaction = {
           type: "ui/apiResponse",
-          payload: "Conflict",
+          payload: "User alr",
         };
 
         store.dispatch(uIaction);
