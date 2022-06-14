@@ -188,6 +188,16 @@ const AddEditForm = (): JSX.Element => {
           Art page
         </ModalText>
       )}
+      {apiMessage === "upd" && (
+        <ModalText
+          handleClose={submitClosingModalResponse}
+          isOpen={feedback}
+          customFunction={""}
+        >
+          Your Artwork was Updated Succesfully! You will be redirected to your
+          Art page
+        </ModalText>
+      )}
       {apiMessage === "Bad Request" && (
         <ModalText
           handleClose={submitClosingModalResponse}
@@ -246,7 +256,7 @@ const AddEditForm = (): JSX.Element => {
                       onChange={changeData}
                       required
                       autoComplete="off"
-                      maxLength={33}
+                      maxLength={24}
                     />
                     <label className="addedit__label" htmlFor="medium">
                       MEDIUM

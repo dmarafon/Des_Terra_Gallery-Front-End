@@ -29,6 +29,18 @@ const ModalText = ({
     if (!customFunction && apiMessage === "new") {
       navigate("/myart");
     }
+
+    if (!customFunction && apiMessage === "upd") {
+      navigate("/myart");
+    }
+
+    if (!customFunction && apiMessage === "Unknown Error") {
+      navigate("/myart");
+    }
+
+    if (!customFunction && apiMessage === "Bad Request") {
+      navigate("/myart");
+    }
     sessionStorage.clear();
     handleClose();
   };
