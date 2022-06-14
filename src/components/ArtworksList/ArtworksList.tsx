@@ -102,6 +102,49 @@ const ArtworksList = (): JSX.Element => {
         <LoadingModal />
       ) : (
         <ArtworksListStyled>
+          <div>
+            <div className="artwork__text--container">
+              {filterStyle ? (
+                <p className="artwork__text--intro">
+                  ALL OF OUR
+                  <span className="artwork__text--colored">
+                    {" "}
+                    {filterStyle.toUpperCase()}{" "}
+                  </span>{" "}
+                  ART
+                </p>
+              ) : (
+                <p className="artwork__text--intro">
+                  ALL THE
+                  <span className="artwork__text--colored">
+                    {" "}
+                    DES TERRA{" "}
+                  </span>{" "}
+                  ARTISTS WORKS
+                </p>
+              )}
+              {sortOrderRent ? (
+                <p className="artwork__text--intro">
+                  {" "}
+                  SORTED BY
+                  <span className="artwork__text--colored"> RENT </span>
+                  PRICE{" "}
+                </p>
+              ) : (
+                ""
+              )}
+              {sortOrderPurchase ? (
+                <p className="artwork__text--intro">
+                  {" "}
+                  SORTED BY
+                  <span className="artwork__text--colored"> PURCHASE</span>
+                  PRICE{" "}
+                </p>
+              ) : (
+                ""
+              )}
+            </div>
+          </div>
           <div className="artwork__filter--container">
             <div className="dropdown__container">
               <div className="dropdown">
