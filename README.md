@@ -16,14 +16,6 @@ Renderiza un botón con una acción recibida y texto recibido
 
 <br>
 
-### Icon Button
-
-<br>
-
-Renderiza un buton svg con una acción recibida y forma recibida
-
-<br>
-
 ### Header
 
 <br>
@@ -111,14 +103,6 @@ Renderiza un div fuera de la árbol HTML de React donde los modales serán invoc
 <br>
 
 Renderiza un spinner de loading siempre que se espere llegar los dados
-
-<br>
-
-### ModalConfirmation
-
-<br>
-
-Renderiza una caja de texto para confirmar una acción, con la opción de cancelar la acción (y con eso cerrar la caja) y una opción de confirmar la acción deseada.
 
 <br>
 
