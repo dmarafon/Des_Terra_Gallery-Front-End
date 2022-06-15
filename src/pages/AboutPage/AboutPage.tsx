@@ -56,7 +56,7 @@ const AboutPage = (): JSX.Element => {
           <div className="about__image--image_container">
             <img
               className="about__image"
-              src="https://firebasestorage.googleapis.com/v0/b/desterra-181ac.appspot.com/o/cracked%20phone.jpeg?alt=media&token=c3418aaa-f3a6-4ebe-8171-d93516d0fa8d"
+              src="https://firebasestorage.googleapis.com/v0/b/desterra-181ac.appspot.com/o/1655329303981cracked%20phone.webp?alt=media&token=8fc17fd4-172a-47df-8c4f-a1b232da4a6a"
               alt="artist painting"
             />
           </div>

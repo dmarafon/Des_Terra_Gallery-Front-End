@@ -36,6 +36,7 @@ const MyArtwork = ({
   const userId = useAppSelector((state) => state.user.id);
   const apiMessage = useAppSelector((state) => state.ui.apiResponse);
   const feedback = useAppSelector((state) => state.ui.feedback);
+  const singleArtworkId = useAppSelector((state) => state.singleArtwork.id);
 
   const dispatch = useAppDispatch();
 
@@ -60,12 +61,27 @@ const MyArtwork = ({
   };
 
   const deleteArt = async () => {
-    await dispatch(deleteArtworkThunk(id));
+    await dispatch(deleteArtworkThunk(singleArtworkId));
     dispatch(cleanApiResponseActionCreator());
     dispatch(loadUserArtworks(userId));
   };
 
   const callDeleteConfirmation = () => {
+    const artwork = {
+      id,
+      title,
+      width,
+      height,
+      style,
+      description,
+      image,
+      imagebackup,
+      purchaseprice,
+      monthlyrateprice,
+      medium,
+      author,
+    };
+    dispatch(loadSingleArtworkActionCreator(artwork));
     dispatch(apiResponseActionCreator("Delete Confirmation"));
   };
 
