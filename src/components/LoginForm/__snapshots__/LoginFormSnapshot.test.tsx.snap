@@ -112,7 +112,7 @@ exports[`Given an Login form component When it's rendered Then it should always 
           <span
             className="login__text--colored"
           >
-             Join Now!
+            Join Now!
           </span>
         </a>
       </div>
