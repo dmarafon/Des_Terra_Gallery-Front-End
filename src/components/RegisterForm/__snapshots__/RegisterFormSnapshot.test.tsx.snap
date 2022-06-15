@@ -1,7 +1,7 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`Given an Register form component When it's rendered Then it should always match this snapshot 1`] = `
-<divd
+<div
   className="sc-dkzDqf kgBSCJ"
 >
   <div
@@ -261,3 +261,5 @@ exports[`Given an Register form component When it's rendered Then it should alwa
   </div>
 </div>
 `;
+
+
