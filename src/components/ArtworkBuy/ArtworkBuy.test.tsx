@@ -402,7 +402,7 @@ describe("Given a ArtworkBuy component", () => {
       await waitFor(() => {
         const finisheLoading = {
           type: "ui/apiResponse",
-          payload: "Buy",
+          payload: "Rent",
         };
         store.dispatch(finisheLoading);
       });
