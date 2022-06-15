@@ -1,8 +1,13 @@
 import { useState } from "react";
 import { NavLink } from "react-router-dom";
+import {
+  apiResponseActionCreator,
+  cleanApiResponseActionCreator,
+} from "../../redux/features/uiSlice";
 import { IArtworks } from "../../types/artworksInterface";
-import { useAppSelector } from "../hooks";
+import { useAppDispatch, useAppSelector } from "../hooks";
 import LoadingModal from "../LoadingModal/LoadingModal";
+import ModalText from "../ModalText/ModalText";
 import ArtworBuyStyled from "./ArtworkBuyStyled";
 
 const ArtworkBuy = ({
@@ -23,6 +28,9 @@ const ArtworkBuy = ({
 
   const firstnameUpperCase = author[0]?.firstname?.toUpperCase();
   const surnameUpperCase = author[0]?.surname?.toUpperCase();
+  const feedback = useAppSelector((state) => state.ui.feedback);
+  const apiMessage = useAppSelector((state) => state.ui.apiResponse);
+  const dispatch = useAppDispatch();
 
   const titleUpperCase = title.toUpperCase();
 
@@ -80,8 +88,42 @@ const ArtworkBuy = ({
     }
   };
 
+  const submitClosingModalResponse = () => {
+    dispatch(cleanApiResponseActionCreator());
+  };
+
+  const dispatchBuyModal = () => {
+    dispatch(apiResponseActionCreator("Buy"));
+  };
+
+  const dispatchRentModal = () => {
+    dispatch(apiResponseActionCreator("Rent"));
+  };
+
   return (
     <>
+      {apiMessage === "Buy" && (
+        <ModalText
+          handleClose={submitClosingModalResponse}
+          isOpen={false}
+          customFunction={""}
+        >
+          Thank you for Buying this work of Art! In 24 hours we will get in
+          touch to discuss the delivery details
+          <p className="login__modal--break_text"></p>
+        </ModalText>
+      )}
+      {apiMessage === "Rent" && (
+        <ModalText
+          handleClose={submitClosingModalResponse}
+          isOpen={false}
+          customFunction={""}
+        >
+          Thank you for Renting this work of Art! In 24 hours we will get in
+          touch to discuss the delivery details
+          <p className="login__modal--break_text"></p>
+        </ModalText>
+      )}
       {loading ? (
         <LoadingModal />
       ) : (
@@ -169,7 +211,12 @@ const ArtworkBuy = ({
                   } €`}
                 </span>
               </p>
-              <button className="artwork_buy__button">RENT</button>
+              <button
+                onClick={dispatchRentModal}
+                className="artwork_buy__button"
+              >
+                RENT
+              </button>
             </div>
             <div className="artwork__purchase--container">
               <p className="artwork__text--title">
@@ -208,7 +255,12 @@ const ArtworkBuy = ({
                   } €`}
                 </span>
               </p>
-              <button className="artwork_buy__button">BUY</button>
+              <button
+                onClick={dispatchBuyModal}
+                className="artwork_buy__button"
+              >
+                BUY
+              </button>
             </div>
           </div>
         </ArtworBuyStyled>
