@@ -2,8 +2,7 @@ import { defineConfig } from "cypress";
 
 export default defineConfig({
   e2e: {
-    setupNodeEvents(on, config) {
-      // implement node event listeners here
-    },
+    baseUrl:
+      "https://daniell-marafon-front-final-project-202204-bcn.netlify.app/",
   },
 });
