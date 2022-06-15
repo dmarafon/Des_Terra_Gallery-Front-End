@@ -72,7 +72,7 @@ const Header = (): JSX.Element => {
               )}
               {userData.logged ? (
                 <li className="menu__logged">
-                  <NavLink to={"/users/profile"}>
+                  <NavLink to={"/"}>
                     <div className="menu__link--userprofile">
                       <svg
                         xmlns="http://www.w3.org/2000/svg"
