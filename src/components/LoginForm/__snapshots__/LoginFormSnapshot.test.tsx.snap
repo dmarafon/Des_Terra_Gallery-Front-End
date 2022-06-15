@@ -1,1 +1,122 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
 
+exports[`Given an Login form component When it's rendered Then it should always match this snapshot 1`] = `
+<div
+  className="sc-dkzDqf cwWVvp"
+>
+  <div
+    className="login__image--container"
+  >
+    <div
+      className="login__image--image_container"
+    >
+      <img
+        alt="artist painting"
+        className="login__image"
+        src="https://firebasestorage.googleapis.com/v0/b/desterra-181ac.appspot.com/o/leaving_the_bed.jpg?alt=media&token=1e89bee0-4d40-412c-863b-fc48a7be959a"
+      />
+    </div>
+    <div
+      className="login__image--text_container"
+    >
+      <p
+        className="login__image--subtitle"
+      >
+        Nick Alm, "Leaving the Bed"
+      </p>
+    </div>
+  </div>
+  <div
+    className="login__container"
+  >
+    <p
+      className="login__text--intro"
+    >
+      SIGN IN TO
+       
+      <span
+        className="login__text--colored"
+      >
+        EXPERIENCE 
+      </span>
+    </p>
+    <p
+      className="login__text--intro_second"
+    >
+      DES TERRA
+    </p>
+    <form
+      autoComplete="off"
+      noValidate={true}
+      onSubmit={[Function]}
+    >
+      <div
+        className="login__form"
+      >
+        <label
+          className="login__label"
+          htmlFor="email"
+        >
+          EMAIL
+        </label>
+        <input
+          className="login__input"
+          id="email"
+          maxLength={33}
+          onChange={[Function]}
+          placeholder="EMAIL"
+          required={true}
+          value=""
+        />
+        <label
+          className="login__label"
+          htmlFor="password"
+        >
+          PASSWORD
+        </label>
+        <input
+          autoComplete="current-password"
+          className="login__input"
+          id="password"
+          maxLength={15}
+          minLength={5}
+          onChange={[Function]}
+          placeholder="PASSWORD"
+          required={true}
+          type="password"
+          value=""
+        />
+      </div>
+      <div
+        className="login__button--container"
+      >
+        <button
+          className="login__button"
+          disabled={false}
+          type="submit"
+        >
+          SIGN IN
+        </button>
+      </div>
+    </form>
+    <div
+      className="login__text--register"
+    >
+      <div>
+        <a
+          className="login__register--navigation"
+          href="/users/register"
+          onClick={[Function]}
+        >
+          Don’t have an account?
+          <span
+            className="login__text--colored"
+          >
+             Join Now!
+          </span>
+        </a>
+      </div>
+    </div>
+  </div>
+</div>
+`;

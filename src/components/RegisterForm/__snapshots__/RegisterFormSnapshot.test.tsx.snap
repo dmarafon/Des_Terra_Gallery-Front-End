@@ -261,5 +261,3 @@ exports[`Given an Register form component When it's rendered Then it should alwa
   </div>
 </div>
 `;
-
-
