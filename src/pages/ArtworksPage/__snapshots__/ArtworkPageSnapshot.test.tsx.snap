@@ -371,7 +371,9 @@ Array [
               <img
                 alt="painting by JULIO  REYES"
                 className="artwork__image"
+                height={465}
                 src="https://firebasestorage.googleapis.com/v0/b/desterra-181ac.appspot.com/o/1654820927053A%20Girl%20Called%20Barbara.jpeg?alt=media&token=0a180515-9af1-4ea5-bb2d-500a21e897ee"
+                width={417.44}
               />
             </a>
             <div
@@ -413,7 +415,9 @@ Array [
               <img
                 alt="painting by DAVID  FULLARTON"
                 className="artwork__image"
+                height={465}
                 src="https://firebasestorage.googleapis.com/v0/b/desterra-181ac.appspot.com/o/1655219106440Brickelangelo.jpeg?alt=media&token=36a5e66c-93dc-4ecf-91b1-f0e599040ad0"
+                width={417.44}
               />
             </a>
             <div
@@ -455,7 +459,9 @@ Array [
               <img
                 alt="painting by JESUS  PEREA"
                 className="artwork__image"
+                height={465}
                 src="https://firebasestorage.googleapis.com/v0/b/desterra-181ac.appspot.com/o/1654817416162Concreto.jpeg?alt=media&token=86ef8e9c-6541-4848-a0a5-1b80f97ec3a8"
+                width={417.44}
               />
             </a>
             <div
@@ -497,7 +503,9 @@ Array [
               <img
                 alt="painting by JESUS  PEREA"
                 className="artwork__image"
+                height={465}
                 src="https://firebasestorage.googleapis.com/v0/b/desterra-181ac.appspot.com/o/16552243071945.jpeg?alt=media&token=709fcfa3-d328-4a05-9dc0-8d230f9c762c"
+                width={417.44}
               />
             </a>
             <div
@@ -539,7 +547,9 @@ Array [
               <img
                 alt="painting by JESUS  PEREA"
                 className="artwork__image"
+                height={465}
                 src="https://firebasestorage.googleapis.com/v0/b/desterra-181ac.appspot.com/o/1654817472636Constructor.jpeg?alt=media&token=250623b6-aa76-4233-8f1a-b5c4148fc30c"
+                width={417.44}
               />
             </a>
             <div
@@ -581,7 +591,9 @@ Array [
               <img
                 alt="painting by JESUS  PEREA"
                 className="artwork__image"
+                height={465}
                 src="https://firebasestorage.googleapis.com/v0/b/desterra-181ac.appspot.com/o/165524045692912.jpeg?alt=media&token=accb9f67-6312-4dff-8e51-16e8975f783d"
+                width={417.44}
               />
             </a>
             <div
@@ -623,7 +635,9 @@ Array [
               <img
                 alt="painting by JOHAN  BARRIOS"
                 className="artwork__image"
+                height={465}
                 src="https://firebasestorage.googleapis.com/v0/b/desterra-181ac.appspot.com/o/1654991606826Expansion.jpeg?alt=media&token=d8d1236f-5baf-458f-b551-97b065587a38"
+                width={417.44}
               />
             </a>
             <div
@@ -665,7 +679,9 @@ Array [
               <img
                 alt="painting by DANIEL  SEGROVE"
                 className="artwork__image"
+                height={465}
                 src="https://firebasestorage.googleapis.com/v0/b/desterra-181ac.appspot.com/o/1654987894565Daniel%20Segrove%20(6).jpeg?alt=media&token=03e4233a-6232-4218-9da4-d02dbe8368d5"
+                width={417.44}
               />
             </a>
             <div
@@ -707,7 +723,9 @@ Array [
               <img
                 alt="painting by MARINA  GONZALEZ EME"
                 className="artwork__image"
+                height={465}
                 src="https://firebasestorage.googleapis.com/v0/b/desterra-181ac.appspot.com/o/1654818396291Formidable%20Totem.jpg?alt=media&token=961eaefd-4b37-4a6c-b870-36261d8b1416"
+                width={417.44}
               />
             </a>
             <div
@@ -749,7 +767,9 @@ Array [
               <img
                 alt="painting by MARINA  GONZALEZ EME"
                 className="artwork__image"
+                height={465}
                 src="https://firebasestorage.googleapis.com/v0/b/desterra-181ac.appspot.com/o/1654818512307Formidable%20Totem%202.jpg?alt=media&token=8274831c-73af-4c29-b19d-3aeb700a0946"
+                width={417.44}
               />
             </a>
             <div
@@ -791,7 +811,9 @@ Array [
               <img
                 alt="painting by DAVID  FULLARTON"
                 className="artwork__image"
+                height={465}
                 src="https://firebasestorage.googleapis.com/v0/b/desterra-181ac.appspot.com/o/1655221371792FreeJazz_lo.jpeg?alt=media&token=d0a97bf5-afc1-40c8-a3ac-35040f33e36e"
+                width={417.44}
               />
             </a>
             <div
@@ -833,7 +855,9 @@ Array [
               <img
                 alt="painting by JOHAN  BARRIOS"
                 className="artwork__image"
+                height={465}
                 src="https://firebasestorage.googleapis.com/v0/b/desterra-181ac.appspot.com/o/1654992023246Gravitation.jpeg?alt=media&token=9e16c672-9611-4127-9f11-5fcf2963be40"
+                width={417.44}
               />
             </a>
             <div
