@@ -21,7 +21,9 @@ Array [
           >
             <img
               alt="Desterra logo in orange"
+              height={126.08}
               src="/images/desterra_logo.png"
+              width={250}
             />
           </a>
         </div>
@@ -1002,4 +1004,3 @@ Array [
   </footer>,
 ]
 `;
-

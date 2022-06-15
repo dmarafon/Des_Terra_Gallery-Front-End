@@ -31,11 +31,18 @@ const Header = (): JSX.Element => {
           <div className={loading ? "top-nav_img-loading" : "top-nav_img"}>
             <NavLink to={loading ? "" : "/home"}>
               {loading ? (
-                <img src="/images/desterra_logo_alt.png" alt="Desterra logo" />
+                <img
+                  src="/images/desterra_logo_alt.png"
+                  alt="Desterra logo"
+                  width={250}
+                  height={126.08}
+                />
               ) : (
                 <img
                   src="/images/desterra_logo.png"
                   alt="Desterra logo in orange"
+                  width={250}
+                  height={126.08}
                 />
               )}
             </NavLink>
