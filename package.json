@@ -41,7 +41,10 @@
       "!src/reportWebVitals.ts",
       "!src/react-app-env.d.ts",
       "!src/types/*",
-      "!src/components/LoadingModal/GlobalStyleLoginModal.tsx"
+      "!src/components/LoadingModal/GlobalStyleLoginModal.tsx",
+      "!src/**/*.test.ts",
+      "!src/**/*.test.ts.snap",
+      "!src/**/*.test.tsx.snap"
     ]
   },
   "eslintConfig": {
