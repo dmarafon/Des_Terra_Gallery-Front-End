@@ -28,7 +28,6 @@ const ArtworkBuy = ({
 
   const firstnameUpperCase = author[0]?.firstname?.toUpperCase();
   const surnameUpperCase = author[0]?.surname?.toUpperCase();
-  const feedback = useAppSelector((state) => state.ui.feedback);
   const apiMessage = useAppSelector((state) => state.ui.apiResponse);
   const dispatch = useAppDispatch();
 
