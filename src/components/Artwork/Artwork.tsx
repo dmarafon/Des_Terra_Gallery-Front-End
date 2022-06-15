@@ -31,6 +31,8 @@ const Artwork = ({
               alt={`painting by ${
                 firstnameUpperCase ? firstnameUpperCase : ""
               }  ${surnameUpperCase ? surnameUpperCase : ""}`}
+              width={417.44}
+              height={465}
             />
           </NavLink>
           <div className="artwork__text">
