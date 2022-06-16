@@ -22,7 +22,7 @@ Array [
             <img
               alt="Desterra logo in orange"
               height={126.08}
-              src="/images/desterra_logo.png"
+              src="/images/desterra_logo.webp"
               width={250}
             />
           </a>
@@ -84,7 +84,7 @@ Array [
     </div>
   </header>,
   <div
-    className="sc-hKMtZM fcLXvJ"
+    className="sc-hKMtZM grbemN"
   >
     <div>
       <div

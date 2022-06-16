@@ -39,7 +39,7 @@ const Header = (): JSX.Element => {
                 />
               ) : (
                 <img
-                  src="/images/desterra_logo.png"
+                  src="/images/desterra_logo.webp"
                   alt="Desterra logo in orange"
                   width={250}
                   height={126.08}
