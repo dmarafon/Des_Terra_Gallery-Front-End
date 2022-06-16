@@ -952,6 +952,7 @@ Array [
         className="footer__social-media"
       >
         <a
+          aria-label="Facebook"
           href="https://facebook.com"
           rel="noreferrer"
           target="_blank"
@@ -968,6 +969,7 @@ Array [
           </svg>
         </a>
         <a
+          aria-label="Twitter"
           href="https://twitter.com"
           rel="noreferrer"
           target="_blank"
@@ -984,6 +986,7 @@ Array [
           </svg>
         </a>
         <a
+          aria-label="Instagram"
           href="https://instagram.com"
           rel="noreferrer"
           target="_blank"
