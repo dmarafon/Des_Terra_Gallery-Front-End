@@ -127,7 +127,7 @@ const ArtworksListStyled = styled.div`
 
   .dropbtn {
     background-color: #fa803b;
-    color: white;
+    color: black;
     border: none;
     font-weight: bolder;
     border-radius: 5px;
