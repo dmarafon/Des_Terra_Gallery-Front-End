@@ -19,6 +19,8 @@ export const errorRegistrationValidation = (error: {
 }) => {
   if (typeof error?.response?.data?.message === "undefined") {
     return "Unknown Error";
+  } else if (error?.response?.data?.message === "Bad Request") {
+    return "Bad Request";
   }
   return error.response.data.message.substring(0, 8);
 };

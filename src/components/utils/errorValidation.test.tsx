@@ -47,6 +47,19 @@ describe("Given a errorRegistrationValidation function", () => {
   });
 });
 
+describe("When its invoked passing an object the string 'Bad Request'", () => {
+  test("Then it should return the exact same message", () => {
+    const expectedErrorString = "Bad Request";
+    const expectedErrorSent = {
+      response: { data: { message: "Bad Request" } },
+    };
+
+    const errorValidation = errorRegistrationValidation(expectedErrorSent);
+
+    expect(errorValidation).toBe(expectedErrorString);
+  });
+});
+
 describe("Given a checkStatusCode function", () => {
   describe("When its invoked passing an api response status 200 and a string containing the id number '1234'", () => {
     test("Then it should dispatch an action to delete an artwork", async () => {
