@@ -222,6 +222,19 @@ const AddEditForm = (): JSX.Element => {
           </p>
         </ModalText>
       )}
+      {apiMessage === "Bad requ" && (
+        <ModalText
+          handleClose={submitClosingModalResponse}
+          isOpen={feedback}
+          customFunction={""}
+        >
+          We're sorry, something went wrong
+          <p className="login__modal--break_text">
+            {" "}
+            Please, try again to Create your Art
+          </p>
+        </ModalText>
+      )}
       {loading ? (
         <LoadingModal />
       ) : (
