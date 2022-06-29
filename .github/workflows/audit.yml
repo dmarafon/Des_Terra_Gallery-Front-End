@@ -37,5 +37,5 @@ jobs:
           pattern: "^[^#].{10,74}"
           error: "The commit message length must be between 10 and 72"
           excludeDescription: "true" # optional: this excludes the description body of a pull request
-          excludeTitle: "true" # optional: this excludes the title of a pull request
+          excludeTitle: "true"
           checkAllCommitMessages: "true"
