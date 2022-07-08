@@ -185,6 +185,7 @@ export const createArtworkThunk =
 
 export const editArtworkThunk =
   (formData: any, artworkId: string) => async (dispatch: AppDispatch) => {
+    debugger;
     try {
       dispatch(loadingActionCreator());
       await axios

@@ -1,192 +1,118 @@
-# DesTerra Gallery Web Application
+<h1 align="center">DesTerra Gallery</h1>
+<h5 align="center">An e-commerce Gallery Art to Rent and Purchase Artwork</h5><br/>
 
-# Listado de Componentes
+![Image of DesTerra Gallery Project](https://firebasestorage.googleapis.com/v0/b/desterra-181ac.appspot.com/o/Desterra_logo%20copia.png?alt=media&token=b44ea193-e243-4abd-be7b-c171f3042fef)
 
-<br>
+https://firebasestorage.googleapis.com/v0/b/desterra-181ac.appspot.com/o/Des%20Terra.mp4?alt=media&token=cec6bd2f-78c6-45f6-bac7-0a8ec6b0b309
 
-## Componentes Principales
+<br/>
 
-<br>
+## 🎯 About
 
-### Button
+I started this work as my final project in ISDI Coders Bootcamp in June 2022.<br/><br/>
+I've tried to create an e-commerce for an Art Gallery that allows their artists to rent or sell their artwork, building both the frontend and backend.<br/>
+I put a lot of effort into it and I hope that you could like it.<br/><br/>
+The Web App redirects you to an welcome page, in which you can choose to see all artworks, read more about the art gallery, access their social media linls or to sign up or to sign in. Once you are logged you can add your artwork and edit.<br/>
 
-<br>
+That same artwork will be available in the general listing of arts, where you can see in details added and if you're also logged, you can buy or rent artwork.
+<br/>
 
-Renderiza un botón con una acción recibida y texto recibido
+Also is worth mentioning that this web App was fully tested with 100% coverage in the frontend and backend, with Jest and Cypress as well.
+<br/>
 
-<br>
+If you enjoyed, please rate it with a ⭐️!
+<br/>
 
-### Header
+## ▶️ Demo
 
-<br>
+Here you can find the demo link:
 
-Renderiza un componente header, con el título de la página, y todos los enlaces de navegación de la página
+- [Demo](https://desterragallery.netlify.app/home)
 
-<br>
+### Test credentials (if you don't want to Register yourself 😓)
 
-### Footer
+> Email: testuser@test.com<br/>
+> Password: testtest<br/>
 
-Renderiza la dirección, teléfono y email de la galería y 3 Icon Button, pasando para cada uno la forma del icono de facebook, twitter y instagram, y la acción de abrir la página de cada.
+## ✨ Features
 
-<br>
+✔️ &nbsp;&nbsp;Display artworks with all their details<br />
+✔️ &nbsp;&nbsp;Category related filter and sorting by price with pagination in backend<br />
+✔️ &nbsp;&nbsp;Image conversion on upload to webp using Sharp<br />
+✔️ &nbsp;&nbsp;Add/Remove/Edit to/from "My Art" functionality<br />
+✔️ &nbsp;&nbsp;Detailed modals for error management<br />
+✔️ &nbsp;&nbsp;Automatic Price calculation for Renting arworks<br />
+✔️ &nbsp;&nbsp;User Sign In & User Sign Up<br />
+✔️ &nbsp;&nbsp;Use of React hooks and Redux to manage the state<br />
+✔️ &nbsp;&nbsp;Responsive layout<br />
+✔️ &nbsp;&nbsp;Backend using NodeJS, Express, with JOI validation and Sharp to handle image conversion<br />
+✔️ &nbsp;&nbsp;Backend using NodeJS, Express, with JOI validation and Sharp to handle image conversion<br />
 
-### ArtworkList
+## ⚙️ Backend Repository:
 
-Renderiza una lista obra de arte, pasandoles las imagenes y todos los datos recibidos
+You can check the Backend Repository here and its list of Endpoints:
 
-<br>
+- [DesTerra Gallery Backend](https://github.com/dmarafon/Des_Terra_Gallery-Back-End)
 
-### Artwork
+## 👍 SonarCloud QA Test:
 
-Renderiza una obra de arte, con una imagen recibida, un autor recibido, título recibido, precio mensual recibido y precio de compra
+Here you can see the present testing coverage using Jest and other QA information on regards of the App, in Back and in Front:
 
-<br>
+- [Sonar Cloud Frontend](https://sonarcloud.io/summary/new_code?id=dmarafon_Map_App-Frontend)
 
-### ArtworkDetail
+- [Sonar Cloud Backend](https://sonarcloud.io/summary/new_code?id=dmarafon_Map_App-Backend)
 
-<br>
+## 🚀 Technologies
 
-Renderiza los detalles de una obra de arte recibida, con una imagen recibida, título recibido, un autor recibido, dimensiones recibidas, medio recibido, precio mensual recibido y precio de compra, y un texto de descripción recibido
+- [React](https://reactjs.org/)
+- [React Hooks](https://reactjs.org/docs/hooks-intro.html)
+- [React Router](https://reactrouter.com/web/guides/quick-start)
+- [Redux](https://redux.js.org/)
+- [Redux Thunk](https://github.com/reduxjs/redux-thunk)
+- [Styled Components](https://styled-components.com/)
+- [Firebase](https://firebase.google.com/)
+- [Netlify](https://www.netlify.com)
+- [ExpressJS](https://expressjs.com)
+- [NodeJS](https://nodejs.org/)
+- [MongoDB](https://www.mongodb.com)
+- [JOI](https://joi.dev)
+- [JWT](https://jwt.io)
+- [Sharp](https://sharp.pixelplumbing.com)
+- [Jest](https://jestjs.io)
+- [Cypress](https://www.cypress.io)
 
-<br>
+## 📸 Screenshots
 
-### MyArtwork
+**Sign In**
+![Screenshot of DesTerra Sign In](https://firebasestorage.googleapis.com/v0/b/desterra-181ac.appspot.com/o/Captura%20de%20pantalla%202022-07-08%20a%20las%2019.21.28.png?alt=media&token=e839f53c-6277-4a71-9ab5-bf02957ff3a0)
+<br/>
 
-<br>
+**Sign Up**
+![Screenshot of DesTerra Sign Up](https://firebasestorage.googleapis.com/v0/b/desterra-181ac.appspot.com/o/Captura%20de%20pantalla%202022-07-08%20a%20las%2019.21.36.png?alt=media&token=2598615d-82e2-43c4-b773-aafc2137ad0d)
+<br/>
 
-Renderiza una obra de arte, con una imagen recibida, un título recibido, precio mensual recibido y precio de compra, y 2 icon buttons, pasando a uno la imagen de editar y la acción de abrir la EditPage, y al otro la imagen de borrar y la accion de borrar esta obra de arte
+**Homepage**
+![Screenshot of DesTerra Homepage](https://firebasestorage.googleapis.com/v0/b/desterra-181ac.appspot.com/o/Captura%20de%20pantalla%202022-07-08%20a%20las%2019.26.50.png?alt=media&token=0bd055d0-084f-4d6b-a211-dee6eb07ebef)
+<br/>
 
-<br>
+**Modal Detail**
+![Screenshot of DesTerra Detail Artwork](https://firebasestorage.googleapis.com/v0/b/desterra-181ac.appspot.com/o/Captura%20de%20pantalla%202022-07-08%20a%20las%2019.27.04.png?alt=media&token=b6949fd8-bb3a-4c27-98ed-5d8f6fa09519)
+<br/>
 
-### LoginForm
+**Mobile Experience**
 
-<br>
+https://firebasestorage.googleapis.com/v0/b/desterra-181ac.appspot.com/o/Des%20Terra%20(1)%20(2).mp4?alt=media&token=b7b23468-3391-46f2-93b8-899d16b2eb71
 
-Renderiza un formulario de login, con los inputs ‘email’ y ‘password’ y un button le pasando la acción de submeter el form
+<br/>
 
-<br>
+**Desktop Experience**
 
-### RegisterForm
+https://firebasestorage.googleapis.com/v0/b/desterra-181ac.appspot.com/o/Des%20Terra.mp4?alt=media&token=cec6bd2f-78c6-45f6-bac7-0a8ec6b0b309
 
-<br>
+<br/>
 
-Renderiza un formulario de registro con los inputs ‘first name’, ‘surname’, ‘email’, ‘password’, ‘webpage’, ‘picture profile’, ‘address & number’, ‘apartment, door, stair’, ‘city’, ‘phone number’ y una checkbox ‘I’m an artist and I want to sell my work’ y un button le pasando la acción de submeter el form
+## 📝 License
 
-<br>
+[MIT](https://github.com/Th3Wall/Fakeflix/blob/main/LICENSE)
 
-### AddEditForm
-
-<br>
-
-Renderiza un formulario que será utilizado para añadir o editar una obra, dependiendo de la condición a la cual fue llamado, con los inputs ‘title’, ‘medium’, ‘height (dimensions)’, ‘width (dimensions)’, ‘style’, ‘purchase price’, ‘monthly rent price’ y ‘description (max. 240 char)’ y un button le pasando la acción de submeter el form
-
-### MyProfileForm
-
-<br>
-
-Renderiza un formulario con los inputs ‘email’, ‘password’, ‘web page’, ‘address & number’, ‘apartment, door, stair’, ‘city’, ‘phone number’ y un button le pasando la acción de submeter el form
-
-<br>
-
-## Componentes para Modales
-
-<br>
-
-### ReactPortal
-
-Renderiza un div fuera de la árbol HTML de React donde los modales serán invocados
-
-<br>
-
-### ModalLoading
-
-<br>
-
-Renderiza un spinner de loading siempre que se espere llegar los dados
-
-<br>
-
-### ModalText
-
-<br>
-
-Renderiza una caja de texto para dar un feedback simples, con la opción de cerrarla después de leer el texto
-
-<br>
-
-## Componentes Page
-
-<br>
-
-### Home Page:
-
-<br>
-
-Renderiza una página de entrada, con un componente Header, una imagen de un obra de arte con link para su Details Page y un componente Footer.
-
-<br>
-
-### Login Page:
-
-<br>
-
-Renderizar una página de Login, con un componente Header, un componente LoginForm y un componente Footer. Además renderiza dos componentes Modal Text cuando sea necesario.
-
-<br>
-
-### Register Page:
-
-<br>
-
-Renderizar una página de Register, con un componente Header, un componente LoginForm y un componente Footer. Además renderiza dos componentes Modal Text cuando sea necesario.
-
-<br>
-
-### About Page:
-
-Renderiza un componente Header, un text con dos párrafos explicando sobre lo que se trata la página y un componente footer
-
-<br>
-
-### Artworks Page:
-
-<br>
-
-Renderiza un componente Header, un filtro en forma de dropdown, una lista de un máximo de 9 componentes Artwork pasando la información necesaria para ser renderizados, una navegación con el total de componentes Artworks y cuántos aún restan para visualizar y 2 Icon Buttons, uno para renderizar los componentes Artwork que restan y otro para ver los que ya fueron vistos. Finalmente renderiza un componente Footer
-
-<br>
-
-### ArworkDetails Page
-
-<br>
-Renderiza un componente Header, un componente ArtworkDetail pasando sus detalles a el, un footer, y dependiendo la condición, 2 líneas de texto (una con link para la Login Page y otra para la Register Page), o un componente button pasandole el texto ‘Buy or Rent’ y la acción de llevar a la página Arwork BuyPage
-
-<br>
-
-### ArtworkBuy Page
-
-<br>
-
-Renderiza un componente Header, un componente Artwork le pasando los detalles necesarios, un input para calcular el tiempo total para alquilar una obra y un texto con la información el precio para alquiler total baseado en el input, y además un texto para con la información del precio de compra de la obra. También renderiza 2 botones, pasando para uno el texto ‘Buy’ con la accion que abre un componente ModalText y el otro ‘Rent’ con la accion que abre un otro componente ModalText.
-
-<br>
-
-### MyArtwork Page
-
-<br>
-	
-Renderiza un componente Header, un boton pasandole el texto “Add artwork +” y la acción de llevar al EditAdd Page con la condición de Add  una lista de un máximo de 9 componentes MyArtwork pasando la información necesaria para ser renderizados, una navegación con el total de componentes MyArtwork y cuántos aún restan para visualizar y 2 Icon Buttons, uno para renderizar los componentes MyArtwork que restan y otro para ver los que ya fueron vistos. Finalmente renderiza un componente Footer. Además también renderiza un componente ModalConfirmation siempre que se borre un componente MyArtwork
-
-<br>
-
-### AddEdit Page
-
-<br>
-Renderiza un componente Header, un componente AddEdit Component, un componente Footer y 4 componentes modales dependiendo de la condicion, todos componentes ModalText.
-
-<br>
-
-### Profile Page
-
-<br>
-Renderiza un componente Header, la imagen del usuario con su nombre, un componente MyProfileForm y 2 botones, pasandole a uno el texto  ‘Update Profile’ y la acción de actualizar el perfil del usuario, y al otro el texto ‘Delete Profile’ y la acción de borrar el perfil del usuario.
+<a href="https://www.buymeacoffee.com/th3wall" target="_blank"></a>
