@@ -56,7 +56,7 @@ You can check the Backend Repository here and its list of Endpoints:
 
 - [DesTerra Gallery Backend](https://github.com/dmarafon/Des_Terra_Gallery-Back-End)
 
-## 👍 SonarCloud QA Test:
+## 👍 SonarCloud Quality Analysis:
 
 Here you can see the present testing coverage using Jest and other QA information on regards of the App, in Back and in Front:
 
