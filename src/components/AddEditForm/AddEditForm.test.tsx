@@ -249,6 +249,7 @@ describe("Given a AddEditForm component function", () => {
       expect(element).not.toBeInTheDocument();
     });
   });
+
   describe("When the user fills all the required fields, and uploads an image, clicks the checkbox, the submit button becames enabled and the user clicks in the mentioned button, opening a modal. When the modal is closed it will close the modal as well", () => {
     test("Then the dispatch should be invoked in both instances", async () => {
       const fakeFile = new File(["test"], "test.png", { type: "image/png" });
