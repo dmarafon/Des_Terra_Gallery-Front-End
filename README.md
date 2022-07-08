@@ -94,7 +94,7 @@ Here you can see the present testing coverage using Jest and other QA informatio
 <br/>
 
 **Homepage**
-![Screenshot of DesTerra Homepage](https://firebasestorage.googleapis.com/v0/b/desterra-181ac.appspot.com/o/Captura%20de%20pantalla%202022-07-08%20a%20las%2019.26.50.png?alt=media&token=0bd055d0-084f-4d6b-a211-dee6eb07ebef)
+![Screenshot of DesTerra Home Page](https://firebasestorage.googleapis.com/v0/b/desterra-181ac.appspot.com/o/Captura%20de%20pantalla%202022-07-08%20a%20las%2019.26.50.png?alt=media&token=0bd055d0-084f-4d6b-a211-dee6eb07ebef)
 <br/>
 
 **Modal Detail**
