@@ -3,7 +3,9 @@
 
 ![Image of DesTerra Gallery Project](https://firebasestorage.googleapis.com/v0/b/desterra-181ac.appspot.com/o/Desterra_logo%20copia.png?alt=media&token=b44ea193-e243-4abd-be7b-c171f3042fef)
 
-https://firebasestorage.googleapis.com/v0/b/desterra-181ac.appspot.com/o/Des%20Terra.mp4?alt=media&token=cec6bd2f-78c6-45f6-bac7-0a8ec6b0b309
+
+https://user-images.githubusercontent.com/90359463/178046509-0f6d37cc-c2b6-4fa1-8ec7-2e452fb0537c.mp4
+
 
 <br/>
 
@@ -101,13 +103,17 @@ Here you can see the present testing coverage using Jest and other QA informatio
 
 **Mobile Experience**
 
-https://firebasestorage.googleapis.com/v0/b/desterra-181ac.appspot.com/o/Des%20Terra%20(1)%20(2).mp4?alt=media&token=b7b23468-3391-46f2-93b8-899d16b2eb71
+https://user-images.githubusercontent.com/90359463/178046195-4adf5ea7-9e30-4e13-be56-23c58aea160c.mp4
+
+
 
 <br/>
 
 **Desktop Experience**
 
-https://firebasestorage.googleapis.com/v0/b/desterra-181ac.appspot.com/o/Des%20Terra.mp4?alt=media&token=cec6bd2f-78c6-45f6-bac7-0a8ec6b0b309
+
+https://user-images.githubusercontent.com/90359463/178046491-64735bfe-429d-46c2-919b-0c1090e26464.mp4
+
 
 <br/>
 
