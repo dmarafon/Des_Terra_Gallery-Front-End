@@ -48,7 +48,7 @@ Here you can find the demo link:
 ✔️ &nbsp;&nbsp;Use of React hooks and Redux to manage the state<br />
 ✔️ &nbsp;&nbsp;Responsive layout<br />
 ✔️ &nbsp;&nbsp;Backend using NodeJS, Express, with JOI validation and Sharp to handle image conversion<br />
-✔️ &nbsp;&nbsp;Backend using NodeJS, Express, with JOI validation and Sharp to handle image conversion<br />
+✔️ &nbsp;&nbsp;MongoDB to build Database for users and artworks<br />
 
 ## ⚙️ Backend Repository:
 
