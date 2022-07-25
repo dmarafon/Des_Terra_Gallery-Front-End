@@ -117,8 +117,3 @@ https://user-images.githubusercontent.com/90359463/178046491-64735bfe-429d-46c2-
 
 <br/>
 
-## 📝 License
-
-[MIT](https://github.com/Th3Wall/Fakeflix/blob/main/LICENSE)
-
-<a href="https://www.buymeacoffee.com/th3wall" target="_blank"></a>
